@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  字体文本颜色  -->
+    <SolidColorBrush x:Key="AppTextFillBrush" Color="White" />
+
+    <SolidColorBrush x:Key="AppWindowBackgroundBrush" Color="#BF2D2727" />
+</ResourceDictionary>

@@ -1,0 +1,73 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:FluentWPF.Controls">
+    <Style x:Key="DefaultWindowStyle" TargetType="ui:FluentWindow">
+        <!--  刚才的问题很奇怪，清理后重新生成没问题了  -->
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    CaptionHeight="36"
+                    GlassFrameThickness="-1"
+                    NonClientFrameEdges="Left,Bottom,Right"
+                    ResizeBorderThickness="5" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ui:FluentWindow">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid
+                            Margin="15,0,0,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <!--  这里定义了一个标题栏的结构  -->
+                                <ColumnDefinition x:Name="TitleColumn" Width="auto" />
+                                <ColumnDefinition x:Name="CenterColumn" />
+                                <ColumnDefinition x:Name="RightColumn" Width="auto" />
+                                <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal"
+                                WindowChrome.IsHitTestVisibleInChrome="False">
+                                <Image Source="{TemplateBinding Icon}" />
+                                <TextBlock Foreground="{DynamicResource AppTextFillBrush}" Text="{TemplateBinding Title}" />
+                            </StackPanel>
+                            <ContentControl
+                                Grid.ColumnSpan="4"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Red"
+                                Content="{TemplateBinding TitlebarContent}"
+                                WindowChrome.IsHitTestVisibleInChrome="True" />
+                            <Border
+                                Grid.Column="2"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Background="Green"
+                                WindowChrome.IsHitTestVisibleInChrome="True">
+                                <ContentControl Content="{TemplateBinding RightContent}" />
+                            </Border>
+                            <Border
+                                Grid.Column="3"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                WindowChrome.IsHitTestVisibleInChrome="False" />
+                        </Grid>
+                        <AdornerDecorator Grid.Row="1">
+                            <ContentControl x:Name="win_content" Content="{TemplateBinding Content}" />
+                        </AdornerDecorator>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
