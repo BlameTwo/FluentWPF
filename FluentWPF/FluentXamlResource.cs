@@ -19,9 +19,11 @@ public sealed class FluentXamlResource : ResourceDictionary
             {
                 case ThemeTypeEnum.Dark:
                     Source = new Uri($"{FluentUsings.ThemePath}Dark.xaml", UriKind.Absolute);
+                    Instance.Theme = 1;
                     break;
                 case ThemeTypeEnum.Light:
                     Source = new Uri($"{FluentUsings.ThemePath}Light.xaml", UriKind.Absolute);
+                    Instance.Theme = 0;
                     break;
             }
             type = value;

@@ -1,5 +1,7 @@
 ﻿using FluentWPF.Controls;
-using FluentWPF.Win32;
+using FluentWPF_Demo.ViewModels;
+using System.Windows;
+using System.Windows.Input;
 
 namespace FluentWPF_Demo;
 
@@ -8,15 +10,6 @@ public partial class MainWindow : FluentWindow
     public MainWindow()
     {
         InitializeComponent();
-    }
-
-    private void Light_Click(object sender, System.Windows.RoutedEventArgs e)
-    {
-        FluentWPF.Instance.ApplyTheme(FluentWPF.Models.Enums.ThemeTypeEnum.Light);
-    }
-
-    private void Dark_Click(object sender, System.Windows.RoutedEventArgs e)
-    {
-        FluentWPF.Instance.ApplyTheme(FluentWPF.Models.Enums.ThemeTypeEnum.Dark);
+        this.DataContext = new MainViewModel();
     }
 }

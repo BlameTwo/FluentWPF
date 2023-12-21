@@ -4,7 +4,9 @@
     xmlns:ui="clr-namespace:FluentWPF.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Button.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource DefaultWindowStyle}" TargetType="ui:FluentWindow" />
+    <Style BasedOn="{StaticResource DefaultFluentButtonStyle}" TargetType="ui:FluentButton" />
 </ResourceDictionary>

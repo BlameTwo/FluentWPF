@@ -1,7 +1,15 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=mscorlib">
     <!--  字体文本颜色  -->
     <SolidColorBrush x:Key="AppTextFillBrush" Color="Black" />
 
-    <!--  应用窗体默认背景颜色  -->
-    <SolidColorBrush x:Key="AppWindowBackgroundBrush" Color="#FFFBFBFB" />
+    <!--  默认控件背景颜色  -->
+    <SolidColorBrush x:Key="ControlFillColor" Color="WhiteSmoke" />
+    <SolidColorBrush x:Key="ControlBorderBrushColor" Color="#CC7D7D7D" />
+    <!--  这里好像两个重合了，无所谓就这样  -->
+    <SolidColorBrush x:Key="ControlSecondFillColor" Color="#7FE4E4E4" />
+    <SolidColorBrush x:Key="ControlParssedFillColor" Color="#19727272" />
+    <SolidColorBrush x:Key="ControlDisableFillColor" Color="#4CD3D3D3" />
 </ResourceDictionary>

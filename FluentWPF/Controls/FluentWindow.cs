@@ -1,5 +1,4 @@
 ﻿using FluentWPF.Common;
-using FluentWPF.Win32;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;

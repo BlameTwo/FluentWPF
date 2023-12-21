@@ -1,10 +1,16 @@
-﻿using FluentWPF.Controls;
-using FluentWPF.Models.Enums;
-using FluentWPF.Win32;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows;
-using System.Windows.Interop;
+﻿
+#region 全局引用
+
+global using FluentWPF.Common;
+global using FluentWPF.Controls;
+global using FluentWPF.Models.Enums;
+global using System.Runtime.InteropServices;
+global using System.Windows;
+global using System.Windows.Interop;
+global using static FluentWPF.Common.Methods;
+global using System.Windows.Controls.Primitives;
+#endregion
+
 
 namespace FluentWPF;
 
