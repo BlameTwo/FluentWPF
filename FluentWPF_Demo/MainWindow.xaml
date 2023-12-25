@@ -7,14 +7,14 @@
     xmlns:local="clr-namespace:FluentWPF_Demo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sysback="clr-namespace:FluentWPF.Controls.SystemBackdrops;assembly=FluentWPF"
-    xmlns:ui="clr-namespace:FluentWPF.Controls;assembly=FluentWPF"
+    xmlns:ui="https://blame/fluentwpf/2023/"
     Title="测试应用"
     Width="800"
     Height="450"
     Background="Transparent"
     Style="{DynamicResource DefaultWindowStyle}"
     mc:Ignorable="d">
-    <ui:FluentWindow.RightContent>
+    <ui:FluentWindow.TitlebarContent>
         <ui:FluentToggleButton
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -22,10 +22,10 @@
             IsEnabled="True">
             <ui:FontIcon Glyph="Switch" />
         </ui:FluentToggleButton>
-    </ui:FluentWindow.RightContent>
-    <!--<ui:FluentWindow.SystemBackdrop>
+    </ui:FluentWindow.TitlebarContent>
+    <ui:FluentWindow.SystemBackdrop>
         <sysback:MicaBackdrop />
-    </ui:FluentWindow.SystemBackdrop>-->
+    </ui:FluentWindow.SystemBackdrop>
     <Grid>
 
 
@@ -38,5 +38,10 @@
                 <ui:NavigationViewHeaderItem />
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>-->
+        <ui:HyperlinkButton
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="超链接"
+            NavigateUri="https://www.baidu.com" />
     </Grid>
 </ui:FluentWindow>

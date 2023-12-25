@@ -82,20 +82,6 @@ public partial class FluentWindow : Window
     }
 
 
-
-    /// <summary>
-    /// 标题栏右侧功能区
-    /// </summary>
-    public object RightContent
-    {
-        get { return (object)GetValue(RightContentProperty); }
-        set { SetValue(RightContentProperty, value); }
-    }
-
-    public static readonly DependencyProperty RightContentProperty =
-        DependencyProperty.Register("RightContent", typeof(object), typeof(FluentWindow), new PropertyMetadata(null));
-
-
     /// <summary>
     /// 标题栏居中内容
     /// </summary>

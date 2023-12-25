@@ -9,6 +9,7 @@
                 <WindowChrome
                     CaptionHeight="36"
                     GlassFrameThickness="-1"
+                    NonClientFrameEdges="Left,Bottom,Right"
                     ResizeBorderThickness="5" />
             </Setter.Value>
         </Setter>
@@ -46,13 +47,7 @@
                                 VerticalAlignment="Center"
                                 Content="{TemplateBinding TitlebarContent}"
                                 WindowChrome.IsHitTestVisibleInChrome="True" />
-                            <Border
-                                Grid.Column="2"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Stretch"
-                                WindowChrome.IsHitTestVisibleInChrome="True">
-                                <ContentControl Content="{TemplateBinding RightContent}" />
-                            </Border>
+
                             <Border
                                 Grid.Column="3"
                                 HorizontalAlignment="Stretch"

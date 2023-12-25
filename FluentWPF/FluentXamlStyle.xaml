@@ -4,14 +4,17 @@
     xmlns:ui="clr-namespace:FluentWPF.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentWindow.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/SystemWindow.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/ToggleButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FontIcon.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/RepeatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentHyperlinkButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource DefaultWindowStyle}" TargetType="ui:FluentWindow" />
     <Style BasedOn="{StaticResource DefaultFluentButtonStyle}" TargetType="ui:FluentButton" />
     <Style BasedOn="{StaticResource DefaultFluentToggleButtonStyle}" TargetType="ui:FluentToggleButton" />
     <Style BasedOn="{StaticResource DefaultFontIconStyle}" TargetType="ui:FontIcon" />
+    <Style BasedOn="{StaticResource DefaultRepeatButton}" TargetType="ui:FluentRepeatButton" />
+    <Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" TargetType="ui:HyperlinkButton" />
 </ResourceDictionary>

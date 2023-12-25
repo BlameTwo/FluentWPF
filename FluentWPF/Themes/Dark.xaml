@@ -16,4 +16,11 @@
     <SolidColorBrush x:Key="ControlSecondFillColor" Color="#21FFFFFF" />
     <SolidColorBrush x:Key="ControlParssedFillColor" Color="#0CFFFFFF" />
     <SolidColorBrush x:Key="ControlDisableFillColor" Color="#4CD3D3D3" />
+
+
+    <!--  超链接按钮颜色-start  -->
+    <SolidColorBrush x:Key="HyperLinkBackground" Color="#14FFFFFF" />
+    <SolidColorBrush x:Key="HyperLinkForeground" Color="#8ED8EA" />
+    <SolidColorBrush x:Key="HyperLinkParsedForeground" Color="#4CC2FF" />
+    <!--  超链接按钮颜色-end  -->
 </ResourceDictionary>

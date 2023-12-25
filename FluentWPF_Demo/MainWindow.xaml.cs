@@ -13,6 +13,8 @@ public partial class MainWindow : FluentWindow
         this.DataContext = new MainViewModel();
     }
 
+    int i = 1;
+
     private void FluentToggleButton_Click(object sender, RoutedEventArgs e)
     {
         if(sender is FluentToggleButton button && (bool)button.IsChecked!)
@@ -24,4 +26,6 @@ public partial class MainWindow : FluentWindow
             FluentWPF.Instance.ApplyTheme(FluentWPF.Models.Enums.ThemeTypeEnum.Light);
         }
     }
+
+
 }
