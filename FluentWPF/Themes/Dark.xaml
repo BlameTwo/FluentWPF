@@ -2,8 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <!--  用户颜色  -->
+    <SolidColorBrush x:Key="AcceptColor" Color="#47b1e8" />
     <!--  字体文本颜色  -->
     <SolidColorBrush x:Key="AppTextFillBrush" Color="White" />
+    <!--  ToggleButton Foreground  -->
+    <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="Black" />
     <!--  默认控件背景颜色  -->
     <SolidColorBrush x:Key="ControlFillColor" Color="#14FFFFFF" />
     <SolidColorBrush x:Key="ControlBorderBrushColor" Color="#19FFFFFF" />

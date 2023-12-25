@@ -14,15 +14,20 @@
     Background="Transparent"
     Style="{DynamicResource DefaultWindowStyle}"
     mc:Ignorable="d">
-    <ui:FluentWindow.SystemBackdrop>
-        <sysback:MicaBackdrop />
-    </ui:FluentWindow.SystemBackdrop>
-    <Grid>
-        <ui:FluentButton
+    <ui:FluentWindow.RightContent>
+        <ui:FluentToggleButton
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Content="你好"
-            IsEnabled="True" />
+            Click="FluentToggleButton_Click"
+            IsEnabled="True">
+            <ui:FontIcon Glyph="Switch" />
+        </ui:FluentToggleButton>
+    </ui:FluentWindow.RightContent>
+    <!--<ui:FluentWindow.SystemBackdrop>
+        <sysback:MicaBackdrop />
+    </ui:FluentWindow.SystemBackdrop>-->
+    <Grid>
+
 
         <!--<ui:NavigationView>
             <ui:NavigationView.MenuItems>

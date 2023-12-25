@@ -15,7 +15,15 @@ public partial class FluentWindow : Window
 {
     public FluentWindow()
     {
+
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(FluentWindow), new FrameworkPropertyMetadata(typeof(FluentWindow)));
         this.Loaded += FluentWindow_Initialized;
+        this.SizeChanged += FluentWindow_SizeChanged;
+    }
+
+    private void FluentWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        UpdateTitlebar();
     }
 
     private void FluentWindow_Initialized(object? sender, EventArgs e)
@@ -39,7 +47,16 @@ public partial class FluentWindow : Window
             double dpiFactor = dpi / 96.0;
             int buttonWidth = (int)((Methods.GetSystemMetrics(Methods.SM_CXSIZE) - Methods.GetSystemMetrics(Methods.SM_CXSIZEFRAME) * 2) * dpiFactor);
             if (_rightpaddingPadding == null) return;
-            var width = buttonWidth * 3;
+            int resval = 0;
+            if(dpiFactor == 1)
+            {
+                resval = 5;
+            }
+            else if(dpiFactor == 1.25)
+            {
+                resval = 3;
+            }
+            var width = buttonWidth * resval;
             this._rightpaddingPadding.Width = new GridLength(width);
         }
     }

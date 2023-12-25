@@ -5,4 +5,11 @@
 	- [x] 圆角
 	- [x] 颜色
 	- [x] 全局的一些样式
-- [ ] NavigationViewBase()
+- [x] NavigationViewBase()
+- [x] ToggleButton
+	- [x] 这个ToggleButton可以换一种动画方式制作
+	- [x] 除去和普通按钮的颜色效果，唯一一个比较特殊的是他为True的时候有一个颜色变化，我们将这个特殊颜色也作为一个容器存在，操作Storyboard的透明度值即可。
+- [ ] FontIcon
+	- [ ] 引用官方的字体文件
+	- [ ] 枚举FontIcon
+		- [ ] 枚举的方法很简单，就是搞一个类来反射那相对应的字符就行了。

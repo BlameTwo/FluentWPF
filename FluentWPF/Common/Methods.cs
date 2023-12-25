@@ -96,12 +96,22 @@ public static class Methods
     public static extern int GetSystemMetrics(int nIndex);
 
     [DllImport("user32.dll")]
+    public static extern int GetSystemMetricsForDpi(int nIndex, uint dpi);
+
+    [DllImport("user32.dll")]
     public static extern IntPtr GetDC(IntPtr hWnd);
 
     [DllImport("gdi32.dll")]
     public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
-
-    public const int SM_CXSIZE = 30;  // Width of a window border
+    public const int SM_CXSIZE = 30;        // SystemMetrics index for the width of a window's sizing border
+    public const int SM_CXMINBUTTON = 15;   // SystemMetrics index for the width of a window's minimize button
+    public const int SM_CXMAXBUTTON = 17;   // SystemMetrics index for the width of a window's maximize button
+    public const int SM_CYSIZE = 31;  // 标题栏按钮的高度
     public const int SM_CXSIZEFRAME = 32;  // Width of the window frame
     public const int LOGPIXELSX = 88;  // Logical pixels/inch in X
+
+    public const int SM_CXFRAME = 32; // 窗口边框的宽度
+    public const int SM_CXPADDEDBORDER = 92; // 窗口边框的额外宽度
+
+
 }

@@ -7,9 +7,8 @@
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
-                    CaptionHeight="48"
+                    CaptionHeight="36"
                     GlassFrameThickness="-1"
-                    NonClientFrameEdges="Left,Bottom,Right"
                     ResizeBorderThickness="5" />
             </Setter.Value>
         </Setter>
@@ -45,14 +44,12 @@
                                 Grid.ColumnSpan="4"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Background="Red"
                                 Content="{TemplateBinding TitlebarContent}"
                                 WindowChrome.IsHitTestVisibleInChrome="True" />
                             <Border
                                 Grid.Column="2"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Stretch"
-                                Background="Green"
                                 WindowChrome.IsHitTestVisibleInChrome="True">
                                 <ContentControl Content="{TemplateBinding RightContent}" />
                             </Border>
@@ -64,6 +61,38 @@
                         </Grid>
                         <AdornerDecorator Grid.Row="1">
                             <ContentControl x:Name="win_content" Content="{TemplateBinding Content}" />
+                        </AdornerDecorator>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TextWindowStyle" TargetType="ui:FluentWindow">
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    CaptionHeight="36"
+                    GlassFrameThickness="-1"
+                    ResizeBorderThickness="5"
+                    UseAeroCaptionButtons="False" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ui:FluentWindow">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="Green" />
+                        <AdornerDecorator Grid.Row="1" Panel.ZIndex="-1">
+                            <ContentPresenter x:Name="win_content" />
                         </AdornerDecorator>
                     </Grid>
                 </ControlTemplate>

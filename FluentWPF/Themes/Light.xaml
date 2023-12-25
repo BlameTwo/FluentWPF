@@ -4,6 +4,10 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib">
     <!--  字体文本颜色  -->
     <SolidColorBrush x:Key="AppTextFillBrush" Color="Black" />
+    <!--  用户颜色  -->
+    <SolidColorBrush x:Key="AcceptColor" Color="#1975c5" />
+    <!--  取反  -->
+    <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="White" />
 
     <!--  默认控件背景颜色  -->
     <SolidColorBrush x:Key="ControlFillColor" Color="WhiteSmoke" />
