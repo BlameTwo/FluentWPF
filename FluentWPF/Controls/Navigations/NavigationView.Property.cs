@@ -45,15 +45,13 @@ namespace FluentWPF.Controls
             set { SetValue(PaneBackgroundProperty, value); }
         }
 
-        public static readonly DependencyProperty PaneBackgroundProperty = DependencyProperty.Register(
-            "PaneBackground",
-            typeof(Brush),
-            typeof(NavigationView),
-            new PropertyMetadata(null)
-        );
-
-
-
+        public static readonly DependencyProperty PaneBackgroundProperty =
+            DependencyProperty.Register(
+                "PaneBackground",
+                typeof(Brush),
+                typeof(NavigationView),
+                new PropertyMetadata(null)
+            );
 
         public object Content
         {
@@ -61,10 +59,12 @@ namespace FluentWPF.Controls
             set { SetValue(ContentProperty, value); }
         }
 
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(NavigationView), new PropertyMetadata(null));
-
-
+        public static readonly DependencyProperty ContentProperty = DependencyProperty.Register(
+            "Content",
+            typeof(object),
+            typeof(NavigationView),
+            new PropertyMetadata(null)
+        );
 
         public DataTemplate ContentTemplate
         {
@@ -73,9 +73,39 @@ namespace FluentWPF.Controls
         }
 
         public static readonly DependencyProperty ContentTemplateProperty =
-            DependencyProperty.Register("ContentTemplate", typeof(DataTemplate), typeof(NavigationView), new PropertyMetadata(null));
+            DependencyProperty.Register(
+                "ContentTemplate",
+                typeof(DataTemplate),
+                typeof(NavigationView),
+                new PropertyMetadata(null)
+            );
 
+        public double OpenPanelLength
+        {
+            get { return (double)GetValue(OpenPanelLengthProperty); }
+            set { SetValue(OpenPanelLengthProperty, value); }
+        }
 
-        
+        public static readonly DependencyProperty OpenPanelLengthProperty =
+            DependencyProperty.Register(
+                "OpenPanelLength",
+                typeof(double),
+                typeof(NavigationView),
+                new PropertyMetadata(null)
+            );
+
+        public NavigationDisplay DisplayMode
+        {
+            get { return (NavigationDisplay)GetValue(DisplayModeProperty); }
+            set { SetValue(DisplayModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisplayModeProperty = DependencyProperty.Register(
+            "DisplayMode",
+            typeof(NavigationDisplay),
+            typeof(NavigationView),
+            new PropertyMetadata(NavigationDisplay.Close,OnDisplayModeChanged)
+        );
+
     }
 }

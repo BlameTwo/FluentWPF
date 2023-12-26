@@ -17,7 +17,8 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Border
-                            Width="150"
+                            x:Name="MainPane"
+                            Width="{TemplateBinding OpenPanelLength}"
                             Background="{TemplateBinding PaneBackground}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
                         <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
@@ -27,6 +28,38 @@
                                 Content="{TemplateBinding Content}"
                                 ContentTemplate="{TemplateBinding ContentTemplate}" />
                         </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="OpenPanelStateGroup">
+                                <VisualState x:Name="Open">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="MainPane"
+                                            Storyboard.TargetProperty="Width"
+                                            From="40"
+                                            To="{TemplateBinding OpenPanelLength}"
+                                            Duration="0:0:.16">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CircleEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Close">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="MainPane"
+                                            Storyboard.TargetProperty="Width"
+                                            From="{TemplateBinding OpenPanelLength}"
+                                            To="40"
+                                            Duration="0:0:.16">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CircleEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

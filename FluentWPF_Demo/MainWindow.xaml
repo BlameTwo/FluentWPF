@@ -27,6 +27,6 @@
         <sysback:MicaBackdrop />
     </ui:FluentWindow.SystemBackdrop>
     <Grid>
-        <ui:NavigationView />
+        <ui:NavigationView DisplayMode="Open" OpenPanelLength="300" />
     </Grid>
 </ui:FluentWindow>
