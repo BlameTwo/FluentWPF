@@ -27,21 +27,6 @@
         <sysback:MicaBackdrop />
     </ui:FluentWindow.SystemBackdrop>
     <Grid>
-
-
-        <!--<ui:NavigationView>
-            <ui:NavigationView.MenuItems>
-        -->
-        <!--  两个子项类型都支持  -->
-        <!--
-                <ui:NavigationViewItem />
-                <ui:NavigationViewHeaderItem />
-            </ui:NavigationView.MenuItems>
-        </ui:NavigationView>-->
-        <ui:HyperlinkButton
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Content="超链接"
-            NavigateUri="https://www.baidu.com" />
+        <ui:NavigationView />
     </Grid>
 </ui:FluentWindow>

@@ -3,11 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:FluentWPF.Controls">
     <Style x:Key="DefaultWindowStyle" TargetType="ui:FluentWindow">
-        <!--  刚才的问题很奇怪，清理后重新生成没问题了  -->
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
-                    CaptionHeight="36"
+                    CaptionHeight="32"
                     GlassFrameThickness="-1"
                     NonClientFrameEdges="Left,Bottom,Right"
                     ResizeBorderThickness="5" />

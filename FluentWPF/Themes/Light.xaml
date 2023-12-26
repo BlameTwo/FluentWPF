@@ -20,4 +20,7 @@
     <SolidColorBrush x:Key="HyperLinkBackground" Color="#3FBBBBBB" />
     <SolidColorBrush x:Key="HyperLinkForeground" Color="#001A68" />
     <SolidColorBrush x:Key="HyperLinkParsedForeground" Color="#0067C0" />
+
+
+    <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#F2F2F2" />
 </ResourceDictionary>

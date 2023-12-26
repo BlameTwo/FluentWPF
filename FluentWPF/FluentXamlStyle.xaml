@@ -9,12 +9,18 @@
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FontIcon.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/RepeatButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentHyperlinkButton.xaml" />
+
+        <!--  NavigationView  -->
+
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Navigations/NavigationView.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style BasedOn="{StaticResource DefaultNavigationViewStyle}" TargetType="ui:NavigationView" />
     <Style BasedOn="{StaticResource DefaultWindowStyle}" TargetType="ui:FluentWindow" />
     <Style BasedOn="{StaticResource DefaultFluentButtonStyle}" TargetType="ui:FluentButton" />
     <Style BasedOn="{StaticResource DefaultFluentToggleButtonStyle}" TargetType="ui:FluentToggleButton" />
     <Style BasedOn="{StaticResource DefaultFontIconStyle}" TargetType="ui:FontIcon" />
     <Style BasedOn="{StaticResource DefaultRepeatButton}" TargetType="ui:FluentRepeatButton" />
     <Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" TargetType="ui:HyperlinkButton" />
+
 </ResourceDictionary>

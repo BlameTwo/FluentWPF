@@ -23,4 +23,8 @@
     <SolidColorBrush x:Key="HyperLinkForeground" Color="#8ED8EA" />
     <SolidColorBrush x:Key="HyperLinkParsedForeground" Color="#4CC2FF" />
     <!--  超链接按钮颜色-end  -->
+
+
+    <!--  NavigationView Color  -->
+    <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#212121" />
 </ResourceDictionary>

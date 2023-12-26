@@ -20,3 +20,8 @@
 ###### 2023/12/25
 - [x] 连续点击按钮（RepeatButton）
 - [x] 超链接按钮（HyperLinkButton）
+
+
+###### 2023/12/26
+- [ ] NavigationView
+	- [x] 基础样式 
