@@ -23,14 +23,22 @@
                             Width="{TemplateBinding OpenPanelLength}"
                             Background="{TemplateBinding PaneBackground}"
                             CornerRadius="{TemplateBinding CornerRadius}">
+                            <Border.Effect>
+                                <DropShadowEffect Opacity="0.03" Color="{DynamicResource NavigationPanelEffectBrush}" />
+                            </Border.Effect>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <ui:FluentToggleButton Padding="10" FontSize="17">
+                                <ui:FluentButton
+                                    x:Name="OpenMenuButton"
+                                    Margin="10,5,0,0"
+                                    HorizontalAlignment="Left"
+                                    FontSize="17"
+                                    Style="{DynamicResource MenuFluentButton}">
                                     <ui:FontIcon Glyph="ButtonMenu" />
-                                </ui:FluentToggleButton>
+                                </ui:FluentButton>
                                 <ItemsControl
                                     Grid.Row="1"
                                     HorizontalAlignment="Stretch"
@@ -89,4 +97,47 @@
         </Setter>
     </Style>
 
+    <Style x:Key="MenuFluentButton" TargetType="ui:FluentButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Foreground" Value="{DynamicResource AppTextFillBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrushColor}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ui:FluentButton">
+                    <Grid>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ControlSecondFillColor}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ControlParssedFillColor}" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource ControlDisableFillColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

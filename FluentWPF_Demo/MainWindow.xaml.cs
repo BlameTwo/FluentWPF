@@ -27,5 +27,8 @@ public partial class MainWindow : FluentWindow
         }
     }
 
+    private void NavigationView_NavigationSelectionChanged(NavigationView sender, FluentWPF.Contracts.Navigations.INavigationViewItem item)
+    {
 
+    }
 }

@@ -27,7 +27,7 @@
 
 
     <!--  NavigationView Color  -->
-    <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#BF212121" />
+    <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#FF212121" />
 
     <SolidColorBrush x:Key="NavigationSelectItemMove" Color="#3FE2E2E2" />
     <SolidColorBrush x:Key="NavigationSelectItemPressed" Color="#59C5C5C5" />

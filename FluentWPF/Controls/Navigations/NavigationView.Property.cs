@@ -40,7 +40,6 @@ namespace FluentWPF.Controls
             return null;
         }
 
-
         public Brush PaneBackground
         {
             get { return (Brush)GetValue(PaneBackgroundProperty); }
@@ -129,9 +128,20 @@ namespace FluentWPF.Controls
             set { SetValue(SelectItemProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectItemProperty =
-            DependencyProperty.Register("SelectItem", typeof(INavigationViewItem), typeof(NavigationView), new PropertyMetadata(null));
+        public static readonly DependencyProperty SelectItemProperty = DependencyProperty.Register(
+            "SelectItem",
+            typeof(INavigationViewItem),
+            typeof(NavigationView),
+            new PropertyMetadata(null)
+        );
 
 
+        internal NavigationSelectionDelegate NavigationSelectionDelegateHandler;
+
+        public event NavigationSelectionDelegate NavigationSelectionChanged
+        {
+            add => NavigationSelectionDelegateHandler+=value;
+            remove => NavigationSelectionDelegateHandler -= value;
+        }
     }
 }

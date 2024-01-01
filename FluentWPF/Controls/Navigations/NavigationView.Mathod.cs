@@ -5,6 +5,7 @@ namespace FluentWPF.Controls;
 partial class NavigationView
 {
 
+
     private static void OnDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         if(e.NewValue is NavigationDisplay mode && d is NavigationView view)
@@ -39,5 +40,6 @@ partial class NavigationView
             this.SelectItem = item;
             item.IsSelect = true;
         }
+        this.NavigationSelectionDelegateHandler?.Invoke(this, item);
     }
 }
