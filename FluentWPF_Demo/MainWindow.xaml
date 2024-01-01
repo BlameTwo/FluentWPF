@@ -13,6 +13,7 @@
     Height="450"
     Background="Transparent"
     Style="{DynamicResource DefaultWindowStyle}"
+    Topmost="True"
     mc:Ignorable="d">
     <ui:FluentWindow.TitlebarContent>
         <ui:FluentToggleButton
@@ -27,6 +28,14 @@
         <sysback:MicaBackdrop />
     </ui:FluentWindow.SystemBackdrop>
     <Grid>
-        <ui:NavigationView DisplayMode="Open" OpenPanelLength="300" />
+        <ui:NavigationView DisplayMode="Close" OpenPanelLength="250">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Content="Home" Icon="Home" />
+                <ui:NavigationViewItem Content="Home" Icon="Accept" />
+                <ui:NavigationViewItem Content="Home" Icon="Accident" />
+                <ui:NavigationViewItem Content="Home" Icon="ActionCenterMirrored" />
+            </ui:NavigationView.MenuItems>
+            <ui:FontIcon Glyph="Home" />
+        </ui:NavigationView>
     </Grid>
 </ui:FluentWindow>

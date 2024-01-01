@@ -1,13 +1,15 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:FluentWPF.Converters"
     xmlns:ui="clr-namespace:FluentWPF.Controls">
+    <converter:NavigationMenuOpenConverter x:Key="NavigationMenuOpenConverter" />
     <Style x:Key="DefaultNavigationViewStyle" TargetType="ui:NavigationView">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="PaneBackground" Value="{DynamicResource PanelBackgroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource ControlFillColor}" />
+        <Setter Property="PaneBackground" Value="{DynamicResource ControlFillColor}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="CornerRadius" Value="10" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ui:NavigationView">
@@ -20,8 +22,29 @@
                             x:Name="MainPane"
                             Width="{TemplateBinding OpenPanelLength}"
                             Background="{TemplateBinding PaneBackground}"
-                            CornerRadius="{TemplateBinding CornerRadius}" />
-                        <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <ui:FluentToggleButton Padding="10" FontSize="17">
+                                    <ui:FontIcon Glyph="ButtonMenu" />
+                                </ui:FluentToggleButton>
+                                <ItemsControl
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    ClipToBounds="True"
+                                    ItemsSource="{TemplateBinding MenuItems}" />
+                            </Grid>
+                        </Border>
+                        <Border
+                            Grid.Column="1"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
                             <ContentPresenter
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -35,7 +58,7 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="MainPane"
                                             Storyboard.TargetProperty="Width"
-                                            From="40"
+                                            From="50"
                                             To="{TemplateBinding OpenPanelLength}"
                                             Duration="0:0:.16">
                                             <DoubleAnimation.EasingFunction>
@@ -50,7 +73,7 @@
                                             Storyboard.TargetName="MainPane"
                                             Storyboard.TargetProperty="Width"
                                             From="{TemplateBinding OpenPanelLength}"
-                                            To="40"
+                                            To="50"
                                             Duration="0:0:.16">
                                             <DoubleAnimation.EasingFunction>
                                                 <CircleEase EasingMode="EaseInOut" />

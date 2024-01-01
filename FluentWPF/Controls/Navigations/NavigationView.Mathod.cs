@@ -1,4 +1,6 @@
-﻿namespace FluentWPF.Controls;
+﻿using FluentWPF.Contracts.Navigations;
+
+namespace FluentWPF.Controls;
 
 partial class NavigationView
 {
@@ -18,6 +20,24 @@ partial class NavigationView
                 case NavigationDisplay.Min:
                     break;
             }
+        }
+    }
+
+
+
+    internal void OnSelected(INavigationViewItem item)
+    {
+        if (item is not NavigationViewItem) return;
+        if (this.SelectItem == null)
+        {
+            this.SelectItem = item;
+            item.IsSelect = true;
+        }
+        else if (this.SelectItem != item)
+        {
+            this.SelectItem.IsSelect = false;
+            this.SelectItem = item;
+            item.IsSelect = true;
         }
     }
 }

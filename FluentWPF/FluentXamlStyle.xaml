@@ -11,7 +11,7 @@
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentHyperlinkButton.xaml" />
 
         <!--  NavigationView  -->
-
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Navigations/NavigationViewItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Navigations/NavigationView.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -22,5 +22,6 @@
     <Style BasedOn="{StaticResource DefaultFontIconStyle}" TargetType="ui:FontIcon" />
     <Style BasedOn="{StaticResource DefaultRepeatButton}" TargetType="ui:FluentRepeatButton" />
     <Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" TargetType="ui:HyperlinkButton" />
+    <Style BasedOn="{StaticResource DefaultNavigationViewItemStyle}" TargetType="ui:NavigationViewItem" />
 
 </ResourceDictionary>

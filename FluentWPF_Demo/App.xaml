@@ -8,7 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--  颜色  -->
-                <theme:FluentXamlResource Type="Dark" />
+                <theme:FluentXamlResource Type="Light" />
                 <!--  样式  -->
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/FluentXamlStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>

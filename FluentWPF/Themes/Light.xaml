@@ -17,10 +17,18 @@
     <SolidColorBrush x:Key="ControlParssedFillColor" Color="#19727272" />
     <SolidColorBrush x:Key="ControlDisableFillColor" Color="#4CD3D3D3" />
 
+    <Color x:Key="NavigationPanelEffectBrush">#19484848</Color>
+
+    <SolidColorBrush x:Key="NavigationSelectItemMove" Color="#7FD2D2D2" />
+
+    <SolidColorBrush x:Key="NavigationSelectItemPressed" Color="#59BFBABA" />
+
+    <SolidColorBrush x:Key="NavigationSelectMoveTrue" Color="#7FD0D0D0" />
+
     <SolidColorBrush x:Key="HyperLinkBackground" Color="#3FBBBBBB" />
     <SolidColorBrush x:Key="HyperLinkForeground" Color="#001A68" />
     <SolidColorBrush x:Key="HyperLinkParsedForeground" Color="#0067C0" />
 
 
-    <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#F2F2F2" />
+    <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#BFF2F2F2" />
 </ResourceDictionary>

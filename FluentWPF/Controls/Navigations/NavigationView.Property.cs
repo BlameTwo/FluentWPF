@@ -1,4 +1,5 @@
 ﻿using FluentWPF.Contracts.Navigations;
+using System.Collections.ObjectModel;
 using System.Windows.Media;
 
 namespace FluentWPF.Controls
@@ -38,6 +39,7 @@ namespace FluentWPF.Controls
             }
             return null;
         }
+
 
         public Brush PaneBackground
         {
@@ -104,8 +106,32 @@ namespace FluentWPF.Controls
             "DisplayMode",
             typeof(NavigationDisplay),
             typeof(NavigationView),
-            new PropertyMetadata(NavigationDisplay.Close,OnDisplayModeChanged)
+            new PropertyMetadata(NavigationDisplay.Close, OnDisplayModeChanged)
         );
+
+        public List<INavigationViewItem> MenuItems
+        {
+            get { return (List<INavigationViewItem>)GetValue(MenuItemsProperty); }
+            set { SetValue(MenuItemsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MenuItems.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MenuItemsProperty = DependencyProperty.Register(
+            "MenuItems",
+            typeof(List<INavigationViewItem>),
+            typeof(NavigationView),
+            new PropertyMetadata(new List<INavigationViewItem>())
+        );
+
+        public INavigationViewItem SelectItem
+        {
+            get { return (INavigationViewItem)GetValue(SelectItemProperty); }
+            set { SetValue(SelectItemProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectItemProperty =
+            DependencyProperty.Register("SelectItem", typeof(INavigationViewItem), typeof(NavigationView), new PropertyMetadata(null));
+
 
     }
 }
