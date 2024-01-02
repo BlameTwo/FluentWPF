@@ -6,9 +6,11 @@ using System.Windows.Media;
 namespace FluentWPF.Controls;
 
 [ContentProperty(nameof(Content))]
-[TemplateVisualState(GroupName = "OpenPanelStateGroup",Name = "Open")]
-[TemplateVisualState(GroupName = "OpenPanelStateGroup",Name = "Close")]
-[TemplatePart(Name = "OpenMenuButton",Type =typeof(FluentButton))]
+[TemplateVisualState(GroupName = "OpenPanelStateGroup", Name = "Open")]
+[TemplateVisualState(GroupName = "OpenPanelStateGroup", Name = "Close")]
+[TemplateVisualState(GroupName = "OpenPanelStateGroup", Name = "MinAutoOpen")]
+[TemplateVisualState(GroupName = "OpenPanelStateGroup", Name = "DefaultAutoOpen")]
+[TemplatePart(Name = "OpenMenuButton", Type = typeof(FluentButton))]
 public partial class NavigationView : ControlBase, INavigationView
 {
     private FluentButton _openMenubth;
@@ -22,11 +24,13 @@ public partial class NavigationView : ControlBase, INavigationView
     {
         this._openMenubth = (FluentButton)GetTemplateChild("OpenMenuButton");
         _openMenubth.Click += _openMenubth_Click;
+        this.SizeChanged += NavigationView_SizeChanged;
         base.OnApplyTemplate();
     }
 
+
     private void _openMenubth_Click(object sender, RoutedEventArgs e)
     {
-        this.DisplayMode = this.DisplayMode == NavigationDisplay.Open ? NavigationDisplay.Close : NavigationDisplay.Open;
+        this.IsPaneOpen = !this.IsPaneOpen;
     }
 }

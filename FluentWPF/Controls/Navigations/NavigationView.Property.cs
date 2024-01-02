@@ -1,4 +1,5 @@
 ﻿using FluentWPF.Contracts.Navigations;
+using FluentWPF.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
 
@@ -95,17 +96,17 @@ namespace FluentWPF.Controls
                 new PropertyMetadata(null)
             );
 
-        public NavigationDisplay DisplayMode
+        public NavigationDisplayMode DisplayMode
         {
-            get { return (NavigationDisplay)GetValue(DisplayModeProperty); }
+            get { return (NavigationDisplayMode)GetValue(DisplayModeProperty); }
             set { SetValue(DisplayModeProperty, value); }
         }
 
         public static readonly DependencyProperty DisplayModeProperty = DependencyProperty.Register(
             "DisplayMode",
-            typeof(NavigationDisplay),
+            typeof(NavigationDisplayMode),
             typeof(NavigationView),
-            new PropertyMetadata(NavigationDisplay.Close, OnDisplayModeChanged)
+            new PropertyMetadata(NavigationDisplayMode.Auto, OnDisplayModeChanged)
         );
 
         public List<INavigationViewItem> MenuItems
@@ -135,13 +136,28 @@ namespace FluentWPF.Controls
             new PropertyMetadata(null)
         );
 
+        public bool IsPaneOpen
+        {
+            get { return (bool)GetValue(IsPaneOpenProperty); }
+            set { SetValue(IsPaneOpenProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPaneOpen.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPaneOpenProperty = DependencyProperty.Register(
+            "IsPaneOpen",
+            typeof(bool),
+            typeof(NavigationView),
+            new PropertyMetadata(false, OnIsPaneOpenChanged)
+        );
+
 
         internal NavigationSelectionDelegate NavigationSelectionDelegateHandler;
 
         public event NavigationSelectionDelegate NavigationSelectionChanged
         {
-            add => NavigationSelectionDelegateHandler+=value;
+            add => NavigationSelectionDelegateHandler += value;
             remove => NavigationSelectionDelegateHandler -= value;
         }
-    }
+
+        }
 }

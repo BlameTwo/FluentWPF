@@ -1,6 +1,9 @@
-﻿namespace FluentWPF.Models
+﻿using FluentWPF.Contracts.Navigations;
+
+namespace FluentWPF.Models
 {
-    public class NavigationSelectionChangedArgs : RoutedEventArgs
+    public class NavigationSelectionChangedArgs : EventArgs
     {
+        public INavigationViewItem SelectItem { get; set; }
     }
 }

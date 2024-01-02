@@ -2,8 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="clr-namespace:FluentWPF.Converters"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="clr-namespace:FluentWPF.Controls">
-    <converter:NavigationMenuOpenConverter x:Key="NavigationMenuOpenConverter" />
     <Style x:Key="DefaultNavigationViewStyle" TargetType="ui:NavigationView">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="PaneBackground" Value="{DynamicResource ControlFillColor}" />
@@ -20,7 +20,11 @@
                         </Grid.ColumnDefinitions>
                         <Border
                             x:Name="MainPane"
+                            Grid.ColumnSpan="1"
                             Width="{TemplateBinding OpenPanelLength}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Panel.ZIndex="5"
                             Background="{TemplateBinding PaneBackground}"
                             CornerRadius="{TemplateBinding CornerRadius}">
                             <Border.Effect>
@@ -61,12 +65,42 @@
                         </Border>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="OpenPanelStateGroup">
+                                <VisualState x:Name="MinAutoOpen">
+                                    <VisualState.Storyboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MainPane" Storyboard.TargetProperty="(Grid.ColumnSpan)">
+                                                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    <DiscreteObjectKeyFrame>
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <sys:Int32>2</sys:Int32>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState.Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="DefaultAutoOpen">
+                                    <VisualState.Storyboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MainPane" Storyboard.TargetProperty="(Grid.ColumnSpan)">
+                                                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    <DiscreteObjectKeyFrame>
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <sys:Int32>1</sys:Int32>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                        </Storyboard>
+                                    </VisualState.Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Open">
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="MainPane"
                                             Storyboard.TargetProperty="Width"
-                                            From="50"
                                             To="{TemplateBinding OpenPanelLength}"
                                             Duration="0:0:.16">
                                             <DoubleAnimation.EasingFunction>

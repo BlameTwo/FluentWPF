@@ -27,14 +27,16 @@
     <ui:FluentWindow.SystemBackdrop>
         <sysback:MicaBackdrop />
     </ui:FluentWindow.SystemBackdrop>
-    <Grid>
-        <ui:NavigationView NavigationSelectionChanged="NavigationView_NavigationSelectionChanged" OpenPanelLength="250">
-            <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="Home" Icon="Home" />
-                <ui:NavigationViewItem Content="Home" Icon="Accept" />
-                <ui:NavigationViewItem Content="Home" Icon="Accident" />
-                <ui:NavigationViewItem Content="Home" Icon="ActionCenterMirrored" />
-            </ui:NavigationView.MenuItems>
-        </ui:NavigationView>
-    </Grid>
+    <ui:NavigationView
+        DisplayMode="Auto"
+        NavigationSelectionChanged="NavigationView_NavigationSelectionChanged"
+        OpenPanelLength="200">
+        <ui:NavigationView.MenuItems>
+            <ui:NavigationViewItem Content="Home" Icon="Home" />
+            <ui:NavigationViewItem Content="Home" Icon="Accept" />
+            <ui:NavigationViewItem Content="Home" Icon="Accident" />
+            <ui:NavigationViewItem Content="Home" Icon="ActionCenterMirrored" />
+        </ui:NavigationView.MenuItems>
+        <TextBlock Margin="60" Text="Test" />
+    </ui:NavigationView>
 </ui:FluentWindow>

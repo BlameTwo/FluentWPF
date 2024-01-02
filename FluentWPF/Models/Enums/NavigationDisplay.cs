@@ -1,6 +1,8 @@
 ﻿namespace FluentWPF.Models.Enums;
 
-public enum NavigationDisplay
+public enum NavigationDisplayMode
 {
-    Open,Close,Min
+    Auto,
+    Open,
+    Close,
 }
