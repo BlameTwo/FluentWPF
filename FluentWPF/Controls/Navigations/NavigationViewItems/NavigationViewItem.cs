@@ -6,12 +6,20 @@ using System.Windows.Input;
 
 namespace FluentWPF.Controls;
 
-public partial class NavigationViewItem:ButtonBase,INavigationViewItem
+/// 向上出现
+[TemplateVisualState(GroupName = "FlageStateGroup", Name = "TopStart")]
+
+///向下出现
+[TemplateVisualState(GroupName = "FlageStateGroup", Name = "TopEnd")]
+
+///向上消失
+[TemplateVisualState(GroupName = "FlageStateGroup", Name = "BootomStart")]
+
+///向下消失
+[TemplateVisualState(GroupName = "FlageStateGroup", Name = "BootomEnd")]
+public partial class NavigationViewItem : ButtonBase, INavigationViewItem
 {
-    public NavigationViewItem()
-    {
-        
-    }
+    public NavigationViewItem() { }
 
     public FontIconEnum Icon
     {
@@ -19,9 +27,12 @@ public partial class NavigationViewItem:ButtonBase,INavigationViewItem
         set { SetValue(IconProperty, value); }
     }
 
-    public static readonly DependencyProperty IconProperty =
-        DependencyProperty.Register("Icon", typeof(FontIconEnum), typeof(NavigationViewItem), new PropertyMetadata(null));
-
+    public static readonly DependencyProperty IconProperty = DependencyProperty.Register(
+        "Icon",
+        typeof(FontIconEnum),
+        typeof(NavigationViewItem),
+        new PropertyMetadata(null)
+    );
 
     protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
     {
@@ -30,15 +41,16 @@ public partial class NavigationViewItem:ButtonBase,INavigationViewItem
         base.OnMouseLeftButtonUp(e);
     }
 
-
     public bool IsSelect
     {
         get { return (bool)GetValue(IsSelectProperty); }
         set { SetValue(IsSelectProperty, value); }
     }
 
-    public static readonly DependencyProperty IsSelectProperty =
-        DependencyProperty.Register("IsSelect", typeof(bool), typeof(NavigationViewItem), new PropertyMetadata(false));
-
-
+    public static readonly DependencyProperty IsSelectProperty = DependencyProperty.Register(
+        "IsSelect",
+        typeof(bool),
+        typeof(NavigationViewItem),
+        new PropertyMetadata(false)
+    );
 }

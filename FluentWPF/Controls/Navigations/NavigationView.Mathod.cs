@@ -55,9 +55,18 @@ partial class NavigationView
         }
     }
 
+    /*
+     TopStart,
+     TopEnd,
+     BootomStart,
+     BootomEnd
+     */
+
     internal void OnSelected(INavigationViewItem item)
     {
         if (item is not NavigationViewItem)
+            return;
+        if (item is not FrameworkElement obj)
             return;
         if (this.SelectItem == null)
         {
@@ -66,6 +75,27 @@ partial class NavigationView
         }
         else if (this.SelectItem != item)
         {
+            //新项目是否在主菜单中
+            var isMenu = MenuItems.IndexOf(item) != -1;
+            //新项目是否在脚部菜单
+            var isFolter = FooterItems.IndexOf(item) != -1;
+            //旧项目是否在主菜单中
+            var oldisMenu = MenuItems.IndexOf(this.SelectItem) != -1;
+            //旧项目是否在脚部菜单
+            var oldisFolter = FooterItems.IndexOf(this.SelectItem) != -1;
+            if (isMenu && oldisMenu)//新项目在主菜单，旧项目不在，从下到上
+            {
+                // 向上消失
+                VisualStateManager.GoToState(obj, "BootomStart", false);
+                // 向下出现
+                VisualStateManager.GoToState((this.SelectItem as FrameworkElement), "TopEnd", false);
+            }
+            if(isMenu == false && oldisMenu)//新项目不在主菜单，旧项目在主菜单
+            {
+                //向下消失
+                VisualStateManager.GoToState(obj, "FlageStateGroup", false);
+                VisualStateManager.GoToState((this.SelectItem as FrameworkElement), "BootomStart", false);
+            }
             this.SelectItem.IsSelect = false;
             this.SelectItem = item;
             item.IsSelect = true;

@@ -24,12 +24,13 @@
                                 Grid.Column="0"
                                 Width="3"
                                 Height="20"
-                                Margin="5,0,0,0"
-                                Background="Black"
+                                Margin="5,0,-3,0"
+                                Panel.ZIndex="2"
+                                Background="{DynamicResource AcceptColor}"
                                 CornerRadius="2.5"
                                 Visibility="Visible">
                                 <Border.RenderTransform>
-                                    <ScaleTransform x:Name="ScaleTransform01" CenterX="2.5" CenterY="0" ScaleX="0" ScaleY="1" />
+                                    <ScaleTransform x:Name="ScaleTransform01" CenterX="2.5" CenterY="0" ScaleX="1" ScaleY="0" />
                                 </Border.RenderTransform>
                             </Border>
                             <Border
@@ -58,6 +59,9 @@
                                 Content="{TemplateBinding Content}"
                                 FontSize="13" />
                         </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="FlageStateGroup" />
+                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -82,7 +86,7 @@
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform01"
-                                            Storyboard.TargetProperty="ScaleX"
+                                            Storyboard.TargetProperty="ScaleY"
                                             To="1"
                                             Duration="0:0:0.2" />
                                     </Storyboard>
@@ -93,7 +97,7 @@
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform01"
-                                            Storyboard.TargetProperty="ScaleX"
+                                            Storyboard.TargetProperty="ScaleY"
                                             To="0"
                                             Duration="0:0:0.2" />
                                     </Storyboard>
@@ -102,6 +106,7 @@
                             <Setter TargetName="BorderMain" Property="Background" Value="{DynamicResource NavigationSelectItemPressed}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
