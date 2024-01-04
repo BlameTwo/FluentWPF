@@ -6,9 +6,13 @@
     xmlns:ui="clr-namespace:FluentWPF.Controls">
     <Style x:Key="DefaultNavigationViewStyle" TargetType="ui:NavigationView">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="PaneBackground" Value="{DynamicResource ControlFillColor}" />
+        <Setter Property="PaneBackground" Value="{DynamicResource PanelBackgroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="{DynamicResource DefaultPageBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AppTextFillBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource NavigationContentBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="10" />
         <Setter Property="Template">
             <Setter.Value>
@@ -28,7 +32,7 @@
                             Background="{TemplateBinding PaneBackground}"
                             CornerRadius="{TemplateBinding CornerRadius}">
                             <Border.Effect>
-                                <DropShadowEffect Opacity="0.03" Color="{DynamicResource NavigationPanelEffectBrush}" />
+                                <DropShadowEffect Opacity="0.05" Color="{DynamicResource NavigationPanelEffectBrush}" />
                             </Border.Effect>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -56,7 +60,8 @@
                                         VerticalAlignment="Center"
                                         VerticalContentAlignment="Center"
                                         Content="{TemplateBinding PaneTitle}"
-                                        FontSize="15" />
+                                        FontSize="15"
+                                        Foreground="{TemplateBinding Foreground}" />
                                 </Grid>
                                 <ItemsControl
                                     Grid.Row="1"
@@ -79,11 +84,16 @@
                         </Border>
                         <Border
                             Grid.Column="1"
+                            Padding="3"
                             Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClipToBounds="True"
                             CornerRadius="{TemplateBinding CornerRadius}">
                             <ContentPresenter
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                ClipToBounds="True"
                                 Content="{TemplateBinding Content}"
                                 ContentTemplate="{TemplateBinding ContentTemplate}" />
                         </Border>

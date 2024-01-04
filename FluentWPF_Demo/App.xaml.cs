@@ -1,4 +1,5 @@
 ﻿using FluentWPF.Controls;
+using System.Diagnostics;
 using System.Windows;
 
 namespace FluentWPF_Demo;
@@ -16,6 +17,12 @@ public partial class App : Application
     {
         _window = new MainWindow();
         FluentWPF.Instance.InitTheme(_window,this);
+        FluentWPF.Instance.InstanceLogOutputEvent += Instance_InstanceLogOutputEvent;
         _window.Show();
+    }
+
+    private void Instance_InstanceLogOutputEvent(object sender, FluentWPF.Models.UILogModel message)
+    {
+        Debug.WriteLine(message.Message);
     }
 }

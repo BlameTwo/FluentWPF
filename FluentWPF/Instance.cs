@@ -9,10 +9,11 @@ global using System.Windows;
 global using System.Windows.Interop;
 global using static FluentWPF.Common.Methods;
 global using System.Windows.Controls.Primitives;
+using FluentWPF.Models;
 #endregion
-
-
 namespace FluentWPF;
+
+public delegate void InstanceLogOutputHandler(object sender, UILogModel message);
 
 public static class Instance
 {
@@ -21,6 +22,14 @@ public static class Instance
 
     internal static int Theme = 0;
     internal static int SysteBackdrop = 0;
+
+    internal static InstanceLogOutputHandler InstanceLogOutputHandler;
+
+    public static event InstanceLogOutputHandler InstanceLogOutputEvent
+    {
+        add => InstanceLogOutputHandler += value;
+        remove => InstanceLogOutputHandler -= value;
+    }
 
     /// <summary>
     /// 初始化主题，不一定需要这样的注册方式

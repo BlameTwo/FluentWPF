@@ -7,4 +7,5 @@ public class AcrylicBackdrop : SystemBackdropBase
 {
     public AcrylicBackdrop()
         : base(SystemBackdropTypeEnum.Acrylic) { }
+
 }

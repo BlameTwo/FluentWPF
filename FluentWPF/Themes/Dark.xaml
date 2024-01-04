@@ -2,6 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:System="clr-namespace:System;assembly=mscorlib">
+    <SolidColorBrush
+        x:Key="DefaultPageBackgroundBrush"
+        Opacity="0.5"
+        Color="{DynamicResource DefaultPageBackgroundColor}" />
+    <Color x:Key="DefaultPageBackgroundColor">#202020</Color>
 
     <!--  用户颜色  -->
     <SolidColorBrush x:Key="AcceptColor" Color="#47b1e8" />
@@ -18,6 +23,8 @@
     <SolidColorBrush x:Key="ControlDisableFillColor" Color="#4CD3D3D3" />
 
     <Color x:Key="NavigationPanelEffectBrush">#19E0E0E0</Color>
+
+    <SolidColorBrush x:Key="NavigationContentBorderBrush" Color="#201C1C" />
 
     <!--  超链接按钮颜色-start  -->
     <SolidColorBrush x:Key="HyperLinkBackground" Color="#14FFFFFF" />

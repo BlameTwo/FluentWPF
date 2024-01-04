@@ -14,7 +14,7 @@ public abstract class SystemBackdropBase
 
     public virtual void ChangedBackdrop()
     {
-
+        Instance.InstanceLogOutputHandler?.Invoke(this, new Models.UILogModel(LogType.INFO, "更换系统笔刷"));
     }
 
     public void SetBackdrop()
