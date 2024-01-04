@@ -75,6 +75,8 @@ partial class NavigationView
         }
         else if (this.SelectItem != item)
         {
+            bool isCt = false;
+            int oldindex = -1, newindex = -1;
             //新项目是否在主菜单中
             var isMenu = MenuItems.IndexOf(item) != -1;
             //新项目是否在脚部菜单
@@ -83,18 +85,34 @@ partial class NavigationView
             var oldisMenu = MenuItems.IndexOf(this.SelectItem) != -1;
             //旧项目是否在脚部菜单
             var oldisFolter = FooterItems.IndexOf(this.SelectItem) != -1;
-            if (isMenu && oldisMenu)//新项目在主菜单，旧项目不在，从下到上
+            if (isMenu && oldisMenu) //新项目在主菜单，旧项目不在，从下到上
             {
-                // 向上消失
-                VisualStateManager.GoToState(obj, "BootomStart", false);
-                // 向下出现
-                VisualStateManager.GoToState((this.SelectItem as FrameworkElement), "TopEnd", false);
             }
-            if(isMenu == false && oldisMenu)//新项目不在主菜单，旧项目在主菜单
+            if (isMenu == false && oldisMenu) //新项目不在主菜单，旧项目在主菜单
             {
-                //向下消失
-                VisualStateManager.GoToState(obj, "FlageStateGroup", false);
-                VisualStateManager.GoToState((this.SelectItem as FrameworkElement), "BootomStart", false);
+            }
+            else if(isMenu && oldisMenu) //新项目和旧项目同时在主菜单
+            {
+                newindex = MenuItems.IndexOf(item);
+                oldindex = MenuItems.IndexOf(this.SelectItem);
+                isCt = true;
+            }
+            else if(isFolter && oldisFolter) //新项目和旧项目同时在脚部菜单
+            {
+                newindex = FooterItems.IndexOf(item);
+                oldindex = FooterItems.IndexOf(this.SelectItem);
+                isCt = true;
+            }
+            if (isCt && (newindex != -1 && oldindex != -1)) // 是否同时在一个集合中,且index都正确
+            {
+                if (newindex > oldindex)//如果新项目的索引值大于旧项目
+                {
+                    // 从旧项目的位置移动下来
+                }
+                else
+                {
+                    // 从旧项目的位置移动上去
+                }
             }
             this.SelectItem.IsSelect = false;
             this.SelectItem = item;
