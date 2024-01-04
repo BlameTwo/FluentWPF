@@ -16,9 +16,11 @@ partial class NavigationView
             {
                 case NavigationDisplayMode.Open:
                     VisualStateManager.GoToState(view, "Open", false);
+                    view.IsPaneOpen = true;
                     break;
                 case NavigationDisplayMode.Close:
                     VisualStateManager.GoToState(view, "Close", false);
+                    view.IsPaneOpen = false;
                     break;
             }
         }
@@ -43,11 +45,13 @@ partial class NavigationView
         {
             VisualStateManager.GoToState(this, "DefaultAutoOpen", false);
             VisualStateManager.GoToState(this, "Close", false);
+            this.IsPaneOpen = false;
         }
         else
         {
             VisualStateManager.GoToState(this, "MinAutoOpen", false);
             VisualStateManager.GoToState(this, "Open", false);
+            this.IsPaneOpen = true;
         }
     }
 

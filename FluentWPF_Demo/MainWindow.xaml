@@ -30,13 +30,16 @@
     <ui:NavigationView
         DisplayMode="Auto"
         NavigationSelectionChanged="NavigationView_NavigationSelectionChanged"
-        OpenPanelLength="200">
+        OpenPanelLength="200"
+        PaneTitle="测试">
         <ui:NavigationView.MenuItems>
             <ui:NavigationViewItem Content="Home" Icon="Home" />
             <ui:NavigationViewItem Content="Home" Icon="Accept" />
-            <ui:NavigationViewItem Content="Home" Icon="Accident" />
-            <ui:NavigationViewItem Content="Home" Icon="ActionCenterMirrored" />
         </ui:NavigationView.MenuItems>
-        <TextBlock Margin="60" Text="Test" />
+        <ui:NavigationView.FooterItems>
+            <ui:NavigationViewItem Content="Home" Icon="Home" />
+            <ui:NavigationViewItem Content="Home" Icon="Home" />
+        </ui:NavigationView.FooterItems>
+        <TextBlock Text="Test" />
     </ui:NavigationView>
 </ui:FluentWindow>

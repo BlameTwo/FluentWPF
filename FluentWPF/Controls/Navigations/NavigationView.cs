@@ -1,5 +1,6 @@
 ﻿using FluentWPF.Common.Bases;
 using FluentWPF.Contracts.Navigations;
+using System.Collections.ObjectModel;
 using System.Windows.Markup;
 using System.Windows.Media;
 
@@ -19,6 +20,7 @@ public partial class NavigationView : ControlBase, INavigationView
     {
         this.NavigationParent = this;
     }
+
 
     public override void OnApplyTemplate()
     {

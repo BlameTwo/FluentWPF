@@ -4,7 +4,9 @@ namespace FluentWPF.Contracts.Navigations;
 
 public interface INavigationView
 {
-    public List<INavigationViewItem> MenuItems { get; }
+    public ObservableCollection<INavigationViewItem> MenuItems { get; set; }
+
+    public ObservableCollection<INavigationViewItem> FooterItems { get; set; }
 
     public event NavigationSelectionDelegate NavigationSelectionChanged;
 }

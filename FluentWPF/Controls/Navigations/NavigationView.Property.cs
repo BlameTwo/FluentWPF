@@ -109,18 +109,32 @@ namespace FluentWPF.Controls
             new PropertyMetadata(NavigationDisplayMode.Auto, OnDisplayModeChanged)
         );
 
-        public List<INavigationViewItem> MenuItems
+        public ObservableCollection<INavigationViewItem> MenuItems
         {
-            get { return (List<INavigationViewItem>)GetValue(MenuItemsProperty); }
+            get { return (ObservableCollection<INavigationViewItem>)GetValue(MenuItemsProperty); }
             set { SetValue(MenuItemsProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MenuItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuItemsProperty = DependencyProperty.Register(
             "MenuItems",
-            typeof(List<INavigationViewItem>),
+            typeof(ObservableCollection<INavigationViewItem>),
             typeof(NavigationView),
-            new PropertyMetadata(new List<INavigationViewItem>())
+            new PropertyMetadata(new ObservableCollection<INavigationViewItem>())
+        );
+
+        public ObservableCollection<INavigationViewItem> FooterItems
+        {
+            get { return (ObservableCollection<INavigationViewItem>)GetValue(FooterItemsProperty); }
+            set { SetValue(FooterItemsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FooterItems.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FooterItemsProperty = DependencyProperty.Register(
+            "FooterItems",
+            typeof(ObservableCollection<INavigationViewItem>),
+            typeof(NavigationView),
+            new PropertyMetadata(new ObservableCollection<INavigationViewItem>())
         );
 
         public INavigationViewItem SelectItem
@@ -150,7 +164,6 @@ namespace FluentWPF.Controls
             new PropertyMetadata(false, OnIsPaneOpenChanged)
         );
 
-
         internal NavigationSelectionDelegate NavigationSelectionDelegateHandler;
 
         public event NavigationSelectionDelegate NavigationSelectionChanged
@@ -159,5 +172,16 @@ namespace FluentWPF.Controls
             remove => NavigationSelectionDelegateHandler -= value;
         }
 
+        public object PaneTitle
+        {
+            get { return (object)GetValue(PaneTitleProperty); }
+            set { SetValue(PaneTitleProperty, value); }
         }
+        public static readonly DependencyProperty PaneTitleProperty = DependencyProperty.Register(
+            "PaneTitle",
+            typeof(object),
+            typeof(NavigationView),
+            new PropertyMetadata(null)
+        );
+    }
 }

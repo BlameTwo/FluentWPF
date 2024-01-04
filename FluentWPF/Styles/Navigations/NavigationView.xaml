@@ -34,15 +34,30 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition />
+                                    <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <ui:FluentButton
-                                    x:Name="OpenMenuButton"
-                                    Margin="10,5,0,0"
-                                    HorizontalAlignment="Left"
-                                    FontSize="17"
-                                    Style="{DynamicResource MenuFluentButton}">
-                                    <ui:FontIcon Glyph="ButtonMenu" />
-                                </ui:FluentButton>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:FluentButton
+                                        x:Name="OpenMenuButton"
+                                        Margin="10,5,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontSize="17"
+                                        Style="{DynamicResource MenuFluentButton}">
+                                        <ui:FontIcon Glyph="ButtonMenu" />
+                                    </ui:FluentButton>
+                                    <ContentControl
+                                        Grid.Column="1"
+                                        Margin="5,0,0,0"
+                                        VerticalAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Content="{TemplateBinding PaneTitle}"
+                                        FontSize="15" />
+                                </Grid>
                                 <ItemsControl
                                     Grid.Row="1"
                                     HorizontalAlignment="Stretch"
@@ -51,6 +66,15 @@
                                     VerticalContentAlignment="Stretch"
                                     ClipToBounds="True"
                                     ItemsSource="{TemplateBinding MenuItems}" />
+                                <ItemsControl
+                                    Grid.Row="2"
+                                    Margin="0,0,0,10"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    ClipToBounds="True"
+                                    ItemsSource="{TemplateBinding FooterItems}" />
                             </Grid>
                         </Border>
                         <Border
