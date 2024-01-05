@@ -23,6 +23,13 @@
     <SolidColorBrush x:Key="ControlDisableFillColor" Color="#4CD3D3D3" />
 
     <Color x:Key="NavigationPanelEffectBrush">#19E0E0E0</Color>
+    <SolidColorBrush x:Key="NavigationHeaderItemForegroundBrush">#C6C6C6</SolidColorBrush>
+
+
+    <SolidColorBrush
+        x:Key="NavigationLineItemForegroundBrush"
+        Opacity="0.5"
+        Color="#EEECEB" />
 
     <SolidColorBrush x:Key="NavigationContentBorderBrush" Color="#201C1C" />
 

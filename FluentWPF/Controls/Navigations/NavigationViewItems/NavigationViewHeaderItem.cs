@@ -16,18 +16,30 @@ public class NavigationViewHeaderItem : ControlBase, INavigationViewItem
     public static readonly DependencyProperty ContentProperty =
         DependencyProperty.Register("Content", typeof(object), typeof(NavigationViewHeaderItem), new PropertyMetadata(""));
 
-
-
     public string Header
     {
         get { return (string)GetValue(HeaderProperty); }
         set { SetValue(HeaderProperty, value); }
     }
 
-    bool INavigationViewItem.IsSelect { get; set; }
-
     public  static readonly DependencyProperty HeaderProperty =
         DependencyProperty.Register("Header", typeof(string), typeof(NavigationViewHeaderItem), new PropertyMetadata(null));
 
+    public void RefreshPanel(NavigationDisplayMode mode)
+    {
+        if(mode == NavigationDisplayMode.Close)
+        {
+            this.Visibility = Visibility.Collapsed;
+            return;
+        }
+        this.Visibility = Visibility.Visible;
+    }
 
+    public void RefreshPanel(NavigationDisplayMode mode, bool isOpen)
+    {
+        if(isOpen)
+            this.Visibility= Visibility.Visible;
+        else 
+            this.Visibility= Visibility.Collapsed;
+    }
 }

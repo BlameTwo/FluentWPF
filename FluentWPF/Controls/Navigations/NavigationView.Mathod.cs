@@ -23,6 +23,19 @@ partial class NavigationView
                     view.IsPaneOpen = false;
                     break;
             }
+            view.UpDate();
+        }
+    }
+
+    internal void UpDate()
+    {
+        foreach (var item in MenuItems)
+        {
+            item.RefreshPanel(this.DisplayMode,this.IsPaneOpen);
+        }
+        foreach (var item in FooterItems)
+        {
+            item.RefreshPanel(this.DisplayMode,this.IsPaneOpen);
         }
     }
 
@@ -34,6 +47,7 @@ partial class NavigationView
         if (e.NewValue is bool val && d is NavigationView view)
         {
             VisualStateManager.GoToState(view, val == true ? "Open" : "Close", false);
+            view.UpDate();
         }
     }
 
@@ -53,6 +67,7 @@ partial class NavigationView
             VisualStateManager.GoToState(this, "Open", false);
             this.IsPaneOpen = true;
         }
+        this.UpDate();
     }
 
     /*
@@ -64,23 +79,23 @@ partial class NavigationView
 
     internal void OnSelected(INavigationViewItem item)
     {
-        if (item is not NavigationViewItem)
+        if (item is not NavigationViewItem newitem)
             return;
         if (item is not FrameworkElement obj)
             return;
         if (this.SelectItem == null)
         {
-            this.SelectItem = item;
-            item.IsSelect = true;
+            this.SelectItem = newitem;
+            newitem.IsSelect = true;
         }
         else if (this.SelectItem != item)
         {
             bool isCt = false;
             int oldindex = -1, newindex = -1;
             //新项目是否在主菜单中
-            var isMenu = MenuItems.IndexOf(item) != -1;
+            var isMenu = MenuItems.IndexOf(newitem) != -1;
             //新项目是否在脚部菜单
-            var isFolter = FooterItems.IndexOf(item) != -1;
+            var isFolter = FooterItems.IndexOf(newitem) != -1;
             //旧项目是否在主菜单中
             var oldisMenu = MenuItems.IndexOf(this.SelectItem) != -1;
             //旧项目是否在脚部菜单
@@ -114,9 +129,9 @@ partial class NavigationView
                     // 从旧项目的位置移动上去
                 }
             }
-            this.SelectItem.IsSelect = false;
+            (this.SelectItem as NavigationViewItem)!.IsSelect = false;
             this.SelectItem = item;
-            item.IsSelect = true;
+            newitem.IsSelect = true;
         }
         this.NavigationSelectionDelegateHandler?.Invoke(
             this,

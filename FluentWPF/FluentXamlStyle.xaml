@@ -23,5 +23,7 @@
     <Style BasedOn="{StaticResource DefaultRepeatButton}" TargetType="ui:FluentRepeatButton" />
     <Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" TargetType="ui:HyperlinkButton" />
     <Style BasedOn="{StaticResource DefaultNavigationViewItemStyle}" TargetType="ui:NavigationViewItem" />
+    <Style BasedOn="{StaticResource DefaultNavigationViewHeaderStyle}" TargetType="ui:NavigationViewHeaderItem" />
+    <Style BasedOn="{StaticResource DefaultNavigationViewLineStyle}" TargetType="ui:NavigationViewLineItem" />
 
 </ResourceDictionary>

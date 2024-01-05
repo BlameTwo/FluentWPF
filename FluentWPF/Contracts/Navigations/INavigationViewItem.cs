@@ -2,7 +2,6 @@
 
 public interface INavigationViewItem
 {
-    public object Content { get; set; }
 
-    public bool IsSelect { get; set; }
+    public void RefreshPanel(NavigationDisplayMode mode,bool isOpen);
 }

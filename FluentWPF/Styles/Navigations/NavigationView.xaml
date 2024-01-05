@@ -31,9 +31,6 @@
                             Panel.ZIndex="5"
                             Background="{TemplateBinding PaneBackground}"
                             CornerRadius="{TemplateBinding CornerRadius}">
-                            <Border.Effect>
-                                <DropShadowEffect Opacity="0.05" Color="{DynamicResource NavigationPanelEffectBrush}" />
-                            </Border.Effect>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -47,12 +44,12 @@
                                     </Grid.ColumnDefinitions>
                                     <ui:FluentButton
                                         x:Name="OpenMenuButton"
-                                        Margin="10,5,0,0"
+                                        Margin="10,0,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         FontSize="17"
                                         Style="{DynamicResource MenuFluentButton}">
-                                        <ui:FontIcon Glyph="ButtonMenu" />
+                                        <ui:FontIcon Glyph="GlobalNavButton" />
                                     </ui:FluentButton>
                                     <ContentControl
                                         Grid.Column="1"

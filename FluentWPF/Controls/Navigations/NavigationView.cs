@@ -21,7 +21,6 @@ public partial class NavigationView : ControlBase, INavigationView
         this.NavigationParent = this;
     }
 
-
     public override void OnApplyTemplate()
     {
         this._openMenubth = (FluentButton)GetTemplateChild("OpenMenuButton");

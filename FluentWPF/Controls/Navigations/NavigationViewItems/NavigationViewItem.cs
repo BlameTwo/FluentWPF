@@ -41,6 +41,11 @@ public partial class NavigationViewItem : ButtonBase, INavigationViewItem
         base.OnMouseLeftButtonUp(e);
     }
 
+
+    public void RefreshPanel(NavigationDisplayMode mode, bool isOpen)
+    {
+    }
+
     public bool IsSelect
     {
         get { return (bool)GetValue(IsSelectProperty); }
