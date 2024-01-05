@@ -88,6 +88,7 @@
                             ClipToBounds="True"
                             CornerRadius="{TemplateBinding CornerRadius}">
                             <ContentPresenter
+                                Margin="5"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 ClipToBounds="True"

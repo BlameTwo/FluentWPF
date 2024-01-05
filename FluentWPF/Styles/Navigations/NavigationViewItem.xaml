@@ -11,7 +11,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ui:NavigationViewItem">
-                    <Grid Margin="3">
+                    <Grid Margin="3" ClipToBounds="True">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
@@ -27,10 +27,11 @@
                                 Margin="5,0,-3,0"
                                 Panel.ZIndex="2"
                                 Background="{DynamicResource AcceptColor}"
+                                ClipToBounds="True"
                                 CornerRadius="2.5"
                                 Visibility="Visible">
                                 <Border.RenderTransform>
-                                    <ScaleTransform x:Name="ScaleTransform01" CenterX="2.5" CenterY="0" ScaleX="1" ScaleY="0" />
+                                    <ScaleTransform x:Name="ScaleTransform01" CenterY="0" ScaleX="1" ScaleY="0" />
                                 </Border.RenderTransform>
                             </Border>
                             <Border
@@ -60,7 +61,56 @@
                                 FontSize="13" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="FlageStateGroup" />
+                            <VisualStateGroup x:Name="DefaultMoveGroup">
+                                <VisualState x:Name="Default">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            From="0"
+                                            To="1"
+                                            Duration="0:0:1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="EnterUp">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="1"
+                                            Duration="0:0:1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="EnterDown">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="0"
+                                            Duration="0:0:1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="LeaveUp">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="0"
+                                            Duration="0:0:1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="LeaveDown">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            From="1"
+                                            To="2"
+                                            Duration="0:0:1" />
+
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -81,13 +131,13 @@
 
                         </MultiTrigger>
                         <Trigger Property="IsSelect" Value="True">
-                            <Trigger.EnterActions>
+                            <!--<Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform01"
                                             Storyboard.TargetProperty="ScaleY"
-                                            To="1"
+                                            To="0"
                                             Duration="0:0:0.45">
                                             <DoubleAnimation.EasingFunction>
                                                 <CircleEase EasingMode="EaseInOut" />
@@ -102,7 +152,7 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform01"
                                             Storyboard.TargetProperty="ScaleY"
-                                            To="0"
+                                            To="1"
                                             Duration="0:0:0.45">
                                             <DoubleAnimation.EasingFunction>
                                                 <CircleEase EasingMode="EaseInOut" />
@@ -110,7 +160,7 @@
                                         </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.ExitActions>
+                            </Trigger.ExitActions>-->
                             <Setter TargetName="BorderMain" Property="Background" Value="{DynamicResource NavigationSelectItemPressed}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -123,7 +173,7 @@
     <Style x:Key="DefaultNavigationViewHeaderStyle" TargetType="ui:NavigationViewHeaderItem">
         <Setter Property="Padding" Value="20,5" />
         <Setter Property="Foreground" Value="{DynamicResource NavigationHeaderItemForegroundBrush}" />
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontSize" Value="13" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ui:NavigationViewHeaderItem">

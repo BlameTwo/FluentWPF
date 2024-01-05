@@ -6,17 +6,11 @@ using System.Windows.Input;
 
 namespace FluentWPF.Controls;
 
-/// 向上出现
-[TemplateVisualState(GroupName = "FlageStateGroup", Name = "TopStart")]
-
-///向下出现
-[TemplateVisualState(GroupName = "FlageStateGroup", Name = "TopEnd")]
-
-///向上消失
-[TemplateVisualState(GroupName = "FlageStateGroup", Name = "BootomStart")]
-
-///向下消失
-[TemplateVisualState(GroupName = "FlageStateGroup", Name = "BootomEnd")]
+[TemplateVisualState(GroupName ="DefaultMoveGroup",Name ="EnterUp")]
+[TemplateVisualState(GroupName ="DefaultMoveGroup",Name ="EnterDown")]
+[TemplateVisualState(GroupName ="DefaultMoveGroup",Name ="LeaveUp")]
+[TemplateVisualState(GroupName ="DefaultMoveGroup",Name ="LeaveDown")]
+[TemplateVisualState(GroupName ="DefaultMoveGroup",Name ="Default")]
 public partial class NavigationViewItem : ButtonBase, INavigationViewItem
 {
     public NavigationViewItem() { }

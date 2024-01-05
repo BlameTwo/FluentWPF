@@ -86,6 +86,7 @@ partial class NavigationView
         if (this.SelectItem == null)
         {
             this.SelectItem = newitem;
+            VisualStateManager.GoToState(obj, "Default", false);
             newitem.IsSelect = true;
         }
         else if (this.SelectItem != item)
@@ -102,9 +103,13 @@ partial class NavigationView
             var oldisFolter = FooterItems.IndexOf(this.SelectItem) != -1;
             if (isMenu && oldisMenu) //新项目在主菜单，旧项目不在，从下到上
             {
+                VisualStateManager.GoToState((NavigationViewItem)this.SelectItem,"LeaveUp",false);
+                VisualStateManager.GoToState(newitem, "EnterDown", false);
             }
-            if (isMenu == false && oldisMenu) //新项目不在主菜单，旧项目在主菜单
+            if (isMenu == false && oldisMenu) //新项目在脚步菜单，旧项目在主菜单
             {
+                VisualStateManager.GoToState((NavigationViewItem)this.SelectItem, "LeaveDown", false);
+                VisualStateManager.GoToState(newitem, "EnterUp", false);
             }
             else if(isMenu && oldisMenu) //新项目和旧项目同时在主菜单
             {
@@ -123,9 +128,13 @@ partial class NavigationView
                 if (newindex > oldindex)//如果新项目的索引值大于旧项目
                 {
                     // 从旧项目的位置移动下来
+                    VisualStateManager.GoToState((NavigationViewItem)this.SelectItem, "LeaveDown", false);
+                    VisualStateManager.GoToState(newitem, "EnterUp", false);
                 }
                 else
                 {
+                    VisualStateManager.GoToState((FrameworkElement)this.SelectItem, "LeaveUp", false);
+                    VisualStateManager.GoToState(newitem, "EnterDown", false);
                     // 从旧项目的位置移动上去
                 }
             }
