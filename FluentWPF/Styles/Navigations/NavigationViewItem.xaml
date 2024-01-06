@@ -66,48 +66,75 @@
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="SelectedLine"
-                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.CenterY)"
                                             From="0"
                                             To="1"
-                                            Duration="0:0:1" />
+                                            Duration="0:0:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="1"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="EnterUp">
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.CenterY)"
+                                            From="-1"
+                                            To="1"
+                                            Duration="0:0:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                             To="1"
-                                            Duration="0:0:1" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="EnterDown">
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="SelectedLine"
-                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.CenterY)"
+                                            From="-1"
                                             To="0"
-                                            Duration="0:0:1" />
+                                            Duration="0:0:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="1"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="LeaveUp">
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.CenterY)"
+                                            From="1"
+                                            To="-1"
+                                            Duration="0:0:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                             To="0"
-                                            Duration="0:0:1" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="LeaveDown">
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="SelectedLine"
-                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                            From="1"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.CenterY)"
+                                            From="0"
                                             To="2"
-                                            Duration="0:0:1" />
-
+                                            Duration="0:0:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectedLine"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="0"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>

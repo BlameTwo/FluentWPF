@@ -85,8 +85,8 @@ partial class NavigationView
             return;
         if (this.SelectItem == null)
         {
-            this.SelectItem = newitem;
             VisualStateManager.GoToState(obj, "Default", false);
+            this.SelectItem = newitem;
             newitem.IsSelect = true;
         }
         else if (this.SelectItem != item)
@@ -101,15 +101,15 @@ partial class NavigationView
             var oldisMenu = MenuItems.IndexOf(this.SelectItem) != -1;
             //旧项目是否在脚部菜单
             var oldisFolter = FooterItems.IndexOf(this.SelectItem) != -1;
-            if (isMenu && oldisMenu) //新项目在主菜单，旧项目不在，从下到上
+            if (isMenu && !oldisMenu) //新项目在主菜单，旧项目不在，从下到上
             {
                 VisualStateManager.GoToState((NavigationViewItem)this.SelectItem,"LeaveUp",false);
-                VisualStateManager.GoToState(newitem, "EnterDown", false);
+                VisualStateManager.GoToState((FrameworkElement)item, "EnterDown", false);
             }
             if (isMenu == false && oldisMenu) //新项目在脚步菜单，旧项目在主菜单
             {
                 VisualStateManager.GoToState((NavigationViewItem)this.SelectItem, "LeaveDown", false);
-                VisualStateManager.GoToState(newitem, "EnterUp", false);
+                VisualStateManager.GoToState((FrameworkElement)item, "EnterUp", false);
             }
             else if(isMenu && oldisMenu) //新项目和旧项目同时在主菜单
             {
@@ -129,12 +129,12 @@ partial class NavigationView
                 {
                     // 从旧项目的位置移动下来
                     VisualStateManager.GoToState((NavigationViewItem)this.SelectItem, "LeaveDown", false);
-                    VisualStateManager.GoToState(newitem, "EnterUp", false);
+                    VisualStateManager.GoToState((FrameworkElement)item, "EnterUp", false);
                 }
                 else
                 {
                     VisualStateManager.GoToState((FrameworkElement)this.SelectItem, "LeaveUp", false);
-                    VisualStateManager.GoToState(newitem, "EnterDown", false);
+                    VisualStateManager.GoToState(obj, "EnterDown", true);
                     // 从旧项目的位置移动上去
                 }
             }
