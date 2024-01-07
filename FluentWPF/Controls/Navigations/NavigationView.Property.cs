@@ -147,8 +147,9 @@ namespace FluentWPF.Controls
             "SelectItem",
             typeof(INavigationViewItem),
             typeof(NavigationView),
-            new PropertyMetadata(null)
+            new PropertyMetadata(null,OnSelectItemChanged)
         );
+
 
         public bool IsPaneOpen
         {

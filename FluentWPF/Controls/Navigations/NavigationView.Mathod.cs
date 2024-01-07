@@ -83,7 +83,7 @@ partial class NavigationView
             return;
         if (item is not FrameworkElement obj)
             return;
-        if (this.SelectItem == null)
+        if (this.SelectItem == null || this.SelectItem == item)
         {
             VisualStateManager.GoToState(obj, "Default", false);
             this.SelectItem = newitem;
@@ -146,5 +146,14 @@ partial class NavigationView
             this,
             new Models.NavigationSelectionChangedArgs() { SelectItem = item }
         );
+    }
+
+
+    private static void OnSelectItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if(e.NewValue != null &&d is  NavigationView view)
+        {
+            view!.OnSelected((NavigationViewItem)e.NewValue);
+        }
     }
 }

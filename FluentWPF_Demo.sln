@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34407.89
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentWPF_Demo", "FluentWPF_Demo\FluentWPF_Demo.csproj", "{2018BD4E-5F33-41A6-97F2-F21E3D7B9286}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentWPF_Demo", "FluentWPF_Demo\FluentWPF_Demo.csproj", "{2018BD4E-5F33-41A6-97F2-F21E3D7B9286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentWPF", "FluentWPF\FluentWPF.csproj", "{D59E0A6C-F627-4A1F-991B-7D34A9EE172A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentWPF", "FluentWPF\FluentWPF.csproj", "{D59E0A6C-F627-4A1F-991B-7D34A9EE172A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{4A6763A8-1E9B-4BCF-9157-32E22B8E02DD}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarotCard", "TarotCard\TarotCard.csproj", "{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{D59E0A6C-F627-4A1F-991B-7D34A9EE172A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D59E0A6C-F627-4A1F-991B-7D34A9EE172A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D59E0A6C-F627-4A1F-991B-7D34A9EE172A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
