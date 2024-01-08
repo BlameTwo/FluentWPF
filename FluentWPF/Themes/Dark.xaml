@@ -9,7 +9,10 @@
     <Color x:Key="DefaultPageBackgroundColor">#202020</Color>
 
     <!--  用户颜色  -->
-    <SolidColorBrush x:Key="AcceptColor" Color="#47b1e8" />
+    <SolidColorBrush x:Key="AcceptColor" Color="{DynamicResource AcceptBrushColor}" />
+
+    <Color x:Key="AcceptBrushColor">#47b1e8</Color>
+
     <!--  字体文本颜色  -->
     <SolidColorBrush x:Key="AppTextFillBrush" Color="White" />
     <!--  ToggleButton Foreground  -->
@@ -40,9 +43,14 @@
     <!--  超链接按钮颜色-end  -->
 
 
+
     <!--  NavigationView Color  -->
     <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#FF212121" />
 
     <SolidColorBrush x:Key="NavigationSelectItemMove" Color="#3FE2E2E2" />
     <SolidColorBrush x:Key="NavigationSelectItemPressed" Color="#59C5C5C5" />
+
+    <!--  ComboBox  -->
+    <SolidColorBrush x:Key="ComboBoxSelectItemMouseOverBrush" Color="{DynamicResource ComboBoxSelectItemMouseOverColor}" />
+    <Color x:Key="ComboBoxSelectItemMouseOverColor">#26FFFFFF</Color>
 </ResourceDictionary>

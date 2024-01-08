@@ -9,6 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FontIcon.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/RepeatButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentHyperlinkButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/ComboBox.xaml" />
 
         <!--  NavigationView  -->
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Navigations/NavigationViewItem.xaml" />
@@ -25,5 +26,6 @@
     <Style BasedOn="{StaticResource DefaultNavigationViewItemStyle}" TargetType="ui:NavigationViewItem" />
     <Style BasedOn="{StaticResource DefaultNavigationViewHeaderStyle}" TargetType="ui:NavigationViewHeaderItem" />
     <Style BasedOn="{StaticResource DefaultNavigationViewLineStyle}" TargetType="ui:NavigationViewLineItem" />
+    <Style BasedOn="{StaticResource DefaultFluentComboBoxStyle}" TargetType="ui:FluentComboBox" />
 
 </ResourceDictionary>

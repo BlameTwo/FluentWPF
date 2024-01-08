@@ -22,6 +22,7 @@ public static class Register
                 service.AddSingleton<MainWindow>();
                 service.AddSingleton<MainViewModel>();
                 service.AddSingleton<INavigationService,NavigationService>();
+                service.AddSingleton<IGetTarotService,GetTarotService>();
 
                 service.AddTransient<ShouldView>();
                 service.AddTransient<ShouldViewModel>();
@@ -29,6 +30,8 @@ public static class Register
                 service.AddTransient<DailyViewModel>();
                 service.AddTransient<SettingsView>();
                 service.AddTransient<SettingsViewModel>();
+                service.AddTransient<AllCardsView>();
+                service.AddTransient<AllCardViewModel>();
             })
             .Build();
         await Host.StartAsync();
@@ -41,6 +44,13 @@ public static class Register
 
     internal static object GetService(Type serviceType)
     {
-        return Host.Services.GetRequiredService(serviceType);
+        try
+        {
+            return Host.Services.GetRequiredService(serviceType);
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 }

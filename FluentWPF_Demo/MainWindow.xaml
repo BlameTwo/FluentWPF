@@ -43,6 +43,14 @@
         <ui:NavigationView.FooterItems>
             <ui:NavigationViewItem Content="设置" Icon="Settings" />
         </ui:NavigationView.FooterItems>
-        <Grid />
+        <Grid>
+            <ui:FluentComboBox VerticalAlignment="Top">
+                <ComboBoxItem Content="测试" />
+                <ComboBoxItem Content="测试2" />
+                <ComboBoxItem Content="测试3" />
+                <ComboBoxItem Content="测试4" />
+                <ComboBoxItem Content="测试5" />
+            </ui:FluentComboBox>
+        </Grid>
     </ui:NavigationView>
 </ui:FluentWindow>

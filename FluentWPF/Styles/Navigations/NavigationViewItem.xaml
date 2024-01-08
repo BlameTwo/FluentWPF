@@ -147,47 +147,7 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="BorderMain" Property="Background" Value="{DynamicResource NavigationSelectItemPressed}" />
                         </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelect" Value="True" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="BorderMain" Property="Background" Value="{DynamicResource NavigationSelectMoveTrue}" />
-                            </MultiTrigger.Setters>
-
-                        </MultiTrigger>
                         <Trigger Property="IsSelect" Value="True">
-                            <!--<Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="ScaleTransform01"
-                                            Storyboard.TargetProperty="ScaleY"
-                                            To="0"
-                                            Duration="0:0:0.45">
-                                            <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseInOut" />
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="ScaleTransform01"
-                                            Storyboard.TargetProperty="ScaleY"
-                                            To="1"
-                                            Duration="0:0:0.45">
-                                            <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseInOut" />
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>-->
                             <Setter TargetName="BorderMain" Property="Background" Value="{DynamicResource NavigationSelectItemPressed}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

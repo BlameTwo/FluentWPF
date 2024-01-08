@@ -25,18 +25,11 @@
     <ui:NavigationView
         x:Name="navigationView"
         DisplayMode="Auto"
+        NavigationSelectionChanged="navigationView_NavigationSelectionChanged"
         OpenPanelLength="200"
         PaneBackground="Transparent"
         PaneTitle="塔罗牌"
         SelectItem="{Binding ElementName=first, Mode=OneTime}">
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding NavigationSelectionCommand}" CommandParameter="{Binding ElementName=navigationView, Path=SelectItem, Mode=OneWay}" />
-            </i:EventTrigger>
-            <i:EventTrigger EventName="NavigationSelectionChanged">
-                <i:InvokeCommandAction Command="{Binding NavigationSelectionCommand}" CommandParameter="{Binding ElementName=navigationView, Path=SelectItem, Mode=OneWay}" />
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
         <ui:NavigationView.MenuItems>
             <ui:NavigationViewHeaderItem Header="占卜" />
             <ui:NavigationViewItem
@@ -48,8 +41,19 @@
                 ext:NavigationTo.NavigationKey="{x:Type v:DailyView}"
                 Content="日常牌"
                 Icon="GotoToday" />
+            <ui:NavigationViewLineItem />
+            <ui:NavigationViewHeaderItem Header="卡牌" />
+            <ui:NavigationViewItem
+                ext:NavigationTo.NavigationKey="{x:Type v:AllCardsView}"
+                Content="卡牌预览"
+                Icon="AllApps" />
         </ui:NavigationView.MenuItems>
         <ui:NavigationView.FooterItems>
+            <ui:NavigationViewItem
+                Content="关于"
+                Icon="FontColor"
+                ItemInvoked="NavigationViewItem_ItemInvoked" />
+            <ui:NavigationViewLineItem />
             <ui:NavigationViewItem
                 ext:NavigationTo.NavigationKey="{x:Type v:SettingsView}"
                 Content="设置"

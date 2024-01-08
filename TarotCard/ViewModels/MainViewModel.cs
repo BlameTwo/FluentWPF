@@ -17,9 +17,4 @@ public partial class MainViewModel:ObservableObject
 
     public INavigationService NavigationService { get; }
 
-    [RelayCommand]
-    void NavigationSelection(INavigationViewItem view)
-    {
-        NavigationService.NavigationTo(Register.GetService(NavigationTo.GetNavigationKey((System.Windows.DependencyObject)view)));
-    }
 }

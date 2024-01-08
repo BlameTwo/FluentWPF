@@ -13,12 +13,13 @@
     <!--  字体文本颜色  -->
     <SolidColorBrush x:Key="AppTextFillBrush" Color="Black" />
     <!--  用户颜色  -->
-    <SolidColorBrush x:Key="AcceptColor" Color="#1975c5" />
+    <SolidColorBrush x:Key="AcceptColor" Color="{DynamicResource AcceptBrushColor}" />
+    <Color x:Key="AcceptBrushColor">#1975c5</Color>
     <!--  取反  -->
     <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="White" />
 
     <!--  默认控件背景颜色  -->
-    <SolidColorBrush x:Key="ControlFillColor" Color="WhiteSmoke" />
+    <SolidColorBrush x:Key="ControlFillColor" Color="#A5F5F5F5" />
     <SolidColorBrush x:Key="ControlBorderBrushColor" Color="#CC7D7D7D" />
     <!--  这里好像两个重合了，无所谓就这样  -->
     <SolidColorBrush x:Key="ControlSecondFillColor" Color="#7FE4E4E4" />
@@ -45,4 +46,9 @@
 
     <SolidColorBrush x:Key="NavigationContentBorderBrush" Color="#E9E3E3" />
     <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#FFF2F2F2" />
+
+    <!--  ComboBox  -->
+    <SolidColorBrush x:Key="ComboBoxSelectItemMouseOverBrush" Color="{DynamicResource ComboBoxSelectItemMouseOverColor}" />
+    <Color x:Key="ComboBoxSelectItemMouseOverColor">#7FD8D8D8</Color>
+
 </ResourceDictionary>

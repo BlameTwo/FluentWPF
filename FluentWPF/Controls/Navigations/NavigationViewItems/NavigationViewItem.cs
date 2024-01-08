@@ -30,14 +30,21 @@ public partial class NavigationViewItem : ButtonBase, INavigationViewItem
 
     protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
     {
+        this.RaiseEvent(new RoutedEventArgs(ItemInvokedEvent, this));
         var navigation = NavigationView.GetNavigationView(this);
         navigation?.OnSelected(this);
         base.OnMouseLeftButtonUp(e);
     }
 
+    protected override void OnClick()
+    {
+        base.OnClick();
+    }
+
 
     public void RefreshPanel(NavigationDisplayMode mode, bool isOpen)
     {
+
     }
 
     public bool IsSelect
@@ -52,4 +59,20 @@ public partial class NavigationViewItem : ButtonBase, INavigationViewItem
         typeof(NavigationViewItem),
         new PropertyMetadata(false)
     );
+
+    public static readonly RoutedEvent ItemInvokedEvent = EventManager.RegisterRoutedEvent(
+        "ItemInvokedEvent",
+        RoutingStrategy.Bubble,
+        typeof(ControlEventHandler<NavigationViewItem,RoutedEventArgs>),
+        typeof(NavigationViewItem)
+    );
+
+    public event ControlEventHandler<NavigationViewItem, RoutedEventArgs> ItemInvoked
+    {
+        add =>AddHandler(ItemInvokedEvent, value);
+        remove => RemoveHandler(ItemInvokedEvent, value);
+    }
+
+
 }
+

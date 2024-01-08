@@ -10,11 +10,5 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock
-            HorizontalAlignment="Center"
-            FontSize="35"
-            FontWeight="Bold"
-            Text="三牌" />
-    </Grid>
+    <Grid />
 </Page>

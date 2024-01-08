@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentWPF.Contracts.Navigations;
+using System;
 using System.Windows;
 
 namespace TarotCard.Extentions;
@@ -14,6 +15,7 @@ public class NavigationTo
     {
         obj.SetValue(NavigationKeyProperty, value);
     }
+
 
     public static readonly DependencyProperty NavigationKeyProperty =
         DependencyProperty.RegisterAttached("NavigationKey", typeof(Type), typeof(NavigationTo), new PropertyMetadata(null));

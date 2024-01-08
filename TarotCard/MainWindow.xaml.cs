@@ -1,4 +1,5 @@
 ﻿using FluentWPF.Controls;
+using TarotCard.Extentions;
 using TarotCard.ViewModels;
 
 namespace TarotCard
@@ -26,6 +27,17 @@ namespace TarotCard
             {
                 entry = this.frameBase.RemoveBackEntry();
             }
+        }
+
+        private void navigationView_NavigationSelectionChanged(NavigationView sender, FluentWPF.Models.NavigationSelectionChangedArgs item)
+        {
+            var index = NavigationTo.GetNavigationKey((System.Windows.DependencyObject)item.SelectItem!);
+            (this.DataContext as MainViewModel).NavigationService.NavigationTo(Register.GetService(index));
+        }
+
+        private void NavigationViewItem_ItemInvoked(NavigationViewItem sender, System.Windows.RoutedEventArgs args)
+        {
+
         }
     }
 }
