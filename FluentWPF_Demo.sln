@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarotCard", "TarotCard\TarotCard.csproj", "{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TarotCard", "TarotCard\TarotCard.csproj", "{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeteaseCloudApp", "NeteaseCloudApp\NeteaseCloudApp.csproj", "{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

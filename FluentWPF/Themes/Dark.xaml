@@ -47,10 +47,16 @@
     <!--  NavigationView Color  -->
     <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#FF212121" />
 
-    <SolidColorBrush x:Key="NavigationSelectItemMove" Color="#3FE2E2E2" />
-    <SolidColorBrush x:Key="NavigationSelectItemPressed" Color="#59C5C5C5" />
+    <SolidColorBrush x:Key="NavigationSelectItemMove" Color="#19FFFFFF" />
+    <SolidColorBrush x:Key="NavigationSelectItemPressed" Color="#0CFFFFFF" />
 
     <!--  ComboBox  -->
     <SolidColorBrush x:Key="ComboBoxSelectItemMouseOverBrush" Color="{DynamicResource ComboBoxSelectItemMouseOverColor}" />
     <Color x:Key="ComboBoxSelectItemMouseOverColor">#26FFFFFF</Color>
+
+    <SolidColorBrush x:Key="TextBoxFocuedBrush" Color="{DynamicResource TextBoxFocuedColor}" />
+    <Color x:Key="TextBoxFocuedColor">#1F1F1F</Color>
+
+
+    <SolidColorBrush x:Key="ProgressRingBorderBrush" Color="#D3D3D3" />
 </ResourceDictionary>

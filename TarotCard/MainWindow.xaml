@@ -11,7 +11,6 @@
     xmlns:ui="https://blame/fluentwpf/2023/"
     xmlns:v="clr-namespace:TarotCard.Views"
     xmlns:vm="clr-namespace:TarotCard.ViewModels"
-    Title="MainWindow"
     Width="800"
     Height="450"
     d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
@@ -19,6 +18,16 @@
     Style="{DynamicResource DefaultWindowStyle}"
     Topmost="True"
     mc:Ignorable="d">
+    <ui:FluentWindow.TitleBarLeftContent>
+        <ui:FluentButton
+            Width="25"
+            Height="25"
+            Margin="0,5,0,0"
+            CornerRadius="50" />
+    </ui:FluentWindow.TitleBarLeftContent>
+    <ui:FluentWindow.TitlebarContent>
+        <TextBlock FontSize="15" Text="塔罗牌模拟" />
+    </ui:FluentWindow.TitlebarContent>
     <ui:FluentWindow.SystemBackdrop>
         <sysback:MicaAltBackdrop />
     </ui:FluentWindow.SystemBackdrop>

@@ -20,7 +20,7 @@ public class NavigationService : INavigationService
 
     public void NavigationTo(object type)
     {
-        _frame.Navigate(type);
+        _frame.Navigate(type); 
     }
 
     public void RegisterFrame(Frame frame)

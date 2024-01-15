@@ -27,5 +27,18 @@ namespace TarotCard.Views
             InitializeComponent();
             this.DataContext = vm;
         }
+
+
+        private void FluentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedIndex == 0)
+            {
+                FluentWPF.Instance.ApplyTheme(FluentWPF.Models.Enums.ThemeTypeEnum.Light);
+            }
+            else
+            {
+                FluentWPF.Instance.ApplyTheme(FluentWPF.Models.Enums.ThemeTypeEnum.Dark);
+            }
+        }
     }
 }

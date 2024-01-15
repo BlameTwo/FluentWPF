@@ -26,11 +26,17 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
+                        <Border
+                            Grid.ColumnSpan="2"
+                            BorderBrush="{DynamicResource ControlBorderBrushColor}"
+                            BorderThickness="1,1,1,1"
+                            CornerRadius="4" />
                         <ui:FluentToggleButton
                             Margin="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
                             Foreground="{TemplateBinding Foreground}"
                             IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                             Template="{DynamicResource ExpanderUIToggleButton}" />
@@ -70,7 +76,7 @@
                                                                         Storyboard.TargetName="MainBorder"
                                                                         Storyboard.TargetProperty="BorderThickness"
                                                                         From="0"
-                                                                        To="0,0,0,1"
+                                                                        To="0,0,0,2"
                                                                         Duration="0:0:0.2" />
                                                                 </Storyboard>
                                                             </VisualState>
@@ -114,8 +120,9 @@
                             <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <Border
                                     Padding="5"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    CornerRadius="5">
+                                    BorderBrush="{DynamicResource ControlBorderBrushColor}"
+                                    BorderThickness="0.5"
+                                    CornerRadius="4">
                                     <Border.Background>
                                         <SolidColorBrush Color="{DynamicResource DefaultPageBackgroundColor}" />
                                     </Border.Background>

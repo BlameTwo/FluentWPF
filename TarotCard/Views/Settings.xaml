@@ -5,10 +5,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TarotCard.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="https://blame/fluentwpf/2023/"
     Title="Settings"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid />
+    <StackPanel Margin="15">
+        <ui:SettingsCard
+            VerticalAlignment="Top"
+            Description="设置一个主题颜色"
+            Header="主题">
+            <ui:FluentComboBox
+                Width="80"
+                VerticalAlignment="Top"
+                SelectionChanged="FluentComboBox_SelectionChanged">
+                <ComboBoxItem Content="浅色" />
+                <ComboBoxItem Content="深色" />
+            </ui:FluentComboBox>
+        </ui:SettingsCard>
+    </StackPanel>
 </Page>

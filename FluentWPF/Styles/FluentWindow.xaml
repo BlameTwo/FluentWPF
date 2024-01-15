@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:FluentWPF.Controls">
     <Style x:Key="DefaultWindowStyle" TargetType="ui:FluentWindow">
+        <Setter Property="Foreground" Value="{DynamicResource AppTextFillBrush}" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
@@ -18,7 +19,7 @@
                 <ControlTemplate TargetType="ui:FluentWindow">
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="36" />
+                            <RowDefinition Height="{TemplateBinding TitleBarHeight}" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid
@@ -27,28 +28,41 @@
                             VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
                                 <!--  这里定义了一个标题栏的结构  -->
+                                <ColumnDefinition x:Name="LeftContentColumn" Width="auto" />
                                 <ColumnDefinition x:Name="TitleColumn" Width="auto" />
                                 <ColumnDefinition x:Name="CenterColumn" />
                                 <ColumnDefinition x:Name="RightColumn" Width="auto" />
                                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                             </Grid.ColumnDefinitions>
-                            <StackPanel
+                            <ContentControl
                                 Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding TitleBarLeftContent}"
+                                Foreground="{TemplateBinding Foreground}"
+                                WindowChrome.IsHitTestVisibleInChrome="True" />
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="7,0,0,0"
                                 VerticalAlignment="Center"
                                 Orientation="Horizontal"
                                 WindowChrome.IsHitTestVisibleInChrome="False">
                                 <Image Source="{TemplateBinding Icon}" />
-                                <TextBlock Foreground="{DynamicResource AppTextFillBrush}" Text="{TemplateBinding Title}" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource AppTextFillBrush}"
+                                    Text="{TemplateBinding Title}" />
                             </StackPanel>
                             <ContentControl
-                                Grid.ColumnSpan="4"
+                                Grid.ColumnSpan="5"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Content="{TemplateBinding TitlebarContent}"
+                                Foreground="{TemplateBinding Foreground}"
                                 WindowChrome.IsHitTestVisibleInChrome="True" />
 
                             <Border
-                                Grid.Column="3"
+                                Grid.Column="4"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 WindowChrome.IsHitTestVisibleInChrome="False" />

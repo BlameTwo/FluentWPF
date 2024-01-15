@@ -83,6 +83,33 @@ public partial class FluentWindow : Window
 
 
     /// <summary>
+    /// 标题栏左侧内容
+    /// </summary>
+    public object TitleBarLeftContent
+    {
+        get { return (object)GetValue(TitleBarLeftContentProperty); }
+        set { SetValue(TitleBarLeftContentProperty, value); }
+    }
+
+    public static readonly DependencyProperty TitleBarLeftContentProperty =
+        DependencyProperty.Register("TitleBarLeftContent", typeof(object), typeof(FluentWindow), new PropertyMetadata(null));
+
+
+
+    public GridLength TitleBarHeight
+    {
+        get { return (GridLength)GetValue(TitleBarHeightProperty); }
+        set { SetValue(TitleBarHeightProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for TitleBarHeight.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty TitleBarHeightProperty =
+        DependencyProperty.Register("TitleBarHeight", typeof(GridLength), typeof(FluentWindow), new PropertyMetadata(new GridLength(36)));
+
+
+
+
+    /// <summary>
     /// 标题栏居中内容
     /// </summary>
     public object TitlebarContent

@@ -1,0 +1,98 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:FluentWPF.Controls">
+    <Style x:Key="DefaultFluentTextBoxStyle" TargetType="ui:FluentTextBox">
+        <Setter Property="Background" Value="{DynamicResource ControlFillColor}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{DynamicResource AppTextFillBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrushColor}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ui:FluentTextBox">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Grid.ColumnSpan="2"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0.5"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border
+                            Grid.ColumnSpan="2"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border
+                            x:Name="MainBorder"
+                            Grid.ColumnSpan="2"
+                            BorderBrush="{DynamicResource AcceptColor}"
+                            BorderThickness="0,0,0,1"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <ScrollViewer
+                            x:Name="PART_ContentHost"
+                            Padding="{TemplateBinding Padding}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Focusable="false"
+                            HorizontalScrollBarVisibility="Hidden"
+                            VerticalScrollBarVisibility="Hidden" />
+                        <ui:FluentButton
+                            x:Name="ClearButton"
+                            Grid.Column="1"
+                            Margin="0,0,5,0"
+                            Padding="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Style="{DynamicResource TransparentFluentButtonStyle}">
+                            <ui:FontIcon
+                                FontSize="15"
+                                Foreground="{DynamicResource NavigationHeaderItemForegroundBrush}"
+                                Glyph="Clear" />
+                        </ui:FluentButton>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="MainBorder"
+                                            Storyboard.TargetProperty="BorderThickness"
+                                            From="0"
+                                            To="0,0,0,2"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused">
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="MainBorder"
+                                            Storyboard.TargetProperty="BorderThickness"
+                                            From="0,0,0,1"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource TextBoxFocuedBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="False">
+
+                            <Setter Property="Background" Value="{DynamicResource ControlFillColor}" />
+                        </Trigger>
+                        <Trigger SourceName="ClearButton" Property="IsPressed" Value="true">
+                            <Setter Property="Text" Value="" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

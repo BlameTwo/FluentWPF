@@ -51,4 +51,8 @@
     <SolidColorBrush x:Key="ComboBoxSelectItemMouseOverBrush" Color="{DynamicResource ComboBoxSelectItemMouseOverColor}" />
     <Color x:Key="ComboBoxSelectItemMouseOverColor">#7FD8D8D8</Color>
 
+    <SolidColorBrush x:Key="TextBoxFocuedBrush" Color="{DynamicResource TextBoxFocuedColor}" />
+    <Color x:Key="TextBoxFocuedColor">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="ProgressRingBorderBrush" Color="#D3D3D3" />
 </ResourceDictionary>
