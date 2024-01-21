@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows.Controls;
-using TarotCard.Services.Contracts;
+﻿using System.Windows.Controls;
+using WindowsInstaller.Services.Contracts;
 
-namespace TarotCard.Services;
+namespace WindowsInstaller.Services;
 
 public class NavigationService : INavigationService
 {

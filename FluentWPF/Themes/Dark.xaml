@@ -14,7 +14,10 @@
     <Color x:Key="AcceptBrushColor">#47b1e8</Color>
 
     <!--  字体文本颜色  -->
-    <SolidColorBrush x:Key="AppTextFillBrush" Color="White" />
+    <SolidColorBrush x:Key="AppTextFillBrush" Color="{DynamicResource AppTextFillColor}" />
+
+    <Color x:Key="AppTextFillColor">White</Color>
+
     <!--  ToggleButton Foreground  -->
     <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="Black" />
     <!--  默认控件背景颜色  -->
@@ -59,4 +62,6 @@
 
 
     <SolidColorBrush x:Key="ProgressRingBorderBrush" Color="#D3D3D3" />
+
+    <SolidColorBrush x:Key="DataGridBorderBrush" Color="#FF6F6F6F" />
 </ResourceDictionary>

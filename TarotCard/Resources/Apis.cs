@@ -1,4 +1,4 @@
-﻿namespace TarotCard.Resources;
+﻿namespace WindowsInstaller.Resources;
 
 public static class Apis
 {

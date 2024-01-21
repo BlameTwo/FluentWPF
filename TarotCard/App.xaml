@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="TarotCard.App"
+    x:Class="WindowsInstaller.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:TarotCard"
+    xmlns:local="clr-namespace:WindowsInstaller"
     xmlns:theme="clr-namespace:FluentWPF;assembly=FluentWPF">
     <Application.Resources>
         <ResourceDictionary>

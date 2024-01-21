@@ -1,11 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-windows10.0.22621.0</TargetFramework>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
+	  <RootNamespace>WindowsInstaller</RootNamespace>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Assets\Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Background.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.3" />
@@ -18,9 +26,17 @@
     <ProjectReference Include="..\FluentWPF\FluentWPF.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Management.Deployment.Projection">
+      <HintPath>..\..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.Projection.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="Resources\tarot.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   
 </Project>

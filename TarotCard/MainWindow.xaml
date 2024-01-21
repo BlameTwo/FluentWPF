@@ -1,16 +1,16 @@
 ﻿<ui:FluentWindow
-    x:Class="TarotCard.MainWindow"
+    x:Class="WindowsInstaller.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:ext="clr-namespace:TarotCard.Extentions"
+    xmlns:ext="clr-namespace:WindowsInstaller.Extentions"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local="clr-namespace:TarotCard"
+    xmlns:local="clr-namespace:WindowsInstaller"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:sysback="clr-namespace:FluentWPF.Controls.SystemBackdrops;assembly=FluentWPF"
     xmlns:ui="https://blame/fluentwpf/2023/"
-    xmlns:v="clr-namespace:TarotCard.Views"
-    xmlns:vm="clr-namespace:TarotCard.ViewModels"
+    xmlns:vm="clr-namespace:WindowsInstaller.ViewModels"
     Width="800"
     Height="450"
     d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
@@ -18,6 +18,7 @@
     Style="{DynamicResource DefaultWindowStyle}"
     Topmost="True"
     mc:Ignorable="d">
+    <ui:FluentWindow.Resources />
     <ui:FluentWindow.TitleBarLeftContent>
         <ui:FluentButton
             Width="25"
@@ -26,98 +27,74 @@
             CornerRadius="50" />
     </ui:FluentWindow.TitleBarLeftContent>
     <ui:FluentWindow.TitlebarContent>
-        <TextBlock FontSize="15" Text="塔罗牌模拟" />
+        <TextBlock FontSize="15" Text="WindowsInstaller" />
     </ui:FluentWindow.TitlebarContent>
     <ui:FluentWindow.SystemBackdrop>
-        <sysback:MicaAltBackdrop />
+        <sysback:MicaBackdrop />
     </ui:FluentWindow.SystemBackdrop>
-    <ui:NavigationView
-        x:Name="navigationView"
-        DisplayMode="Auto"
-        NavigationSelectionChanged="navigationView_NavigationSelectionChanged"
-        OpenPanelLength="200"
-        PaneBackground="Transparent"
-        PaneTitle="塔罗牌"
-        SelectItem="{Binding ElementName=first, Mode=OneTime}">
-        <ui:NavigationView.MenuItems>
-            <ui:NavigationViewHeaderItem Header="占卜" />
-            <ui:NavigationViewItem
-                x:Name="first"
-                ext:NavigationTo.NavigationKey="{x:Type v:ShouldView}"
-                Content="过去现在未来"
-                Icon="ToolTip" />
-            <ui:NavigationViewItem
-                ext:NavigationTo.NavigationKey="{x:Type v:DailyView}"
-                Content="日常牌"
-                Icon="GotoToday" />
-            <ui:NavigationViewLineItem />
-            <ui:NavigationViewHeaderItem Header="卡牌" />
-            <ui:NavigationViewItem
-                ext:NavigationTo.NavigationKey="{x:Type v:AllCardsView}"
-                Content="卡牌预览"
-                Icon="AllApps" />
-        </ui:NavigationView.MenuItems>
-        <ui:NavigationView.FooterItems>
-            <ui:NavigationViewItem
-                Content="关于"
-                Icon="FontColor"
-                ItemInvoked="NavigationViewItem_ItemInvoked" />
-            <ui:NavigationViewLineItem />
-            <ui:NavigationViewItem
-                ext:NavigationTo.NavigationKey="{x:Type v:SettingsView}"
-                Content="设置"
-                Icon="Settings" />
-        </ui:NavigationView.FooterItems>
-        <!--<Grid>
-            <Grid.Resources>
-                <Style x:Key="CardStyle" TargetType="Border">
-                    <Setter Property="Width" Value="200" />
-                    <Setter Property="Height" Value="300" />
-                    <Setter Property="Background" Value="Black" />
-                    <Setter Property="Margin" Value="10" />
-                    <Setter Property="CornerRadius" Value="10" />
-                    <Setter Property="BorderBrush" Value="White" />
-                    <Setter Property="BorderThickness" Value="2" />
-                    <Setter Property="Opacity" Value="1" />
-                    <Style.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation
-                                        AutoReverse="True"
-                                        Storyboard.TargetProperty="Opacity"
-                                        To="0"
-                                        Duration="0:0:1" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="MouseDown">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="White"
-                                        Duration="0:0:1" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Resources>
+    <Grid>
+        <!--<Image
+            Opacity="0.8"
+            Source="/Assets/Background.jpg"
+            Stretch="UniformToFill" />-->
+        <ui:NavigationView
+            x:Name="navigationView"
+            DisplayMode="Auto"
+            NavigationSelectionChanged="navigationView_NavigationSelectionChanged"
+            OpenPanelLength="200"
+            PaneBackground="Transparent"
+            PaneTitle="管理应用"
+            SelectItem="{Binding ElementName=first, Mode=OneTime}">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewHeaderItem Header="常规" />
+                <ui:NavigationViewLineItem />
+                <ui:NavigationViewItem Content="搜索" Icon="SearchAndApps" />
+                <ui:NavigationViewItem Content="管理" Icon="UpdateRestore" />
+                <ui:NavigationViewLineItem />
+                <ui:NavigationViewHeaderItem Header="查询" />
+            </ui:NavigationView.MenuItems>
+            <ui:NavigationView.FooterItems>
+                <ui:NavigationViewItem
+                    Content="关于"
+                    Icon="FontColor"
+                    ItemInvoked="NavigationViewItem_ItemInvoked" />
+                <ui:NavigationViewLineItem />
+                <ui:NavigationViewItem Content="设置" Icon="Settings" />
+            </ui:NavigationView.FooterItems>
+            <Grid>
 
-            <Border Style="{StaticResource CardStyle}">
-        -->
-        <!--  Content of the card  -->
-        <!--
-                <TextBlock
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Text="Click Me" />
-            </Border>
-        </Grid>-->
-        <Frame
-            x:Name="frameBase"
-            LoadCompleted="frameBase_LoadCompleted"
-            NavigationUIVisibility="Hidden" />
-    </ui:NavigationView>
+                <Frame
+                    x:Name="frameBase"
+                    LoadCompleted="frameBase_LoadCompleted"
+                    NavigationUIVisibility="Hidden"
+                    Visibility="Collapsed" />
+                <DataGrid
+                    Margin="5"
+                    CanUserResizeColumns="True"
+                    CanUserSortColumns="True"
+                    ColumnHeaderHeight="30"
+                    IsReadOnly="False"
+                    ItemsSource="{Binding Persons, Mode=OneWay}"
+                    RowHeight="30"
+                    SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn
+                            Width="auto"
+                            Binding="{Binding IsSelect}"
+                            Header="选中"
+                            IsReadOnly="False" />
+                        <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding Name}"
+                            Header="名字" />
+                        <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding Age}"
+                            Header="年龄" />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Grid>
+        </ui:NavigationView>
+    </Grid>
 </ui:FluentWindow>

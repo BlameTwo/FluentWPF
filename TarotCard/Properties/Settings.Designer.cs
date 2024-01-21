@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TarotCard.Properties
+namespace WindowsInstaller.Properties
 {
 
 

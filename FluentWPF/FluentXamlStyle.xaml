@@ -13,6 +13,7 @@
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/SettingsCard.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentProgressRing.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/DataGrid.xaml" />
 
         <!--  NavigationView  -->
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Navigations/NavigationViewItem.xaml" />
@@ -33,5 +34,5 @@
     <Style BasedOn="{StaticResource DefaultSettingsCardStyle}" TargetType="ui:SettingsCard" />
     <Style BasedOn="{StaticResource DefaultFluentProgressRingStyle}" TargetType="ui:FluentProgressRing" />
     <Style BasedOn="{StaticResource DefaultFluentTextBoxStyle}" TargetType="ui:FluentTextBox" />
-
+    <Style BasedOn="{StaticResource DefaultDataGridStyle}" TargetType="DataGrid" />
 </ResourceDictionary>

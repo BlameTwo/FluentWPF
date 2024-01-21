@@ -1,8 +1,7 @@
-﻿using FluentWPF.Contracts.Navigations;
-using System;
+﻿using System;
 using System.Windows;
 
-namespace TarotCard.Extentions;
+namespace WindowsInstaller.Extentions;
 
 public class NavigationTo
 {

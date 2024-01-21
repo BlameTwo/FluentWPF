@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 
-namespace TarotCard.Services.Contracts;
+namespace WindowsInstaller.Services.Contracts;
 
 public interface INavigationService
 {

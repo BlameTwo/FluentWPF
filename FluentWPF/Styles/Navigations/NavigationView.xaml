@@ -134,7 +134,7 @@
                                             Storyboard.TargetName="MainPane"
                                             Storyboard.TargetProperty="Width"
                                             To="{TemplateBinding OpenPanelLength}"
-                                            Duration="0:0:.16">
+                                            Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
                                                 <CircleEase EasingMode="EaseInOut" />
                                             </DoubleAnimation.EasingFunction>
@@ -148,7 +148,7 @@
                                             Storyboard.TargetProperty="Width"
                                             From="{TemplateBinding OpenPanelLength}"
                                             To="50"
-                                            Duration="0:0:.16">
+                                            Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
                                                 <CircleEase EasingMode="EaseInOut" />
                                             </DoubleAnimation.EasingFunction>

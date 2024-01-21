@@ -2,12 +2,11 @@
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
-using TarotCard.Services;
-using TarotCard.Services.Contracts;
-using TarotCard.ViewModels;
-using TarotCard.Views;
+using WindowsInstaller.Services;
+using WindowsInstaller.Services.Contracts;
+using WindowsInstaller.ViewModels;
 
-namespace TarotCard;
+namespace WindowsInstaller;
 
 public static class Register
 {
@@ -22,16 +21,6 @@ public static class Register
                 service.AddSingleton<MainWindow>();
                 service.AddSingleton<MainViewModel>();
                 service.AddSingleton<INavigationService,NavigationService>();
-                service.AddSingleton<IGetTarotService,GetTarotService>();
-
-                service.AddTransient<ShouldView>();
-                service.AddTransient<ShouldViewModel>();
-                service.AddTransient<DailyView>();
-                service.AddTransient<DailyViewModel>();
-                service.AddTransient<SettingsView>();
-                service.AddTransient<SettingsViewModel>();
-                service.AddTransient<AllCardsView>();
-                service.AddTransient<AllCardViewModel>();
             })
             .Build();
         await Host.StartAsync();

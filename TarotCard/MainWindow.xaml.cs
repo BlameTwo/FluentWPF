@@ -1,8 +1,8 @@
 ﻿using FluentWPF.Controls;
-using TarotCard.Extentions;
-using TarotCard.ViewModels;
+using WindowsInstaller.Extentions;
+using WindowsInstaller.ViewModels;
 
-namespace TarotCard
+namespace WindowsInstaller
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑

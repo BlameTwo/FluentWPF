@@ -11,7 +11,10 @@
     <Color x:Key="DefaultPageBackgroundColor">#F3F3F3</Color>
 
     <!--  字体文本颜色  -->
-    <SolidColorBrush x:Key="AppTextFillBrush" Color="Black" />
+    <SolidColorBrush x:Key="AppTextFillBrush" Color="{DynamicResource AppTextFillColor}" />
+
+
+    <Color x:Key="AppTextFillColor">Black</Color>
     <!--  用户颜色  -->
     <SolidColorBrush x:Key="AcceptColor" Color="{DynamicResource AcceptBrushColor}" />
     <Color x:Key="AcceptBrushColor">#1975c5</Color>
@@ -55,4 +58,7 @@
     <Color x:Key="TextBoxFocuedColor">#FFFFFF</Color>
 
     <SolidColorBrush x:Key="ProgressRingBorderBrush" Color="#D3D3D3" />
+
+
+    <SolidColorBrush x:Key="DataGridBorderBrush" Color="#FFD0D0D0" />
 </ResourceDictionary>
