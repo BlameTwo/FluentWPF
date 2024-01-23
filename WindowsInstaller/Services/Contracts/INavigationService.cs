@@ -15,4 +15,6 @@ public interface INavigationService
     public void GoForward();
 
     public void NavigationTo(object type);
+
+    public void NavigationTo(string resourceName);
 }

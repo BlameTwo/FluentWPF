@@ -2,6 +2,7 @@
     x:Class="WindowsInstaller.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:WindowsInstaller.Converters"
     xmlns:local="clr-namespace:WindowsInstaller"
     xmlns:theme="clr-namespace:FluentWPF;assembly=FluentWPF">
     <Application.Resources>
@@ -12,6 +13,8 @@
                 <!--  样式  -->
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/FluentXamlStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <converter:DateTimeConverter x:Key="DateTimeConverter" />
+            <converter:CommandTypeConverter x:Key="CommandTypeConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

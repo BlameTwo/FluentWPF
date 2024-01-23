@@ -64,4 +64,11 @@
     <SolidColorBrush x:Key="ProgressRingBorderBrush" Color="#D3D3D3" />
 
     <SolidColorBrush x:Key="DataGridBorderBrush" Color="#FF6F6F6F" />
+
+    <SolidColorBrush x:Key="TipCardDefaultBackgroundBrush" Color="{DynamicResource TipCardDefaultBackgroundColor}" />
+    <Color x:Key="TipCardDefaultBackgroundColor">#282828</Color>
+
+
+    <SolidColorBrush x:Key="TipCardDefaultBorderBrush" Color="{DynamicResource TipCardDefaultBorderBrushColor}" />
+    <Color x:Key="TipCardDefaultBorderBrushColor">#3D3D3D</Color>
 </ResourceDictionary>

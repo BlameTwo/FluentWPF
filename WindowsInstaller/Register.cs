@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
+using WindowsInstaller.Models.PackageCommands;
 using WindowsInstaller.Services;
 using WindowsInstaller.Services.Contracts;
 using WindowsInstaller.ViewModels;
@@ -20,7 +21,31 @@ public static class Register
             {
                 service.AddSingleton<MainWindow>();
                 service.AddSingleton<MainViewModel>();
+
+                service.AddTransient<SearchViewModel>();
+                service.AddTransient<PackageManagerViewModel>();
+                service.AddTransient<SettingsViewModel>();
+                service.AddTransient<WinGetTaskViewModel>();
+
+                //Winget核心控制
+                service.AddSingleton<IWinGetService, WinGetService>();
+
+                //管理包任务
+                service.AddSingleton<IPackageTaskMananger, PackageTaskManager>();
+                //数据适配器
+                service.AddTransient<IWinGetDataService, WinGetDataService>();
+
+
+                service.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
+
+
+                //应用导航
                 service.AddSingleton<INavigationService,NavigationService>();
+
+
+                #region 任务类型
+                service.AddTransient<InstallCommand>();
+                #endregion
             })
             .Build();
         await Host.StartAsync();

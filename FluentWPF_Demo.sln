@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsInstaller", "TarotCard\WindowsInstaller.csproj", "{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsInstaller", "WindowsInstaller\WindowsInstaller.csproj", "{EC72D66E-F82C-42E2-A61F-9A7A8B1F7799}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeteaseCloudApp", "NeteaseCloudApp\NeteaseCloudApp.csproj", "{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}"
 EndProject
@@ -20,11 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{B86B49FC-273
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Winget", "Winget", "{C1F11B67-B9AA-4095-A384-B7F10D153D91}"
 	ProjectSection(SolutionItems) = preProject
-		..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.Projection.deps.json = ..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.Projection.deps.json
-		..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.Projection.dll = ..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.Projection.dll
-		..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.Projection.pdb = ..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.Projection.pdb
-		..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.winmd = ..\winget-gui-main\lib\x86\Microsoft.Management.Deployment.winmd
+		Lib\Microsoft.Management.Deployment.Projection.deps.json = Lib\Microsoft.Management.Deployment.Projection.deps.json
+		Lib\Microsoft.Management.Deployment.Projection.dll = Lib\Microsoft.Management.Deployment.Projection.dll
+		Lib\Microsoft.Management.Deployment.Projection.pdb = Lib\Microsoft.Management.Deployment.Projection.pdb
+		Lib\Microsoft.Management.Deployment.winmd = Lib\Microsoft.Management.Deployment.winmd
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsInstaller.Core", "WindowsInstaller.Core\WindowsInstaller.Core.csproj", "{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +86,18 @@ Global
 		{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}.Release|x64.Build.0 = Release|x64
 		{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}.Release|x86.ActiveCfg = Release|Any CPU
 		{DC58DD4D-AC64-45ED-BC29-1AAC709E7BA5}.Release|x86.Build.0 = Release|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Debug|x64.Build.0 = Debug|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Debug|x86.Build.0 = Debug|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Release|x64.ActiveCfg = Release|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Release|x64.Build.0 = Release|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Release|x86.ActiveCfg = Release|Any CPU
+		{4EB2710A-A118-4AE6-8F5B-F622D9A0C641}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

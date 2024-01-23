@@ -1,5 +1,7 @@
 ﻿using FluentWPF.Controls;
+using System;
 using WindowsInstaller.Extentions;
+using WindowsInstaller.Services.Contracts;
 using WindowsInstaller.ViewModels;
 
 namespace WindowsInstaller
@@ -32,12 +34,22 @@ namespace WindowsInstaller
         private void navigationView_NavigationSelectionChanged(NavigationView sender, FluentWPF.Models.NavigationSelectionChangedArgs item)
         {
             var index = NavigationTo.GetNavigationKey((System.Windows.DependencyObject)item.SelectItem!);
-            (this.DataContext as MainViewModel).NavigationService.NavigationTo(Register.GetService(index));
+            (this.DataContext as MainViewModel).NavigationService.NavigationTo(index);
+
         }
 
         private void NavigationViewItem_ItemInvoked(NavigationViewItem sender, System.Windows.RoutedEventArgs args)
         {
 
+        }
+
+        private void FluentWindow_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if(this.DataContext is MainViewModel vm)
+            {
+                vm.ToastLitterMessage.Owner = this.grid;
+                vm.ToastLitterMessage.ShowTime = TimeSpan.FromSeconds(2);
+            }
         }
     }
 }

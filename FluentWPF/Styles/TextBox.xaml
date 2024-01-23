@@ -34,6 +34,7 @@
                             CornerRadius="{TemplateBinding CornerRadius}" />
                         <ScrollViewer
                             x:Name="PART_ContentHost"
+                            Margin="{TemplateBinding Padding}"
                             Padding="{TemplateBinding Padding}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"

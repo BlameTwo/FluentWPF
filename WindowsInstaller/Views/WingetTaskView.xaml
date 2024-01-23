@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="WindowsInstaller.Views.WingetTaskView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="https://blame/fluentwpf/2023/"
+    xmlns:vm="clr-namespace:WindowsInstaller.ViewModels"
+    Title="WingetTaskView"
+    Margin="35,35,0,0"
+    d:DataContext="{d:DesignInstance Type=vm:WinGetTaskViewModel}"
+    d:Height="500"
+    d:Width="800"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock
+                FontSize="25"
+                FontWeight="Bold"
+                Text="任务列表" />
+        </StackPanel>
+        <DataGrid
+            Grid.Row="1"
+            Margin="0,10,10,0"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="True"
+            CanUserSortColumns="True"
+            ColumnHeaderHeight="30"
+            IsReadOnly="True"
+            ItemsSource="{Binding PackageCommands, Mode=OneWay}"
+            RowHeight="30"
+            SelectedItem="{Binding PackageCommandSelectItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Binding="{Binding PackageBase.Name, Mode=OneWay}"
+                    FontWeight="Bold"
+                    Header="名称" />
+                <DataGridTextColumn Binding="{Binding CommandType, Mode=OneWay, Converter={StaticResource CommandTypeConverter}}" Header="任务类型" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

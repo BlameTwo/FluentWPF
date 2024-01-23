@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using WindowsInstaller.Services.Contracts;
 
 namespace WindowsInstaller.Services;
@@ -20,6 +21,12 @@ public class NavigationService : INavigationService
     public void NavigationTo(object type)
     {
         _frame.Navigate(type); 
+    }
+
+    public void NavigationTo(string resourceName)
+    {
+        var uri = new Uri(resourceName);
+        var result  =  _frame.Navigate(uri);
     }
 
     public void RegisterFrame(Frame frame)

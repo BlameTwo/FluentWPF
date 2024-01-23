@@ -10,12 +10,16 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:sysback="clr-namespace:FluentWPF.Controls.SystemBackdrops;assembly=FluentWPF"
     xmlns:ui="https://blame/fluentwpf/2023/"
+    xmlns:v="clr-namespace:WindowsInstaller.Views"
     xmlns:vm="clr-namespace:WindowsInstaller.ViewModels"
+    Title="WindowsInstaller"
     Width="800"
     Height="450"
     d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
     Background="Transparent"
+    Loaded="FluentWindow_Loaded"
     Style="{DynamicResource DefaultWindowStyle}"
+    TitleBarHeight="48"
     Topmost="True"
     mc:Ignorable="d">
     <ui:FluentWindow.Resources />
@@ -23,16 +27,19 @@
         <ui:FluentButton
             Width="25"
             Height="25"
-            Margin="0,5,0,0"
+            Padding="0"
+            Content="C"
             CornerRadius="50" />
     </ui:FluentWindow.TitleBarLeftContent>
-    <ui:FluentWindow.TitlebarContent>
-        <TextBlock FontSize="15" Text="WindowsInstaller" />
-    </ui:FluentWindow.TitlebarContent>
     <ui:FluentWindow.SystemBackdrop>
         <sysback:MicaBackdrop />
     </ui:FluentWindow.SystemBackdrop>
-    <Grid>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand, Mode=OneWay}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid x:Name="grid">
         <!--<Image
             Opacity="0.8"
             Source="/Assets/Background.jpg"
@@ -48,8 +55,20 @@
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewHeaderItem Header="常规" />
                 <ui:NavigationViewLineItem />
-                <ui:NavigationViewItem Content="搜索" Icon="SearchAndApps" />
-                <ui:NavigationViewItem Content="管理" Icon="UpdateRestore" />
+                <ui:NavigationViewItem
+                    x:Name="first"
+                    ext:NavigationTo.NavigationKey="pack://application:,,,/WindowsInstaller;component/Views/SearchView.xaml"
+                    Content="搜索"
+                    Icon="SearchAndApps" />
+                <ui:NavigationViewItem
+                    ext:NavigationTo.NavigationKey="pack://application:,,,/WindowsInstaller;component/Views/PackageManagerView.xaml"
+                    Content="管理"
+                    Icon="UpdateRestore" />
+                <ui:NavigationViewLineItem />
+                <ui:NavigationViewItem
+                    ext:NavigationTo.NavigationKey="pack://application:,,,/WindowsInstaller;component/Views/WingetTaskView.xaml"
+                    Content="任务"
+                    Icon="TaskViewSettings" />
                 <ui:NavigationViewLineItem />
                 <ui:NavigationViewHeaderItem Header="查询" />
             </ui:NavigationView.MenuItems>
@@ -59,42 +78,19 @@
                     Icon="FontColor"
                     ItemInvoked="NavigationViewItem_ItemInvoked" />
                 <ui:NavigationViewLineItem />
-                <ui:NavigationViewItem Content="设置" Icon="Settings" />
+                <ui:NavigationViewItem
+                    ext:NavigationTo.NavigationKey="pack://application:,,,/WindowsInstaller;component/Views/SettingsView.xaml"
+                    Content="设置"
+                    Icon="Settings" />
             </ui:NavigationView.FooterItems>
             <Grid>
-
                 <Frame
                     x:Name="frameBase"
                     LoadCompleted="frameBase_LoadCompleted"
                     NavigationUIVisibility="Hidden"
-                    Visibility="Collapsed" />
-                <DataGrid
-                    Margin="5"
-                    CanUserResizeColumns="True"
-                    CanUserSortColumns="True"
-                    ColumnHeaderHeight="30"
-                    IsReadOnly="False"
-                    ItemsSource="{Binding Persons, Mode=OneWay}"
-                    RowHeight="30"
-                    SelectionMode="Single">
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn
-                            Width="auto"
-                            Binding="{Binding IsSelect}"
-                            Header="选中"
-                            IsReadOnly="False" />
-                        <DataGridTextColumn
-                            Width="*"
-                            Binding="{Binding Name}"
-                            Header="名字" />
-                        <DataGridTextColumn
-                            Width="*"
-                            Binding="{Binding Age}"
-                            Header="年龄" />
-                    </DataGrid.Columns>
-
-                </DataGrid>
+                    Visibility="Visible" />
             </Grid>
         </ui:NavigationView>
+
     </Grid>
 </ui:FluentWindow>

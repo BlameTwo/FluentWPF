@@ -196,6 +196,8 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="Margin" Value="0,0,-1,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0,1,0,0" />
         <Setter Property="BorderBrush" Value="{DynamicResource DataGridBorderBrush}" />
@@ -270,7 +272,7 @@
                         x:Name="Bg"
                         Background="Transparent"
                         UseLayoutRounding="True">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

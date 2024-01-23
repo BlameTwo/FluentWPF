@@ -3,6 +3,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using System.Windows;
 using WindowsInstaller.Resources;
+using WindowsInstaller.Services.Contracts;
 
 namespace WindowsInstaller;
 
@@ -11,12 +12,10 @@ namespace WindowsInstaller;
 /// </summary>
 public partial class App : Application
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:验证平台兼容性", Justification = "<挂起>")]
     public App()
     {
         InitializeComponent();
         Startup += App_Startup;
-        AppCenter.Start(Apis.AppCenterAPI,typeof(Analytics),typeof(Crashes));
     }
     MainWindow _window;
     private async void App_Startup(object sender, StartupEventArgs e)
