@@ -35,13 +35,13 @@ public static class Register
                 //数据适配器
                 service.AddTransient<IWinGetDataService, WinGetDataService>();
 
+                //设置
+                service.AddSingleton<ILocalSettingsService,LocalSettingsService>();
 
                 service.AddSingleton<IToastLitterMessage, ToastLitterMessage>();
 
-
                 //应用导航
                 service.AddSingleton<INavigationService,NavigationService>();
-
 
                 #region 任务类型
                 service.AddTransient<InstallCommand>();
