@@ -4,6 +4,7 @@ using Microsoft.Management.Deployment;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using WindowsInstaller.Models.Enums;
+using System;
 
 namespace WindowsInstaller.Models;
 
@@ -25,7 +26,12 @@ public abstract partial class PackageCommandBase:ObservableObject
 
     [RelayCommand]
     async Task ExecuteAsyncCommand() => await ExecuteAsync();
-    
+
+    [RelayCommand]
+    async Task CancelTaskAsyncCommand() => await CancelTaskAsync();
+
+    public abstract Task CancelTaskAsync();
+
     public abstract string CommandId { get;  }
 
     [ObservableProperty]

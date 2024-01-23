@@ -12,31 +12,43 @@ namespace WindowsInstaller.Models.PackageCommands;
 /// </summary>
 public partial class InstallCommand : PackageCommandBase, ITaskCommand<CatalogPackage>
 {
-    public InstallCommand(IWinGetService winGetService)
+    public InstallCommand(IWinGetService winGetService,IToastLitterMessage toastLitterMessage)
     {
         WinGetService = winGetService;
+        ToastLitterMessage = toastLitterMessage;
     }
 
     public override async Task ExecuteAsync()
     {
         this.Progress = new PackageCommandProgress();
-        var result = await WinGetService.InstallPackageAsync(
+        this._task = await WinGetService.InstallPackageAsync(
             this.PackageBase,
             PackageInstallScope.Any,
-            (s) => 
+            async (s,value) => 
             {
-                this.Progress.InstallProgress = s;
-                this.ProgressState = s.State;
+                this.Progress.InstallProgress = value;
+                this.ProgressState = value.State;
                 switch (ProgressState)
                 {
                     case PackageInstallProgressState.Queued:
                         this.TaskProgress = "0%";
                         break;
                     case PackageInstallProgressState.Downloading:
-                        this.TaskProgress = s.DownloadProgress.ToString("P2");
+                        if (this.Cancel == true)
+                        {
+                            s.Cancel();
+                            s.Close();
+                            this.Cancel = false;
+                            this.ProgressState = PackageInstallProgressState.Queued;
+                            this.TaskProgress = "0%";
+                            return;
+                        }
+                        this.TaskProgress = value.DownloadProgress.ToString("P2");
                         break;
                     case PackageInstallProgressState.Installing:
-                        this.TaskProgress = s.InstallationProgress.ToString("P2");
+                        if(this.Cancel == true)
+                            await ToastLitterMessage.ShowAsync("安装过程中不可取消任务！");
+                        this.TaskProgress = value.InstallationProgress.ToString("P2");
                         break;
                     case PackageInstallProgressState.PostInstall:
                         this.TaskProgress = "100%";
@@ -55,12 +67,26 @@ public partial class InstallCommand : PackageCommandBase, ITaskCommand<CatalogPa
         this.CommandType = Enums.CommandType.Install;
     }
 
+    public override async Task CancelTaskAsync()
+    {
+        await Task.Run(() =>
+        {
+            if (this._task == null)
+                return;
+            this.Cancel = true;
+        });
+    }
 
     [ObservableProperty]
     PackageInstallProgressState _ProgressState;
 
+    private InstallResultStatus _task;
+
     public IWinGetService WinGetService { get; }
+    public IToastLitterMessage ToastLitterMessage { get; }
 
     public override string CommandId =>
         this.PackageBase.Id??"";
+
+    public bool Cancel { get; private set; } = false;
 }

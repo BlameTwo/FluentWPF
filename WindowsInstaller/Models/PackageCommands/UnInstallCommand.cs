@@ -9,6 +9,11 @@ public class UnInstallCommand : PackageCommandBase
 {
     public override string CommandId => this.PackageBase.Id;
 
+    public override Task CancelTaskAsync()
+    {
+        return Task.CompletedTask;
+    }
+
     public override Task ExecuteAsync()
     {
         return Task.CompletedTask;

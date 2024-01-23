@@ -55,9 +55,14 @@
                 <DataGridTemplateColumn Header="操作">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ui:FluentButton Command="{Binding ExecuteAsyncCommandCommand, Mode=OneWay}">
-                                <ui:FontIcon Glyph="Play" />
-                            </ui:FluentButton>
+                            <StackPanel Orientation="Horizontal">
+                                <ui:FluentButton Command="{Binding ExecuteAsyncCommandCommand, Mode=OneWay}">
+                                    <ui:FontIcon Glyph="Play" />
+                                </ui:FluentButton>
+                                <ui:FluentButton Margin="5,0,0,0" Command="{Binding CancelTaskAsyncCommandCommand, Mode=OneWay}">
+                                    <ui:FontIcon Glyph="Stop" />
+                                </ui:FluentButton>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

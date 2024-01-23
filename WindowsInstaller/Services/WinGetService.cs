@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using WindowsInstaller.Services.Contracts;
+using Windows.Foundation;
 
 namespace WindowsInstaller.Services;
 
@@ -109,23 +110,30 @@ public class WinGetService : IWinGetService
         });
     }
 
-    public async Task<InstallResultStatus> InstallPackageAsync(CatalogPackage package, PackageInstallScope scope, Action<InstallProgress> callback)
+    public async Task<InstallResultStatus> InstallPackageAsync(CatalogPackage package, PackageInstallScope scope, Action<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress> callback)
     {
         return await Task.Run(async () =>
         {
-            IProgress<InstallProgress> progress;
-            progress = new Progress<InstallProgress>();
-            ((Progress<InstallProgress>)progress).ProgressChanged += ProgressChanged;
-            void ProgressChanged(object _, InstallProgress e) => callback(e);
+            IProgress<Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress>> progress;
+            progress = new Progress<Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress>>();
+            ((Progress<Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress>>)progress).ProgressChanged += ProgressChanged;
+            void ProgressChanged(object _, Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress> e) => callback(e.Item1,e.Item2);
             var installOptions = WingetProjectionFactory.CreateInstallOptions();
             installOptions.PackageInstallMode = PackageInstallMode.Silent;
             installOptions.PackageInstallScope = scope;
             var installOperation = PackageManager.InstallPackageAsync(package, installOptions);
             installOperation.Progress = (sender, value) =>
             {
-                progress.Report(value);
+                progress.Report(new(sender,value));
             };
-            return (await installOperation).Status;
+            try
+            {
+                return (await installOperation).Status;
+            }
+            catch (Exception)
+            {
+                return InstallResultStatus.CatalogError;
+            }
         });
     }
 }
