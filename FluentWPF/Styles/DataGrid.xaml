@@ -253,8 +253,8 @@
                             <Setter Property="Background" Value="#26FFFFFF" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForgroundBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource AcceptColor}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DataGridSelectItemForegroundBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource HyperLinkBackground}" />
 
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -280,7 +280,7 @@
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForgroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource DataGridSelectItemForegroundBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>

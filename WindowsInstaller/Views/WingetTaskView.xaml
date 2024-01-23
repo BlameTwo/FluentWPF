@@ -10,6 +10,8 @@
     Title="WingetTaskView"
     Margin="35,35,0,0"
     d:DataContext="{d:DesignInstance Type=vm:WinGetTaskViewModel}"
+    d:DesignHeight="300"
+    d:DesignWidth="500"
     d:Height="500"
     d:Width="800"
     mc:Ignorable="d">
@@ -38,15 +40,40 @@
             ColumnHeaderHeight="30"
             IsReadOnly="True"
             ItemsSource="{Binding PackageCommands, Mode=OneWay}"
-            RowHeight="30"
-            SelectedItem="{Binding PackageCommandSelectItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            SelectionMode="Single">
+            RowHeight="40"
+            SelectedItem="{Binding PackageCommandSelectItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn
+                    Width="*"
                     Binding="{Binding PackageBase.Name, Mode=OneWay}"
                     FontWeight="Bold"
                     Header="名称" />
-                <DataGridTextColumn Binding="{Binding CommandType, Mode=OneWay, Converter={StaticResource CommandTypeConverter}}" Header="任务类型" />
+                <DataGridTextColumn
+                    Width="auto"
+                    Binding="{Binding CommandType, Mode=OneWay, Converter={StaticResource CommandTypeConverter}}"
+                    Header="任务类型" />
+                <DataGridTemplateColumn Header="操作">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ui:FluentButton Command="{Binding ExecuteAsyncCommandCommand, Mode=OneWay}">
+                                <ui:FontIcon Glyph="Play" />
+                            </ui:FluentButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding ProgressState, Mode=OneWay, Converter={StaticResource CommandStateConverter}}"
+                    Header="状态" />
+                <DataGridTemplateColumn Width="auto" Header="任务进度">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Foreground="{DynamicResource AcceptColor}" Text="{Binding TaskProgress, Mode=OneWay}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

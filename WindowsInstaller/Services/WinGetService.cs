@@ -121,7 +121,6 @@ public class WinGetService : IWinGetService
             installOptions.PackageInstallMode = PackageInstallMode.Silent;
             installOptions.PackageInstallScope = scope;
             var installOperation = PackageManager.InstallPackageAsync(package, installOptions);
-
             installOperation.Progress = (sender, value) =>
             {
                 progress.Report(value);

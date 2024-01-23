@@ -1,6 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Runtime.CompilerServices;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Management.Deployment;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
 using WindowsInstaller.Models.Enums;
 
 namespace WindowsInstaller.Models;
@@ -21,10 +23,16 @@ public abstract partial class PackageCommandBase:ObservableObject
     /// <returns></returns>
     public abstract Task ExecuteAsync();
 
+    [RelayCommand]
+    async Task ExecuteAsyncCommand() => await ExecuteAsync();
+    
     public abstract string CommandId { get;  }
 
     [ObservableProperty]
     CommandType _CommandType;
+
+    [ObservableProperty]
+    string _TaskProgress;
 
     [ObservableProperty]
     PackageCommandProgress _Progress;

@@ -25,35 +25,55 @@
                 FontWeight="Bold"
                 Text="设置" />
         </StackPanel>
-        <StackPanel
-            Grid.Row="1"
-            Margin="0,0,10,0"
-            HorizontalAlignment="Stretch"
-            Orientation="Vertical">
-            <TextBlock
-                Margin="0,10,0,10"
-                FontSize="15"
-                FontWeight="Bold"
-                Text="外观" />
-            <ui:SettingsCard
-                Description="更改应用主题颜色"
-                Header="主题"
-                HeaderIcon="Color">
-                <ui:FluentComboBox
-                    Width="80"
-                    ItemsSource="{Binding Themes, Mode=OneWay}"
-                    SelectedItem="{Binding ThemeName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            </ui:SettingsCard>
-            <ui:SettingsCard
-                Margin="0,10,0,0"
-                Description="更换应用背景笔刷"
-                Header="应用材质"
-                HeaderIcon="Color">
-                <ui:FluentComboBox
-                    Width="80"
-                    ItemsSource="{Binding SystemBackdrops, Mode=OneWay}"
-                    SelectedItem="{Binding SystemBackdropName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            </ui:SettingsCard>
-        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel
+                Margin="0,0,10,0"
+                HorizontalAlignment="Stretch"
+                Orientation="Vertical">
+                <TextBlock
+                    Margin="0,10,0,10"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Text="外观" />
+                <ui:SettingsCard
+                    Description="更改应用主题颜色"
+                    Header="主题"
+                    HeaderIcon="Color">
+                    <ui:FluentComboBox
+                        Width="80"
+                        ItemsSource="{Binding Themes, Mode=OneWay}"
+                        SelectedItem="{Binding ThemeName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </ui:SettingsCard>
+                <ui:SettingsCard
+                    Margin="0,10,0,0"
+                    Description="更换应用背景笔刷"
+                    Header="应用材质"
+                    HeaderIcon="Color">
+                    <ui:FluentComboBox
+                        Width="80"
+                        ItemsSource="{Binding SystemBackdrops, Mode=OneWay}"
+                        SelectedItem="{Binding SystemBackdropName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </ui:SettingsCard>
+                <TextBlock
+                    Margin="0,10,0,10"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Text="行为" />
+                <ui:SettingsCard
+                    Margin="0,10,0,0"
+                    Description="无感安装等于没有界面，直接自动安装"
+                    Header="安装方式"
+                    HeaderIcon="AppIconDefault">
+                    <ui:FluentComboBox Width="80" />
+                </ui:SettingsCard>
+                <ui:SettingsCard
+                    Margin="0,10,0,0"
+                    Description="无感卸载等于没有界面，直接自动卸载"
+                    Header="卸载方式"
+                    HeaderIcon="Clear">
+                    <ui:FluentComboBox Width="80" />
+                </ui:SettingsCard>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

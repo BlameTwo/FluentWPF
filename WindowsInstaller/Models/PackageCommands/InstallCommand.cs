@@ -19,14 +19,32 @@ public partial class InstallCommand : PackageCommandBase, ITaskCommand<CatalogPa
 
     public override async Task ExecuteAsync()
     {
+        this.Progress = new PackageCommandProgress();
         var result = await WinGetService.InstallPackageAsync(
             this.PackageBase,
             PackageInstallScope.Any,
             (s) => 
             {
-                this.DownloadProgressValue = Math.Round(s.DownloadProgress * 100,2);
-                this.InstallingProgressValue = Math.Round(s.InstallationProgress*100,2);
+                this.Progress.InstallProgress = s;
                 this.ProgressState = s.State;
+                switch (ProgressState)
+                {
+                    case PackageInstallProgressState.Queued:
+                        this.TaskProgress = "0%";
+                        break;
+                    case PackageInstallProgressState.Downloading:
+                        this.TaskProgress = s.DownloadProgress.ToString("P2");
+                        break;
+                    case PackageInstallProgressState.Installing:
+                        this.TaskProgress = s.InstallationProgress.ToString("P2");
+                        break;
+                    case PackageInstallProgressState.PostInstall:
+                        this.TaskProgress = "100%";
+                        break;
+                    case PackageInstallProgressState.Finished:
+                        this.TaskProgress = "100%";
+                        break;
+                }
             }
         );
     }
@@ -37,11 +55,6 @@ public partial class InstallCommand : PackageCommandBase, ITaskCommand<CatalogPa
         this.CommandType = Enums.CommandType.Install;
     }
 
-    [ObservableProperty]
-    double _DownloadProgressValue;
-
-    [ObservableProperty]
-    double _InstallingProgressValue;
 
     [ObservableProperty]
     PackageInstallProgressState _ProgressState;

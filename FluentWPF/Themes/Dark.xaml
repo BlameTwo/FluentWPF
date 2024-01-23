@@ -71,4 +71,6 @@
 
     <SolidColorBrush x:Key="TipCardDefaultBorderBrush" Color="{DynamicResource TipCardDefaultBorderBrushColor}" />
     <Color x:Key="TipCardDefaultBorderBrushColor">#3D3D3D</Color>
+
+    <SolidColorBrush x:Key="DataGridSelectItemForegroundBrush">White</SolidColorBrush>
 </ResourceDictionary>
