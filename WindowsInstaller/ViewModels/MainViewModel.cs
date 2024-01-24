@@ -4,6 +4,9 @@ using Microsoft.Management.Deployment;
 using System.Collections.ObjectModel;
 using WindowsInstaller.Services.Contracts;
 using System.Threading.Tasks;
+using System.Linq;
+using System;
+using System.Diagnostics;
 
 namespace WindowsInstaller.ViewModels;
 
@@ -20,6 +23,7 @@ public partial class MainViewModel:ObservableObject
     [RelayCommand]
     async Task Loaded()
     {
+
     }
 
 

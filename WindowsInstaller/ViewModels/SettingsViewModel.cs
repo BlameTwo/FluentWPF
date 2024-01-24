@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FluentWPF.Controls.SystemBackdrops;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Documents;
+using Windows.UI.Text.Core;
 using WindowsInstaller.Models;
 using WindowsInstaller.Services.Contracts;
 
@@ -26,6 +28,9 @@ public partial class SettingsViewModel : ObservableRecipient
     string _SystemBackdropName;
 
     [ObservableProperty]
+    string _FirstInstalledPath = "Default";
+
+    [ObservableProperty]
     List<string> _SystemBackdrops = new List<string>() { "Mica", "MicaAlt", "Acrylic" };
 
     public ILocalSettingsService LocalSettingsService { get; }
@@ -42,7 +47,19 @@ public partial class SettingsViewModel : ObservableRecipient
             this._config = result;
         }
         this.ThemeName = result.Theme;
-        this.SystemBackdropName = result.SystemBackdrop ;
+        this.SystemBackdropName = result.SystemBackdrop;
+        this.FirstInstalledPath = result.InstallPath;
+    }
+
+    [RelayCommand]
+    void ChangedFirstInstalledPath()
+    {
+        var dialog = new CommonOpenFileDialog();
+        dialog.IsFolderPicker = true;
+        if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
+        {
+            this.FirstInstalledPath = dialog.FileName;
+        }
     }
 
     async partial void OnThemeNameChanged(string value)
@@ -78,4 +95,11 @@ public partial class SettingsViewModel : ObservableRecipient
         _config.SystemBackdrop = value;
         await LocalSettingsService.WriteValueAsync<InstallerConfig>("InstallerConfig", _config);
     }
+
+    async partial void OnFirstInstalledPathChanged(string value)
+    {
+        _config.InstallPath = value;
+        await LocalSettingsService.WriteValueAsync<InstallerConfig>("InstallerConfig", _config);
+    }
+
 }

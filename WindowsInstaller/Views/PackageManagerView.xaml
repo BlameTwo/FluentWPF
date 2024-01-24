@@ -71,7 +71,7 @@
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding InstalledVersion.Publisher, Mode=OneWay}"
-                    Header="安装源"
+                    Header="发布者"
                     IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>

@@ -66,10 +66,13 @@
                     Text="行为" />
                 <ui:SettingsCard
                     Margin="0,10,0,0"
-                    Description="默认"
+                    Description="{Binding FirstInstalledPath, Mode=OneWay}"
                     Header="首选安装目录"
                     HeaderIcon="AppIconDefault">
-                    <ui:FluentButton Width="80" Content="选择文件夹" />
+                    <ui:FluentButton
+                        Width="80"
+                        Command="{Binding ChangedFirstInstalledPathCommand, Mode=OneWay}"
+                        Content="选择文件夹" />
                 </ui:SettingsCard>
                 <ui:SettingsCard
                     Margin="0,10,0,0"

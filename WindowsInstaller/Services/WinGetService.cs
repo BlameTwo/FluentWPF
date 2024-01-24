@@ -8,15 +8,25 @@ using System;
 using System.Linq;
 using WindowsInstaller.Services.Contracts;
 using Windows.Foundation;
+using WindowsInstaller.Models;
+using System.Windows;
 
 namespace WindowsInstaller.Services;
 
 public class WinGetService : IWinGetService
 {
+    public WinGetService(ILocalSettingsService localSettingsService)
+    {
+        LocalSettingsService = localSettingsService;
+    }
+
     private WinGetProjectionFactory WingetProjectionFactory => CreateFactory();
     private PackageManager PackageManager => WingetProjectionFactory.CreatePackageManager();
     private IReadOnlyList<PackageCatalogReference> PackageCatalogs =>
         PackageManager.GetPackageCatalogs();
+
+    public ILocalSettingsService LocalSettingsService { get; }
+
     private Dictionary<string, PackageCatalog> _localCatalogues = new();
     private Dictionary<string, PackageCatalog> _remoteCatalogues = new();
 
@@ -29,6 +39,8 @@ public class WinGetService : IWinGetService
         return await Task.Run(
             async () =>
             {
+
+
                 ObservableCollection<CatalogPackage> list = new();
                 var catalog = await GetRemotePackageCatalog(packageCatalogName);
                 var options = WingetProjectionFactory.CreateFindPackagesOptions();
@@ -68,7 +80,6 @@ public class WinGetService : IWinGetService
         options.CompositeSearchBehavior = CompositeSearchBehavior.LocalCatalogs;
         var catalogReference = PackageManager.CreateCompositePackageCatalog(options);
         var connectResult = await catalogReference.ConnectAsync();
-
         var ret = connectResult.PackageCatalog;
         return ret;
     }
@@ -114,14 +125,23 @@ public class WinGetService : IWinGetService
     {
         return await Task.Run(async () =>
         {
-            IProgress<Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress>> progress;
+
+            var installer = await LocalSettingsService.ReadObjectValueAsync<InstallerConfig>("InstallerConfig");
+            if (installer == null)
+                return InstallResultStatus.ManifestError;
+            IProgress <Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress>> progress;
             progress = new Progress<Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress>>();
             ((Progress<Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress>>)progress).ProgressChanged += ProgressChanged;
             void ProgressChanged(object _, Tuple<IAsyncOperationWithProgress<InstallResult, InstallProgress>, InstallProgress> e) => callback(e.Item1,e.Item2);
             var installOptions = WingetProjectionFactory.CreateInstallOptions();
             installOptions.PackageInstallMode = PackageInstallMode.Silent;
+            if(!(installer.InstallPath == "Default" || string.IsNullOrWhiteSpace(installer.InstallPath)))
+            {
+                installOptions.PreferredInstallLocation = installer.InstallPath+$"\\{package.Name}";
+            }
             installOptions.PackageInstallScope = scope;
             var installOperation = PackageManager.InstallPackageAsync(package, installOptions);
+            
             installOperation.Progress = (sender, value) =>
             {
                 progress.Report(new(sender,value));
@@ -136,4 +156,11 @@ public class WinGetService : IWinGetService
             }
         });
     }
+
+    //public async Task<UninstallResultStatus> UnInstallPackageAsync(CatalogPackage package, PackageUninstallMode mode,Action<IAsyncActionWithProgress<UninstallResult,UninstallProgress>,UninstallProgress> callback)
+    //{
+    //    var uninstallOption = WingetProjectionFactory.CreateUninstallOptions();
+    //    uninstallOption.PackageUninstallMode = mode;
+        
+    //}
 }

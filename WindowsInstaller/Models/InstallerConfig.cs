@@ -28,6 +28,7 @@ public class InstallerConfig
             SystemBackdrop = "Acrylic",
             InstallMode = PackageInstallMode.Silent,
             UninstallMode = PackageUninstallMode.Silent,
+            InstallPath = "Default"
         };
     }
 }
