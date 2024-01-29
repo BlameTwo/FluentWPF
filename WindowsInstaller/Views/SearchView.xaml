@@ -77,7 +77,22 @@
                     <MenuItem
                         Command="{Binding InstallAppAsyncCommand}"
                         CommandParameter="{Binding ElementName=datagrid, Path=SelectedItem, Mode=TwoWay}"
-                        Header="安装" />
+                        Header="安装">
+                        <MenuItem.Icon>
+                            <ui:FontIcon
+                                FontSize="14"
+                                Foreground="Green"
+                                Glyph="Set" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="卸载">
+                        <MenuItem.Icon>
+                            <ui:FontIcon
+                                FontSize="14"
+                                Foreground="Red"
+                                Glyph="Clear" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
             <DataGrid.Columns>

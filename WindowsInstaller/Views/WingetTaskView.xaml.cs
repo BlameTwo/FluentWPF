@@ -12,4 +12,5 @@ public partial class WingetTaskView : Page
         InitializeComponent();
         this.DataContext =Register.GetService<WinGetTaskViewModel>();
     }
+
 }

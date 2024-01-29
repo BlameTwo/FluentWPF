@@ -73,4 +73,13 @@
     <Color x:Key="TipCardDefaultBorderBrushColor">#3D3D3D</Color>
 
     <SolidColorBrush x:Key="DataGridSelectItemForegroundBrush">White</SolidColorBrush>
+
+
+    <Color x:Key="ContextMenuBackgroundColor">#303030</Color>
+    <SolidColorBrush x:Key="ContextMenuBackgroundBrush" Color="{DynamicResource ContextMenuBackgroundColor}" />
+
+    <Color x:Key="DefaultDropColor">#CC000000</Color>
+
+    <Color x:Key="ItemMouseOverColor">#26FFFFFF</Color>
+    <SolidColorBrush x:Key="ItemMouseOverBrush" Color="{StaticResource ItemMouseOverColor}" />
 </ResourceDictionary>

@@ -38,7 +38,6 @@
             CanUserResizeColumns="True"
             CanUserSortColumns="True"
             ColumnHeaderHeight="30"
-            IsReadOnly="True"
             ItemsSource="{Binding PackageCommands, Mode=OneWay}"
             RowHeight="40"
             SelectedItem="{Binding PackageCommandSelectItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
@@ -47,7 +46,8 @@
                     Width="*"
                     Binding="{Binding PackageBase.Name, Mode=OneWay}"
                     FontWeight="Bold"
-                    Header="名称" />
+                    Header="名称"
+                    IsReadOnly="False" />
                 <DataGridTextColumn
                     Width="auto"
                     Binding="{Binding CommandType, Mode=OneWay, Converter={StaticResource CommandTypeConverter}}"
