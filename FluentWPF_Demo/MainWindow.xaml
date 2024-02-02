@@ -24,7 +24,7 @@
         </ui:FluentToggleButton>
     </ui:FluentWindow.TitlebarContent>
     <ui:FluentWindow.SystemBackdrop>
-        <sysback:MicaAltBackdrop />
+        <sysback:AcrylicBackdrop />
     </ui:FluentWindow.SystemBackdrop>
     <ui:NavigationView
         DisplayMode="Auto"
@@ -44,13 +44,7 @@
             <ui:NavigationViewItem Content="设置" Icon="Settings" />
         </ui:NavigationView.FooterItems>
         <Grid>
-            <ui:FluentComboBox VerticalAlignment="Top">
-                <ComboBoxItem Content="测试" />
-                <ComboBoxItem Content="测试2" />
-                <ComboBoxItem Content="测试3" />
-                <ComboBoxItem Content="测试4" />
-                <ComboBoxItem Content="测试5" />
-            </ui:FluentComboBox>
+            <ui:SettingTipCard Header="测试" TipType="Error" />
         </Grid>
     </ui:NavigationView>
 </ui:FluentWindow>

@@ -83,6 +83,7 @@
                                 FontSize="14"
                                 Foreground="Green"
                                 Glyph="Set" />
+
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="卸载">
@@ -92,6 +93,10 @@
                                 Foreground="Red"
                                 Glyph="Clear" />
                         </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="更多">
+                        <MenuItem Header="管理" />
                     </MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
