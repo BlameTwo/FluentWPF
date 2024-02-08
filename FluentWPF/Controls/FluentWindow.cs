@@ -15,8 +15,10 @@ public partial class FluentWindow : Window
 {
     public FluentWindow()
     {
-
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(FluentWindow), new FrameworkPropertyMetadata(typeof(FluentWindow)));
+        DefaultStyleKeyProperty.OverrideMetadata(
+            typeof(FluentWindow),
+            new FrameworkPropertyMetadata(typeof(FluentWindow))
+        );
         this.Loaded += FluentWindow_Initialized;
         this.SizeChanged += FluentWindow_SizeChanged;
     }
@@ -45,14 +47,20 @@ public partial class FluentWindow : Window
             int dpi = Methods.GetDeviceCaps(hdc, Methods.LOGPIXELSX);
             Methods.ReleaseDC(WinHander, hdc);
             double dpiFactor = dpi / 96.0;
-            int buttonWidth = (int)((Methods.GetSystemMetrics(Methods.SM_CXSIZE) - Methods.GetSystemMetrics(Methods.SM_CXSIZEFRAME) * 2) * dpiFactor);
-            if (_rightpaddingPadding == null) return;
+            int buttonWidth = (int)(
+                (
+                    Methods.GetSystemMetrics(Methods.SM_CXSIZE)
+                    - Methods.GetSystemMetrics(Methods.SM_CXSIZEFRAME) * 2
+                ) * dpiFactor
+            );
+            if (_rightpaddingPadding == null)
+                return;
             int resval = 0;
-            if(dpiFactor == 1)
+            if (dpiFactor == 1)
             {
                 resval = 5;
             }
-            else if(dpiFactor == 1.25)
+            else if (dpiFactor == 1.25)
             {
                 resval = 3;
             }
@@ -63,15 +71,17 @@ public partial class FluentWindow : Window
 
     public IntPtr WinHander => new WindowInteropHelper(this).Handle;
 
-
-
     public SystemBackdropBase SystemBackdrop
     {
         get { return (SystemBackdropBase)GetValue(SystemBackdropProperty); }
         set { SetValue(SystemBackdropProperty, value); }
     }
-    public static readonly DependencyProperty SystemBackdropProperty =
-        DependencyProperty.Register("SystemBackdrop", typeof(SystemBackdropBase), typeof(FluentWindow), new PropertyMetadata(null,OnBackdropChanged));
+    public static readonly DependencyProperty SystemBackdropProperty = DependencyProperty.Register(
+        "SystemBackdrop",
+        typeof(SystemBackdropBase),
+        typeof(FluentWindow),
+        new PropertyMetadata(null, OnBackdropChanged)
+    );
 
     private static void OnBackdropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -80,7 +90,6 @@ public partial class FluentWindow : Window
             sys.SetBackdrop();
         }
     }
-
 
     /// <summary>
     /// 标题栏左侧内容
@@ -92,9 +101,12 @@ public partial class FluentWindow : Window
     }
 
     public static readonly DependencyProperty TitleBarLeftContentProperty =
-        DependencyProperty.Register("TitleBarLeftContent", typeof(object), typeof(FluentWindow), new PropertyMetadata(null));
-
-
+        DependencyProperty.Register(
+            "TitleBarLeftContent",
+            typeof(object),
+            typeof(FluentWindow),
+            new PropertyMetadata(null)
+        );
 
     public GridLength TitleBarHeight
     {
@@ -103,11 +115,12 @@ public partial class FluentWindow : Window
     }
 
     // Using a DependencyProperty as the backing store for TitleBarHeight.  This enables animation, styling, binding, etc...
-    public static readonly DependencyProperty TitleBarHeightProperty =
-        DependencyProperty.Register("TitleBarHeight", typeof(GridLength), typeof(FluentWindow), new PropertyMetadata(new GridLength(36)));
-
-
-
+    public static readonly DependencyProperty TitleBarHeightProperty = DependencyProperty.Register(
+        "TitleBarHeight",
+        typeof(GridLength),
+        typeof(FluentWindow),
+        new PropertyMetadata(new GridLength(36))
+    );
 
     /// <summary>
     /// 标题栏居中内容
@@ -118,9 +131,12 @@ public partial class FluentWindow : Window
         set { SetValue(TitlebarContentProperty, value); }
     }
 
-    public static readonly DependencyProperty TitlebarContentProperty =
-        DependencyProperty.Register("TitlebarContent", typeof(object), typeof(FluentWindow), new PropertyMetadata(null));
-
+    public static readonly DependencyProperty TitlebarContentProperty = DependencyProperty.Register(
+        "TitlebarContent",
+        typeof(object),
+        typeof(FluentWindow),
+        new PropertyMetadata(null)
+    );
 
     #region 获得模板控件
     private ColumnDefinition _leftPadding;
@@ -129,7 +145,19 @@ public partial class FluentWindow : Window
     private ColumnDefinition _rightPadding;
     private ColumnDefinition _rightpaddingPadding;
 
+    public Visibility TitlebarVisibility
+    {
+        get { return (Visibility)GetValue(TitlebarVisibilityProperty); }
+        set { SetValue(TitlebarVisibilityProperty, value); }
+    }
 
+    public static readonly DependencyProperty TitlebarVisibilityProperty =
+        DependencyProperty.Register(
+            "TitlebarVisibility",
+            typeof(Visibility),
+            typeof(FluentWindow),
+            new PropertyMetadata(Visibility.Visible)
+        );
 
     public override void OnApplyTemplate()
     {
@@ -141,5 +169,4 @@ public partial class FluentWindow : Window
         base.OnApplyTemplate();
     }
     #endregion
-
 }

@@ -25,7 +25,8 @@
                         <Grid
                             Margin="15,0,0,0"
                             HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center">
+                            VerticalAlignment="Center"
+                            Visibility="{TemplateBinding TitlebarVisibility}">
                             <Grid.ColumnDefinitions>
                                 <!--  这里定义了一个标题栏的结构  -->
                                 <ColumnDefinition x:Name="LeftContentColumn" Width="auto" />
@@ -68,7 +69,10 @@
                                 WindowChrome.IsHitTestVisibleInChrome="False" />
                         </Grid>
                         <AdornerDecorator Grid.Row="1">
-                            <ContentControl x:Name="win_content" Content="{TemplateBinding Content}" />
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+
+                                <ContentControl x:Name="win_content" Content="{TemplateBinding Content}" />
+                            </Border>
                         </AdornerDecorator>
                     </Grid>
                 </ControlTemplate>

@@ -17,6 +17,7 @@
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentTipCard.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/ContextMenus.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/SettingTipCardStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentAdaptiveCard.xaml" />
 
         <!--  NavigationView  -->
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Navigations/NavigationViewItem.xaml" />
@@ -42,4 +43,5 @@
     <Style BasedOn="{StaticResource DefaultContextMenuStyle}" TargetType="ContextMenu" />
     <Style BasedOn="{StaticResource DefaultMeunItemStyle}" TargetType="MenuItem" />
     <Style BasedOn="{StaticResource DefaultSettingTipCardStyle}" TargetType="ui:SettingTipCard" />
+    <Style BasedOn="{StaticResource DefaultAdaptiveCardStyle}" TargetType="ui:AdaptiveCard" />
 </ResourceDictionary>

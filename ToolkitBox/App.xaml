@@ -1,15 +1,14 @@
 ﻿<Application
-    x:Class="NeteaseCloudApp.App"
+    x:Class="ToolkitBox.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:NeteaseCloudApp"
+    xmlns:config="https://blame/fluentwpf/2023/configs"
+    xmlns:local="clr-namespace:ToolkitBox"
     xmlns:theme="clr-namespace:FluentWPF;assembly=FluentWPF">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--  颜色  -->
                 <theme:FluentXamlResource Type="Dark" />
-                <!--  样式  -->
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/FluentXamlStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

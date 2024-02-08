@@ -16,4 +16,18 @@ public class FluentTextBox : TextBox
         typeof(FluentTextBox),
         new PropertyMetadata(default(CornerRadius))
     );
+
+
+
+    public Visibility ClearButtonVisibility
+    {
+        get { return (Visibility)GetValue(ClearButtonVisibilityProperty); }
+        set { SetValue(ClearButtonVisibilityProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for ClearButtonVisibility.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty ClearButtonVisibilityProperty =
+        DependencyProperty.Register("ClearButtonVisibility", typeof(Visibility), typeof(FluentTextBox), new PropertyMetadata(Visibility.Visible));
+
+
 }
