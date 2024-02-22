@@ -40,14 +40,10 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid x:Name="grid">
-        <!--<Image
-            Opacity="0.8"
-            Source="/Assets/Background.jpg"
-            Stretch="UniformToFill" />-->
         <ui:NavigationView
             x:Name="navigationView"
             DisplayMode="Auto"
-            NavigationSelectionChanged="navigationView_NavigationSelectionChanged"
+            NavigationSelection="navigationView_NavigationSelection"
             OpenPanelLength="200"
             PaneBackground="Transparent"
             PaneTitle="管理应用"

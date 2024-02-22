@@ -1,4 +1,5 @@
 ﻿using FluentWPF.Contracts.Navigations;
+using FluentWPF.Models.Args;
 using System.Runtime.CompilerServices;
 
 namespace FluentWPF.Controls;
@@ -142,12 +143,20 @@ partial class NavigationView
             this.SelectItem = item;
             newitem.IsSelect = true;
         }
-        this.NavigationSelectionDelegateHandler?.Invoke(
-            this,
-            new Models.NavigationSelectionChangedArgs() { SelectItem = item }
-        );
+        RaiseEvent(new NavigationSelectionChangedArgs(NavigationSelectionEvent,this,(NavigationViewItem)item));
     }
 
+    public static readonly RoutedEvent NavigationSelectionEvent = EventManager.RegisterRoutedEvent
+        (nameof(NavigationSelectionEvent), 
+        RoutingStrategy.Bubble,
+        typeof(ControlEventHandler<NavigationView, NavigationSelectionChangedArgs>),
+        typeof(NavigationView));
+
+    public event ControlEventHandler<NavigationView, NavigationSelectionChangedArgs> NavigationSelection
+    {
+        add => AddHandler(NavigationSelectionEvent, value);
+        remove => RemoveHandler(NavigationSelectionEvent, value);
+    }
 
     private static void OnSelectItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {

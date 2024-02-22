@@ -31,17 +31,9 @@ namespace WindowsInstaller
             }
         }
 
-        private void navigationView_NavigationSelectionChanged(NavigationView sender, FluentWPF.Models.NavigationSelectionChangedArgs item)
-        {
-            var index = NavigationTo.GetNavigationKey((System.Windows.DependencyObject)item.SelectItem!);
-            (this.DataContext as MainViewModel).NavigationService.NavigationTo(index);
 
-        }
 
-        private void NavigationViewItem_ItemInvoked(NavigationViewItem sender, System.Windows.RoutedEventArgs args)
-        {
 
-        }
 
         private void FluentWindow_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -50,6 +42,17 @@ namespace WindowsInstaller
                 vm.ToastLitterMessage.Owner = this.grid;
                 vm.ToastLitterMessage.ShowTime = TimeSpan.FromSeconds(2);
             }
+        }
+
+        private void navigationView_NavigationSelection(NavigationView sender, FluentWPF.Models.Args.NavigationSelectionChangedArgs args)
+        {
+            var index = NavigationTo.GetNavigationKey(args.SelectItem);
+            (this.DataContext as MainViewModel).NavigationService.NavigationTo(index);
+        }
+
+        private void NavigationViewItem_ItemInvoked(NavigationViewItem sender, FluentWPF.Models.Args.NavigationItemInvokedArgs args)
+        {
+
         }
     }
 }

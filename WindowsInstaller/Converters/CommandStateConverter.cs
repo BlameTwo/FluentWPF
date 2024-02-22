@@ -27,7 +27,6 @@ namespace WindowsInstaller.Converters
                         return "安装后";
                     case PackageInstallProgressState.Finished:
                         return "完毕";
-                        break;
                     default:
                         break;
                 }

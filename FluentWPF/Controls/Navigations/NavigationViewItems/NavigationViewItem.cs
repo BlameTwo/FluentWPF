@@ -1,5 +1,6 @@
 ﻿using FluentWPF.Common.Bases;
 using FluentWPF.Contracts.Navigations;
+using FluentWPF.Models.Args;
 using FluentWPF.Resources;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -30,14 +31,14 @@ public partial class NavigationViewItem : ButtonBase, INavigationViewItem
 
     protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
     {
-        this.RaiseEvent(new RoutedEventArgs(ItemInvokedEvent, this));
-        var navigation = NavigationView.GetNavigationView(this);
-        navigation?.OnSelected(this);
         base.OnMouseLeftButtonUp(e);
     }
 
     protected override void OnClick()
     {
+        this.RaiseEvent(new NavigationItemInvokedArgs(ItemInvokedEvent, this, this));
+        var navigation = NavigationView.GetNavigationView(this);
+        navigation?.OnSelected(this);
         base.OnClick();
     }
 
@@ -63,16 +64,14 @@ public partial class NavigationViewItem : ButtonBase, INavigationViewItem
     public static readonly RoutedEvent ItemInvokedEvent = EventManager.RegisterRoutedEvent(
         "ItemInvokedEvent",
         RoutingStrategy.Bubble,
-        typeof(ControlEventHandler<NavigationViewItem,RoutedEventArgs>),
+        typeof(ControlEventHandler<NavigationViewItem, NavigationItemInvokedArgs>),
         typeof(NavigationViewItem)
     );
 
-    public event ControlEventHandler<NavigationViewItem, RoutedEventArgs> ItemInvoked
+    public event ControlEventHandler<NavigationViewItem, NavigationItemInvokedArgs> ItemInvoked
     {
         add =>AddHandler(ItemInvokedEvent, value);
         remove => RemoveHandler(ItemInvokedEvent, value);
     }
-
-
 }
 

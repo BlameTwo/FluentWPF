@@ -25,6 +25,8 @@ public class NavigationService : INavigationService
 
     public void NavigationTo(string resourceName)
     {
+        if (resourceName == null | string.IsNullOrWhiteSpace(resourceName))
+            return;
         var uri = new Uri(resourceName);
         var result  =  _frame.Navigate(uri);
     }

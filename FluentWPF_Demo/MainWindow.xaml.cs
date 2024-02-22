@@ -28,7 +28,14 @@ public partial class MainWindow : FluentWindow
     }
 
 
+
+/* 项目“FluentWPF_Demo (net472)”的未合并的更改
+在此之前:
     private void NavigationView_NavigationSelectionChanged(NavigationView sender, FluentWPF.Models.NavigationSelectionChangedArgs item)
+在此之后:
+    private void NavigationView_NavigationSelectionChanged(NavigationView sender, NavigationSelectionChangedArgs item)
+*/
+    private void NavigationView_NavigationSelectionChanged(NavigationView sender, FluentWPF.Models.Args.NavigationSelectionChangedArgs item)
     {
 
     }

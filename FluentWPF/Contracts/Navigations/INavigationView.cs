@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using FluentWPF.Models.Args;
+using System.Collections.ObjectModel;
 
 namespace FluentWPF.Contracts.Navigations;
 
@@ -8,5 +9,5 @@ public interface INavigationView
 
     public ObservableCollection<INavigationViewItem> FooterItems { get; set; }
 
-    public event NavigationSelectionDelegate NavigationSelectionChanged;
+    public event ControlEventHandler<NavigationView, NavigationSelectionChangedArgs> NavigationSelection;
 }

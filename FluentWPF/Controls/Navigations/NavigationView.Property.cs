@@ -165,14 +165,6 @@ namespace FluentWPF.Controls
             new PropertyMetadata(false, OnIsPaneOpenChanged)
         );
 
-        internal NavigationSelectionDelegate NavigationSelectionDelegateHandler;
-
-        public event NavigationSelectionDelegate NavigationSelectionChanged
-        {
-            add => NavigationSelectionDelegateHandler += value;
-            remove => NavigationSelectionDelegateHandler -= value;
-        }
-
         public object PaneTitle
         {
             get { return (object)GetValue(PaneTitleProperty); }

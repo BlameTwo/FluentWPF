@@ -118,10 +118,9 @@
                             <Setter Property="Background" Value="{DynamicResource TextBoxFocuedBrush}" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="False">
-
                             <Setter Property="Background" Value="{DynamicResource ControlFillColor}" />
                         </Trigger>
-                        <Trigger SourceName="ClearButton" Property="IsPressed" Value="true">
+                        <Trigger SourceName="ClearButton" Property="IsPressed" Value="True">
                             <Setter Property="Text" Value="" />
                         </Trigger>
                     </ControlTemplate.Triggers>
