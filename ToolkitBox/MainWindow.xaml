@@ -43,8 +43,7 @@
                 Padding="10"
                 Background="Transparent"
                 ClearButtonVisibility="Collapsed"
-                FontSize="25">
-            </ui:FluentTextBox>
+                FontSize="25" />
             <ui:FluentButton
                 Grid.Column="1"
                 Margin="0,0,20,0"
@@ -75,9 +74,13 @@
                     <ui:FontIcon Glyph="Settings" />
                 </ui:FluentButton>
             </StackPanel>
-            <ui:AdaptiveCard Grid.Row="1">
-                <TextBlock Text="Button" />
-            </ui:AdaptiveCard>
+            <ListBox Grid.Row="1">
+                <ListBoxItem Content="测试" />
+                <ListBoxItem Content="测试" />
+                <ListBoxItem Content="测试" />
+                <ListBoxItem Content="测试" />
+                <ListBoxItem Content="测试" />
+            </ListBox>
         </Grid>
     </Grid>
 </ui:FluentWindow>

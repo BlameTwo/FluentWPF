@@ -35,7 +35,8 @@ public partial class MainWindow : FluentWindow
 在此之后:
     private void NavigationView_NavigationSelectionChanged(NavigationView sender, NavigationSelectionChangedArgs item)
 */
-    private void NavigationView_NavigationSelectionChanged(NavigationView sender, FluentWPF.Models.Args.NavigationSelectionChangedArgs item)
+
+    private void NavigationView_NavigationSelection(NavigationView sender, FluentWPF.Models.Args.NavigationSelectionChangedArgs args)
     {
 
     }

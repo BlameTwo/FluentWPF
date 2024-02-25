@@ -28,7 +28,7 @@
     </ui:FluentWindow.SystemBackdrop>
     <ui:NavigationView
         DisplayMode="Auto"
-        NavigationSelectionChanged="NavigationView_NavigationSelectionChanged"
+        NavigationSelection="NavigationView_NavigationSelection"
         OpenPanelLength="200"
         PaneBackground="Transparent"
         PaneTitle="游戏管理器">
