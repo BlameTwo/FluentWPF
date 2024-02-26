@@ -29,7 +29,7 @@ public partial class App : Application
         await Register.Init();
         await Register.GetService<ILocalSettingsService>().InitSettingsAsync(keys);
         _window = Register.GetService<MainWindow>();
-        FluentWPF.Instance.InitTheme(_window,this);
+        FluentWPF.Instance.InitTheme(this);
         _window.Show();
     }
 }

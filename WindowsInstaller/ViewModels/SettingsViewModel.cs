@@ -82,13 +82,13 @@ public partial class SettingsViewModel : ObservableRecipient
         switch (value)
         {
             case "Mica":
-                FluentWPF.Instance.FluentWin.SystemBackdrop = new MicaBackdrop();
+                FluentWPF.Instance.UpdateSystemdrop(new MicaBackdrop());
                 break;
             case "MicaAlt":
-                FluentWPF.Instance.FluentWin.SystemBackdrop = new MicaAltBackdrop();
+                FluentWPF.Instance.UpdateSystemdrop(new MicaAltBackdrop());
                 break;
             case "Acrylic":
-                FluentWPF.Instance.FluentWin.SystemBackdrop = new AcrylicBackdrop();
+                FluentWPF.Instance.UpdateSystemdrop(new AcrylicBackdrop());
                 break;
         }
 

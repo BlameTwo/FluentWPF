@@ -18,7 +18,7 @@ public partial class App : Application
     {
         this._mainWindow = new MainWindow();
         this.MainWindow = _mainWindow;
-        FluentWPF.Instance.InitTheme(_mainWindow, this);
+        FluentWPF.Instance.InitTheme(this);
         _mainWindow.Show();
     }
 }

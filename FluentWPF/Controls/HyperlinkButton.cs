@@ -21,6 +21,8 @@ public class HyperlinkButton : ButtonBase
 
     protected override void OnClick()
     {
+        if (this.NavigateUri == null)
+            return;
         //调用资源管理器
         Process.Start("explorer.exe", NavigateUri);
         base.OnClick();

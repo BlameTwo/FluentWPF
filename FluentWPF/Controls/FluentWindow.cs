@@ -13,14 +13,24 @@ namespace FluentWPF.Controls;
 [TemplatePart(Name = "RightPaddingColumn", Type = typeof(ColumnDefinition))]
 public partial class FluentWindow : Window
 {
-    public FluentWindow()
+    static FluentWindow()
     {
         DefaultStyleKeyProperty.OverrideMetadata(
             typeof(FluentWindow),
             new FrameworkPropertyMetadata(typeof(FluentWindow))
         );
+    }
+
+    public FluentWindow()
+    {
         this.Loaded += FluentWindow_Initialized;
         this.SizeChanged += FluentWindow_SizeChanged;
+        this.Closed += FluentWindow_Closed;
+    }
+
+    private void FluentWindow_Closed(object? sender, EventArgs e)
+    {
+        Instance.RemoveWindow(this.Guid);
     }
 
     private void FluentWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -30,6 +40,10 @@ public partial class FluentWindow : Window
 
     private void FluentWindow_Initialized(object? sender, EventArgs e)
     {
+        Instance.AddWindow(this, (guid) =>
+        {
+            this.Guid = guid;
+        });
         Instance.UpdateTheme();
         this.UpdateTitlebar();
     }
@@ -87,7 +101,7 @@ public partial class FluentWindow : Window
     {
         if (e.NewValue is SystemBackdropBase sys && d is FluentWindow win)
         {
-            sys.SetBackdrop();
+            sys.SetBackdrop(win);
         }
     }
 
@@ -150,6 +164,8 @@ public partial class FluentWindow : Window
         get { return (Visibility)GetValue(TitlebarVisibilityProperty); }
         set { SetValue(TitlebarVisibilityProperty, value); }
     }
+
+    public Guid Guid { get; private set; }
 
     public static readonly DependencyProperty TitlebarVisibilityProperty =
         DependencyProperty.Register(

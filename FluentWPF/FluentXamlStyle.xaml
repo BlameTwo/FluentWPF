@@ -20,6 +20,7 @@
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentAdaptiveCard.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentFlyout.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/FluentPassword.xaml" />
 
         <!--  NavigationView  -->
         <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Navigations/NavigationViewItem.xaml" />
@@ -48,4 +49,5 @@
     <Style BasedOn="{StaticResource DefaultAdaptiveCardStyle}" TargetType="ui:AdaptiveCard" />
     <Style BasedOn="{StaticResource DefaultFlyoutStyle}" TargetType="ui:Flyout" />
     <Style BasedOn="{StaticResource DefaultListBoxStyle}" TargetType="ListBox" />
+    <Style BasedOn="{StaticResource DefaultPasswordBoxStyle}" TargetType="PasswordBox" />
 </ResourceDictionary>
