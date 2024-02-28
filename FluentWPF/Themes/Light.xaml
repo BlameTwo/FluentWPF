@@ -19,7 +19,8 @@
     <SolidColorBrush x:Key="AcceptColor" Color="{DynamicResource AcceptBrushColor}" />
     <Color x:Key="AcceptBrushColor">#1975c5</Color>
     <!--  取反  -->
-    <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="White" />
+    <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="{DynamicResource ToggleButtonForgroundColor}" />
+    <Color x:Key="ToggleButtonForgroundColor">White</Color>
 
     <!--  默认控件背景颜色  -->
     <SolidColorBrush x:Key="ControlFillColor" Color="#A5F5F5F5" />
@@ -86,4 +87,7 @@
     <SolidColorBrush x:Key="SuccessSettingTipBackgroundBrush" Color="#0F7B0F" />
     <SolidColorBrush x:Key="WarnSettingTipBackgroundBrush" Color="#9D5D00" />
     <SolidColorBrush x:Key="SettingTipBackTwoBackground" Color="White" />
+
+    <SolidColorBrush x:Key="ListBoxBakcgroundBrush" Color="{DynamicResource ListBoxBackgroundColor}" />
+    <Color x:Key="ListBoxBackgroundColor">#F2F2F2</Color>
 </ResourceDictionary>

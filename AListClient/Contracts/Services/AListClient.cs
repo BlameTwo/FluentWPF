@@ -1,4 +1,6 @@
-﻿using AListClient.Models.Driver.DriverTemplate;
+﻿using AListClient.Models;
+using AListClient.Models.Driver.DriverTemplate;
+using AListClient.Models.Storage.StorageList;
 using AListClient.Models.UserAuth;
 using AListClient.Models.UserAuth.Login;
 using AListClient.Models.UserAuth.Me;
@@ -36,14 +38,12 @@ public class AListClient : IAListClient
             false,
             false
         );
-        var result = await HttpClientProvider.SendAsync(request,cancellationToken);
+        var result = await HttpClientProvider.SendAsync(request, cancellationToken);
         var reponse = await HttpClientProvider.Paser<LoginReponse>(result, cancellationToken);
         if (reponse.Code == 200)
             return reponse.Data;
         return default;
     }
-
-
 
     public async Task<LoginReponse> LoginHash(
         string username,
@@ -66,9 +66,8 @@ public class AListClient : IAListClient
 
     private string CoputeSha256Hash(string password)
     {
-
         var SHA = SHA256.Create();
-        var bytes = SHA.ComputeHash(Encoding.UTF8.GetBytes(password+AlistSuffix));
+        var bytes = SHA.ComputeHash(Encoding.UTF8.GetBytes(password + AlistSuffix));
         var builder = new StringBuilder();
         foreach (var item in bytes)
         {
@@ -90,14 +89,14 @@ public class AListClient : IAListClient
             true,
             false
         );
-        var result = await HttpClientProvider.SendAsync(request,cancellationToken);
+        var result = await HttpClientProvider.SendAsync(request, cancellationToken);
         var reponse = await HttpClientProvider.Paser<MeReponse>(result, cancellationToken);
-        if(reponse.Code == 200)
+        if (reponse.Code == 200)
             return reponse.Data;
         return default;
     }
 
-    public async Task<DriverTemplateReponse> GetDriverTemplate(CancellationToken token = default)
+    public async Task<DriverTemplateReponse> GetDriverTemplates(CancellationToken token = default)
     {
         var request = HttpClientProvider.GetRequestMessage(
             $"http://{_ip}/api/admin/driver/list",
@@ -111,10 +110,62 @@ public class AListClient : IAListClient
         var list = json["data"].AsObject();
         foreach (var item in list)
         {
-            var template =  item.Value.Deserialize<DriverTemplate>();
+            var template = item.Value.Deserialize<DriverTemplate>();
             template.Name = item.Key;
             reponse.Items.Add(template);
         }
         return reponse;
+    }
+
+    public async Task<List<string>> GetDriverNames(CancellationToken token = default)
+    {
+        var request = HttpClientProvider.GetRequestMessage(
+            $"http://{_ip}/api/admin/driver/names",
+            null,
+            true,
+            false
+        );
+        var reponse = await HttpClientProvider.SendAsync(request, token);
+        var result = await HttpClientProvider.ParserModel<List<string>>(reponse, token);
+        if (result.Code == 200)
+            return result.Data;
+        return default;
+    }
+
+    public async Task<DriverTemplate> GetDriverTemplate(
+        string driverName,
+        CancellationToken token = default
+    )
+    {
+        var request = HttpClientProvider.GetRequestMessage(
+            $"http://{_ip}/api/admin/driver/info",
+            new() { { "driver", driverName } },
+            true,
+            false
+        );
+        var reponse = await HttpClientProvider.SendAsync(request, token);
+        var result = await HttpClientProvider.ParserModel<DriverTemplate>(reponse, token);
+        if (result.Code == 200)
+        {
+            result.Data.Name = driverName;
+            return result.Data;
+        }
+        return default;
+    }
+
+    public async Task<StorageListReponse> GetStorageList(int page = 1, int pagesize = 1,CancellationToken token = default)
+    {
+        var request = HttpClientProvider.GetRequestMessage(
+            $"http://{_ip}/api/admin/storage/list",
+            new() { { "page", page }, { "per_page", pagesize } },
+            true,
+            false
+        );
+        var reponse = await HttpClientProvider.SendAsync(request, token);
+        var str = await reponse.Content.ReadAsStringAsync();
+        var result = await HttpClientProvider.ParserModel<StorageListReponse>(reponse, token);
+        if (result.Code == 200)
+            return result.Data;
+        return default;
     }
 }

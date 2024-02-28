@@ -7,6 +7,7 @@ namespace AListClient.ViewModels;
 
 public sealed partial class MainViewModel:ObservableRecipient
 {
+
     [ObservableProperty]
     string _UserName;
 
@@ -16,12 +17,14 @@ public sealed partial class MainViewModel:ObservableRecipient
     [ObservableProperty]
     string _Ip;
 
-    public MainViewModel(IAListClient aListClient)
+    public MainViewModel(IAListClient aListClient, IWindowManagerService windowManagerService)
     {
         AListClient = aListClient;
+        WindowManagerService = windowManagerService;
     }
 
     public IAListClient AListClient { get; }
+    public IWindowManagerService WindowManagerService { get; }
 
     [RelayCommand]
     async Task Login()
@@ -31,16 +34,8 @@ public sealed partial class MainViewModel:ObservableRecipient
         if(result != null)
         {
             AListClient.HttpClientProvider.Token = result.Token;
-            var me = await AListClient.GetMe();
-            var driverTemplate = await AListClient.GetDriverTemplate();
-            foreach (var item in driverTemplate.Items)
-            {
-                Dictionary<string, string> value = new Dictionary<string, string>();
-                foreach (var i in item.Common)
-                {
-                    value.Add(i.Name, i.Default);
-                }
-            }
+            WindowManagerService.ShowFileDriver();
+            WindowManagerService.CloseLogin();
         }
     }
 }

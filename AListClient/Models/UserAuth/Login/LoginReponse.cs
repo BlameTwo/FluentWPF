@@ -2,7 +2,7 @@
 
 namespace AListClient.Models.UserAuth.Login;
 
-public class LoginReponse : IResponseModel
+public class LoginReponse : IReponseModel
 {
     [JsonPropertyName("token")]
     public string Token { get; set; }

@@ -1,6 +1,7 @@
 ﻿using AListClient.Contracts;
 using AListClient.Contracts.Services;
 using AListClient.ViewModels;
+using AListClient.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Configuration;
@@ -30,9 +31,8 @@ namespace AListClient
         private void App_Startup(object sender, StartupEventArgs e)
         {
             FluentWPF.Instance.InitTheme(this);
-            var main = Register.GetService<MainWindow>();
-            this.MainWindow = main;
-            main.Show();
+            var main = Register.GetService<IWindowManagerService>();
+            this.MainWindow = main.ShowLogin();
         }
     }
 
@@ -45,6 +45,7 @@ namespace AListClient
                 {
                     server.AddSingleton<IHttpClientProvider, HttpClientProvider>();
                     server.AddSingleton<IAListClient, Contracts.Services.AListClient>();
+                    server.AddSingleton<IWindowManagerService, WindowManagerService>();
                 }
             );
             return builder;
@@ -57,6 +58,8 @@ namespace AListClient
                 {
                     server.AddSingleton<MainViewModel>();
                     server.AddSingleton<MainWindow>();
+                    server.AddSingleton<FileDriverViewModel>();
+                    server.AddSingleton<FileDriverView>();
                 }
             );
             return builder;

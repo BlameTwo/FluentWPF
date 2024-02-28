@@ -14,7 +14,9 @@ public interface IHttpClientProvider
 
 
     public Task<ResultCode<T>> Paser<T>(HttpResponseMessage reponse,CancellationToken token)
-        where T : IResponseModel;
+        where T : IReponseModel;
+
+    public Task<ResultCode<T>> ParserModel<T>(HttpResponseMessage reponse, CancellationToken token);
 
     public string Token { get; set; }
 

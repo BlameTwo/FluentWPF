@@ -19,7 +19,8 @@
     <Color x:Key="AppTextFillColor">White</Color>
 
     <!--  ToggleButton Foreground  -->
-    <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="Black" />
+    <SolidColorBrush x:Key="ToggleButtonForgroundBrush" Color="{DynamicResource ToggleButtonForgroundColor}" />
+    <Color x:Key="ToggleButtonForgroundColor">Black</Color>
     <!--  默认控件背景颜色  -->
     <SolidColorBrush x:Key="ControlFillColor" Color="#14FFFFFF" />
     <SolidColorBrush x:Key="ControlBorderBrushColor" Color="#19FFFFFF" />
@@ -88,4 +89,7 @@
     <SolidColorBrush x:Key="SuccessSettingTipBackgroundBrush" Color="#0F7B0F" />
     <SolidColorBrush x:Key="WarnSettingTipBackgroundBrush" Color="#9D5D00" />
     <SolidColorBrush x:Key="SettingTipBackTwoBackground" Color="DarkBlue" />
+
+    <SolidColorBrush x:Key="ListBoxBakcgroundBrush" Color="{DynamicResource ListBoxBackgroundColor}" />
+    <Color x:Key="ListBoxBackgroundColor">#2B2B2B</Color>
 </ResourceDictionary>

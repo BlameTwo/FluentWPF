@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AListClient.Models.Driver.DriverTemplate;
 
-public class DriverTemplateReponse : IResponseModel
+public class DriverTemplateReponse : IReponseModel
 {
     public List<DriverTemplate> Items { get; set; } = new();
 

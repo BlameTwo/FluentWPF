@@ -5,7 +5,7 @@ public interface IRequestModel
     public string RequestName { get; }
 }
 
-public interface IResponseModel
+public interface IReponseModel
 {
     public string ResponseName { get; }
 }

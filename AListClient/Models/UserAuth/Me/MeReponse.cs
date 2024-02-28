@@ -2,7 +2,7 @@
 
 namespace AListClient.Models.UserAuth.Me;
 
-public class MeReponse: IResponseModel
+public class MeReponse: IReponseModel
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
