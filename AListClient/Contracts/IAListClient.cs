@@ -25,6 +25,8 @@ public interface IAListClient
 
     public void SetIp(string Ip);
 
+    public string GetIp();
+
     public Task<DriverTemplateReponse> GetDriverTemplates(CancellationToken token = default);
 
     public Task<List<string>> GetDriverNames(CancellationToken token = default);

@@ -9,38 +9,112 @@
     xmlns:sysback="clr-namespace:FluentWPF.Controls.SystemBackdrops;assembly=FluentWPF"
     xmlns:ui="https://blame/fluentwpf/2023/"
     xmlns:vm="clr-namespace:AListClient.ViewModels"
-    Title="FileDriverView"
+    Title="浏览"
     Width="800"
     Height="450"
     d:DataContext="{d:DesignInstance Type=vm:FileDriverViewModel}"
-    Background="Transparent"
     Style="{DynamicResource DefaultWindowStyle}"
     mc:Ignorable="d">
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <ui:FluentWindow.SystemBackdrop>
-        <sysback:AcrylicBackdrop />
+        <sysback:MicaAltBackdrop />
     </ui:FluentWindow.SystemBackdrop>
     <Grid>
-        <ListBox
-            Margin="10"
-            Background="Transparent"
-            ItemsSource="{Binding Storages}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding MountPath, Mode=OneWay}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource DefaultPageBackgroundColor}" />
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="10,10" Orientation="Horizontal">
+                <ui:FluentButton VerticalAlignment="Center" Style="{DynamicResource TransparentFluentButtonStyle}">
+                    <ui:FontIcon Glyph="Back" />
+                </ui:FluentButton>
+                <ui:FluentButton VerticalAlignment="Center" Style="{DynamicResource TransparentFluentButtonStyle}">
+                    <ui:FontIcon Glyph="Forward" />
+                </ui:FluentButton>
+                <ui:FluentButton VerticalAlignment="Center" Style="{DynamicResource TransparentFluentButtonStyle}">
+                    <ui:FontIcon Glyph="Up" />
+                </ui:FluentButton>
+                <ui:FluentButton VerticalAlignment="Center" Style="{DynamicResource TransparentFluentButtonStyle}">
+                    <ui:FontIcon Glyph="Refresh" />
+                </ui:FluentButton>
+            </StackPanel>
+            <ui:FluentTextBox
+                Grid.Column="1"
+                Margin="5"
+                VerticalAlignment="Center"
+                ClearButtonVisibility="Collapsed"
+                FontSize="10" />
+            <ui:FluentTextBox
+                Grid.Column="2"
+                Width="150"
+                Margin="5,5,5,5"
+                VerticalAlignment="Center"
+                FontSize="10" />
+            <StackPanel
+                Grid.Column="3"
+                Margin="5,0,15,0"
+                Orientation="Horizontal">
+                <ui:FluentButton
+                    VerticalAlignment="Center"
+                    Style="{DynamicResource TransparentFluentButtonStyle}"
+                    ToolTipService.ToolTip="切换用户">
+                    <ui:FontIcon Glyph="SwitchUser" />
+                </ui:FluentButton>
+                <ui:FluentButton
+                    VerticalAlignment="Center"
+                    Style="{DynamicResource TransparentFluentButtonStyle}"
+                    ToolTipService.ToolTip="设置">
+                    <ui:FontIcon Glyph="Settings" />
+                </ui:FluentButton>
+            </StackPanel>
+        </Grid>
+        <DataGrid
+            Grid.Row="1"
+            Padding="10"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserResizeColumns="True"
+            CanUserResizeRows="True"
+            CanUserSortColumns="True"
+            ColumnHeaderHeight="30"
+            ItemsSource="{Binding Storages}"
+            RowHeight="30">
+            <DataGrid.Background>
+                <SolidColorBrush Opacity="0.7" Color="{DynamicResource DefaultPageBackgroundColor}" />
+            </DataGrid.Background>
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    Header="名称" />
+                <DataGridTextColumn
+                    Width="auto"
+                    Binding="{Binding Size}"
+                    Header="大小" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Created}"
+                    Header="创建时间" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Modified}"
+                    Header="修改时间" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </ui:FluentWindow>

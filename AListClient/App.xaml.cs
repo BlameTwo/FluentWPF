@@ -46,6 +46,7 @@ namespace AListClient
                     server.AddSingleton<IHttpClientProvider, HttpClientProvider>();
                     server.AddSingleton<IAListClient, Contracts.Services.AListClient>();
                     server.AddSingleton<IWindowManagerService, WindowManagerService>();
+                    server.AddSingleton<ICloudFileService, CloudFileService>();
                 }
             );
             return builder;

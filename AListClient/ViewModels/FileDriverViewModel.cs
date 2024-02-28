@@ -1,4 +1,5 @@
 ﻿using AListClient.Contracts;
+using AListClient.Models.FileServer.FileLists;
 using AListClient.Models.Storage.StorageList;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -8,23 +9,22 @@ namespace AListClient.ViewModels;
 
 public sealed partial class FileDriverViewModel : ObservableRecipient
 {
-    public FileDriverViewModel(IAListClient aListClient)
+    public FileDriverViewModel(IAListClient aListClient, ICloudFileService cloudFileService)
     {
         AListClient = aListClient;
+        CloudFileService = cloudFileService;
     }
 
     [RelayCommand]
     async Task Loaded()
     {
-        var result = await AListClient.GetStorageList(1,20);
-        if (result != null)
-        {
-            this.Storages = new(result.Content);
-        }
+        var result = await CloudFileService.GetFolderList(new("/",1,20,false));
+        this.Storages = new(result.Content);
     }
 
     [ObservableProperty]
-    ObservableCollection<StorageContent> _Storages;
+    ObservableCollection<FSContent> _Storages;
 
     public IAListClient AListClient { get; }
+    public ICloudFileService CloudFileService { get; }
 }

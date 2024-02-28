@@ -168,4 +168,9 @@ public class AListClient : IAListClient
             return result.Data;
         return default;
     }
+
+    public string GetIp()
+    {
+        return _ip;
+    }
 }

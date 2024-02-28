@@ -36,12 +36,12 @@ public class HttpClientProvider : IHttpClientProvider
         return request;
     }
 
-    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message, CancellationToken token)
+    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message, CancellationToken token = default)
     {
         return await this.httpClient.SendAsync(message,token);
     }
 
-    public async Task<ResultCode<T>> Paser<T>(HttpResponseMessage reponse, CancellationToken token)
+    public async Task<ResultCode<T>> Paser<T>(HttpResponseMessage reponse, CancellationToken token=default)
         where T : IReponseModel
     {
         var str = await reponse.Content.ReadAsStringAsync(token);
@@ -49,7 +49,7 @@ public class HttpClientProvider : IHttpClientProvider
     }
 
 
-    public async Task<ResultCode<T>> ParserModel<T>(HttpResponseMessage reponse, CancellationToken token)
+    public async Task<ResultCode<T>> ParserModel<T>(HttpResponseMessage reponse, CancellationToken token = default)
     {
         var str = await reponse.Content.ReadAsStringAsync(token);
         return JsonSerializer.Deserialize<ResultCode<T>>(str)!;
