@@ -27,4 +27,8 @@
     <Resource Include="Assets\Sophia Script Free Demo.ttf" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Driver\LanZou\" />
+  </ItemGroup>
+
 </Project>

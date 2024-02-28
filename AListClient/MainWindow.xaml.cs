@@ -10,6 +10,7 @@ public partial class MainWindow : FluentWindow
     {
         InitializeComponent();
         this.DataContext = Register.GetService<MainViewModel>();
+        FluentWPF.Instance.ApplyTheme(FluentWPF.Models.Enums.ThemeTypeEnum.Dark);
     }
 
 }

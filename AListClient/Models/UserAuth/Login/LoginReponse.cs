@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AListClient.Models.UserAuth;
+namespace AListClient.Models.UserAuth.Login;
 
-public class LoginReponse: IResponseModel
+public class LoginReponse : IResponseModel
 {
     [JsonPropertyName("token")]
     public string Token { get; set; }

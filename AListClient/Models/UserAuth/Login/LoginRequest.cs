@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AListClient.Models.UserAuth;
+namespace AListClient.Models.UserAuth.Login;
 
 public class LoginRequest : IRequestModel
 {

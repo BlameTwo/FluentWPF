@@ -27,10 +27,20 @@ public sealed partial class MainViewModel:ObservableRecipient
     async Task Login()
     {
         AListClient.SetIp(Ip);
-        var result = await  AListClient.Login(this.UserName,this.Password);
+        var result = await  AListClient.LoginHash(this.UserName,this.Password);
         if(result != null)
         {
-            MessageBox.Show("登陆成功");
+            AListClient.HttpClientProvider.Token = result.Token;
+            var me = await AListClient.GetMe();
+            var driverTemplate = await AListClient.GetDriverTemplate();
+            foreach (var item in driverTemplate.Items)
+            {
+                Dictionary<string, string> value = new Dictionary<string, string>();
+                foreach (var i in item.Common)
+                {
+                    value.Add(i.Name, i.Default);
+                }
+            }
         }
     }
 }

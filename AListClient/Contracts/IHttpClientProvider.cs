@@ -5,14 +5,15 @@ namespace AListClient.Contracts;
 
 public interface IHttpClientProvider
 {
-    public HttpRequestMessage GetRequestMessage<T>(string uri, HttpMethod method, T model, bool needToken, bool needCookie)
+    public HttpRequestMessage PostRequestMessage<T>(string uri,T model, bool needToken, bool needCookie)
         where T : IRequestModel;
 
+    public HttpRequestMessage GetRequestMessage(string uri, Dictionary<string, object> values, bool needToken, bool needCookie);
 
-    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message);
+    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message,CancellationToken token);
 
 
-    public Task<ResultCode<T>> Paser<T>(HttpResponseMessage reponse)
+    public Task<ResultCode<T>> Paser<T>(HttpResponseMessage reponse,CancellationToken token)
         where T : IResponseModel;
 
     public string Token { get; set; }
